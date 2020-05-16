@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 
@@ -31,6 +32,8 @@ export class Tab1Page{
   date:any;
   time:any;
   isBubbleLevelOkay:string;
+  gauge_data:any;
+  problem_data:any;
   value = 0 ;
 
   constructor (
@@ -39,7 +42,8 @@ export class Tab1Page{
     private http:HttpClient,
     private toastCtrl: ToastController, 
     private router:Router,
-    private navCtrl: NavController,
+    private emailcomposer: EmailComposer,
+    private navCtrl: NavController
   
     ){}
 
@@ -88,6 +92,30 @@ export class Tab1Page{
             }
           }, {
             text: 'SUBMIT',
+            handler: data => {
+
+                this.gauge_data = data.gauge_id;
+                this.problem_data = data.problem;
+                console.log(this.gauge_data);
+                console.log(this.problem_data);
+
+
+                let email = {
+
+                    to: 'dipayan5175@gmail.com',
+                    subject: 'LOCSS App Issue',
+                    body: 'Gauge ID: ' + this.gauge_data + '  Problem: ' + this.problem_data,
+                    isHTML: true
+              
+
+                }
+                console.log(email);
+                console.log('Successfully updated');
+
+                this.emailcomposer.open(email);
+                console.log('Successfully sent');
+             
+            }
           }
         ]
 
@@ -95,6 +123,10 @@ export class Tab1Page{
 
       await alert.present();
   }
+
+  
+
+
 
   getCurrentDateTime(){
       let date = new Date();

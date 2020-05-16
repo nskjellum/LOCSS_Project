@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import {HttpModule} from '@angular/http';
 import { CacheModule } from 'ionic-cache';
 import { IonicStorageModule } from '@ionic/storage';
@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     StatusBar,
     Geolocation,
+    EmailComposer,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

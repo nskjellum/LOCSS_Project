@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-tab3',
@@ -25,11 +26,13 @@ export class Tab3Page {
   loadAllData:boolean;
 
 
+
   ngOnInit() {
     this.loadAllData=false;
-    this.splash.show();
-   // this.getReadings();
-   this.getHeight();
+    this.splash.show(); 
+    this.getHeight(); 
+    this.getReadings();
+   // this.getHeight();
     this.getReadingsForTable();
     this.splash.hide();
   //  this.handleButtonClick();
@@ -549,6 +552,10 @@ export class Tab3Page {
   }
   
   getReadingsOnem(){
+
+
+  
+    console.log('Hello');
     var scale_size=100;
     var reading_date=[];
     var reading_height=[];

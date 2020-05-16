@@ -25,8 +25,8 @@ export class AppComponent {
     
     this.platform.ready().then(() => {
 
-    //  this.cache.setDefaultTTL(60 * 60 * 12);
-
+     this.cache.setDefaultTTL(60 * 60 );
+     //this.cache.enableCache(true);
       this.cache.setOfflineInvalidate(false);
 
       this.statusBar.styleDefault();

@@ -292,6 +292,30 @@ module.exports = [
     "clobbers": [
       "nativegeocoder"
     ]
+  },
+  {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
+  },
+  {
+    "id": "cordova-plugin-email-composer.EmailComposer",
+    "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+    "pluginId": "cordova-plugin-email-composer",
+    "clobbers": [
+      "cordova.plugins.email"
+    ]
+  },
+  {
+    "id": "org.apache.cordova.plugin.cache.Cache",
+    "file": "plugins/org.apache.cordova.plugin.cache/www/Cache.js",
+    "pluginId": "org.apache.cordova.plugin.cache",
+    "clobbers": [
+      "cache"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -306,7 +330,10 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-ionic-webview": "4.0.1",
   "cordova-plugin-ionic-keyboard": "2.1.3",
-  "cordova-plugin-nativegeocoder": "3.2.2"
+  "cordova-plugin-nativegeocoder": "3.2.2",
+  "cordova-sqlite-storage": "5.0.0",
+  "cordova-plugin-email-composer": "0.9.2",
+  "org.apache.cordova.plugin.cache": "1.0.5"
 };
 // BOTTOM OF METADATA
 });

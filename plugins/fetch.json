@@ -90,5 +90,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-email-composer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-email-composer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "org.apache.cordova.plugin.cache": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/tiltshiftfocus/cordova-plugin-cache.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

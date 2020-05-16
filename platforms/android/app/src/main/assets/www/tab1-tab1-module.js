@@ -11,7 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab1PageModule", function() { return Tab1PageModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
@@ -52,7 +52,7 @@ var Tab1PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Add Measurement\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- <ion-content padding class = \"background-image\"> -->\r\n<ion-content>\r\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\r\n    <ion-list>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Gauge ID</ion-label>\r\n        <ion-select  [(ngModel)]=\"nearestGaugeIncID\" name=\"gauge_inc_id\" required>\r\n          <ion-select-option *ngFor=\"let gauge of gauges\" value=\"{{gauge.id}}\">{{gauge.gauge_id + ' (' + gauge.name + ')'}}</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n  \r\n      <ion-item>\r\n        <ion-label position=\"floating\">Height</ion-label>\r\n        <ion-input type=\"number\" ngModel name=\"height\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Date</ion-label>\r\n        <ion-input type=\"date\" [(ngModel)]=\"date\" name=\"date\"  required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Time</ion-label>\r\n        <ion-input type=\"time\" [(ngModel)]=\"time\" name=\"time\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Is Bubble Level Okay?</ion-label>\r\n        <ion-select [(ngModel)]=\"isBubbleLevelOkay\" name=\"is_bubble_level_okay\" required>\r\n          <ion-select-option value=\"Yes\" selected>Yes</ion-select-option>\r\n          <ion-select-option value=\"No\">No</ion-select-option>\r\n          <ion-select-option value=\"I Do Not Know\">I Don't Know</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Notes</ion-label>\r\n        <ion-input type=\"textarea\" ngModel name=\"notes\"></ion-input>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-button type=\"submit\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Add Measurement</ion-button>\r\n  </form>\r\n\r\n    \r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Add Measurement\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- <ion-content padding class = \"background-image\"> -->\r\n<ion-content>\r\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" >\r\n    <ion-list>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Gauge ID</ion-label>\r\n        <ion-select  [(ngModel)]=\"nearestGaugeIncID\" name=\"gauge_inc_id\" required>\r\n          <ion-select-option *ngFor=\"let gauge of gauges\" value=\"{{gauge.id}}\">{{gauge.gauge_id + ' - ' + gauge.name + ' - ' + gauge.city}}</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n  \r\n      <ion-item>\r\n        <ion-label position=\"floating\">Height (centimeters)</ion-label>\r\n        <ion-input type=\"number\" ngModel name=\"height\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Date</ion-label>\r\n        <ion-input type=\"date\" [(ngModel)]=\"date\" name=\"date\"  required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Time</ion-label>\r\n        <ion-input type=\"time\" [(ngModel)]=\"time\" name=\"time\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Is Bubble Level Okay?</ion-label>\r\n        <ion-select [(ngModel)]=\"isBubbleLevelOkay\" name=\"is_bubble_level_okay\" required>\r\n          <ion-select-option value=\"Yes\" selected>Yes</ion-select-option>\r\n          <ion-select-option value=\"No\">No</ion-select-option>\r\n          <ion-select-option value=\"I Do Not Know\">I Don't Know</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Notes</ion-label>\r\n        <ion-input type=\"textarea\" ngModel name=\"notes\"></ion-input>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-button type=\"submit\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Add Measurement</ion-button>\r\n   <!-- <ion-button click= \"presentAlert();\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Report a problem</ion-button>-->\r\n  </form>\r\n\r\n\r\n\r\n\r\n  <ion-button [href]=\"'/gauge-list-map'\" expand =\"block\">Map View</ion-button>\r\n  <ion-button (click)= \"presentAlert()\" expand = \"block\" color=\"danger\">Report a problem</ion-button>\r\n\r\n\r\n    \r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -80,11 +80,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/email-composer/ngx */ "./node_modules/@ionic-native/email-composer/ngx/index.js");
 
 
 
@@ -92,24 +93,91 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+var URL = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
 var Tab1Page = /** @class */ (function () {
-    function Tab1Page(geolocation, alertController, http, router) {
+    function Tab1Page(geolocation, alertController, http, toastCtrl, router, emailcomposer, navCtrl) {
         this.geolocation = geolocation;
         this.alertController = alertController;
         this.http = http;
+        this.toastCtrl = toastCtrl;
         this.router = router;
+        this.emailcomposer = emailcomposer;
+        this.navCtrl = navCtrl;
         this.gauges = [];
+        this.value = 0;
     }
     Tab1Page.prototype.ngOnInit = function () {
         this.getCurrentDateTime();
         this.getAllGauges();
         this.getLocation();
         if (!this.isGeoLocationFound) {
-            this.presentAlertPrompt();
+            //this.presentAlertPrompt();
         }
         else {
         }
         //this.getLocation();
+    };
+    Tab1Page.prototype.presentAlert = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Report a problem',
+                            message: 'Please enter the Gauge ID and Problem',
+                            inputs: [
+                                {
+                                    name: 'gauge_id',
+                                    type: 'text',
+                                    placeholder: 'Gauge ID'
+                                },
+                                {
+                                    name: 'problem',
+                                    type: 'text',
+                                    placeholder: 'Problem'
+                                }
+                            ],
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function () {
+                                        console.log('Confirm Cancel');
+                                    }
+                                }, {
+                                    text: 'SUBMIT',
+                                    handler: function (data) {
+                                        _this.gauge_data = data.gauge_id;
+                                        _this.problem_data = data.problem;
+                                        console.log(_this.gauge_data);
+                                        console.log(_this.problem_data);
+                                        var email = {
+                                            to: 'dipayan5175@gmail.com',
+                                            subject: 'LOCSS App Issue',
+                                            body: 'Gauge ID: ' + _this.gauge_data + '  Problem: ' + _this.problem_data,
+                                            isHTML: true
+                                        };
+                                        console.log(email);
+                                        console.log('Successfully updated');
+                                        _this.emailcomposer.open(email);
+                                        console.log('Successfully sent');
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     Tab1Page.prototype.getCurrentDateTime = function () {
         var date = new Date();
@@ -143,49 +211,39 @@ var Tab1Page = /** @class */ (function () {
             console.log('Error getting location', error);
         });
     };
-    // Present the Add Gauge prompt when geolocaiotn is not found
-    Tab1Page.prototype.presentAlertPrompt = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var alert;
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.alertController.create({
-                            header: 'Please Enter the Gauge ID',
-                            inputs: [
-                                {
-                                    name: 'gauge_id',
-                                    type: 'text',
-                                    placeholder: 'Gauge ID'
-                                }
-                            ],
-                            buttons: [
-                                {
-                                    text: 'Cancel',
-                                    role: 'cancel',
-                                    cssClass: 'secondary',
-                                    handler: function () {
-                                        console.log('Confirm Cancel');
-                                    }
-                                }, {
-                                    text: 'SUBMIT',
-                                    handler: function (data) {
-                                        _this.nearestGaugeID = data.gauge_id;
-                                        console.log(_this.nearestGaugeID);
-                                    }
-                                }
-                            ]
-                        })];
-                    case 1:
-                        alert = _a.sent();
-                        return [4 /*yield*/, alert.present()];
-                    case 2:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
+    // Present the Add Gauge prompt when geolocation is not found
+    /*async presentAlertPrompt() {
+      const alert = await this.alertController.create({
+        header: 'Please Enter the Gauge ID',
+        inputs: [
+          {
+            name: 'gauge_id',
+            type: 'text',
+            placeholder: 'Gauge ID'
+          }
+         
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              console.log('Confirm Cancel');
+            }
+          }, {
+            text: 'SUBMIT',
+            handler: data => {
+              this.nearestGaugeID=data.gauge_id;
+              console.log(this.nearestGaugeID);
+            }
+          }
+        ]
+      });
+    
+      await alert.present();
+    }
+  */
     Tab1Page.prototype.getAllGauges = function () {
         var _this = this;
         this.http.get('http://liquidearthlake.org/json/gauges')
@@ -197,17 +255,33 @@ var Tab1Page = /** @class */ (function () {
         });
     };
     Tab1Page.prototype.onSubmit = function (form) {
-        this.nearestGauge = this.gauges.filter(function (m) { return m.id == form.value['gauge_inc_id']; });
-        console.log(form);
-        this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
-            .subscribe(function (data) {
-            console.log(data['_body']);
-        }, function (error) {
-            console.log(error);
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastCtrl.create({
+                            message: 'Data submitted successfuly',
+                            duration: 2000,
+                            position: "bottom"
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        this.nearestGauge = this.gauges.filter(function (m) { return m.id == form.value['gauge_inc_id']; });
+                        console.log(form);
+                        this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
+                            .subscribe(function (data) {
+                            console.log(data['_body']);
+                        }, function (error) {
+                            console.log(error);
+                        });
+                        console.log(this.gauges);
+                        console.log(this.nearestGauge[0].gauge_id);
+                        this.router.navigateByUrl('tabs/tab3/' + form.value['gauge_inc_id'] + '/' + this.nearestGauge[0].gauge_id);
+                        return [2 /*return*/];
+                }
+            });
         });
-        console.log(this.gauges);
-        console.log(this.nearestGauge[0].gauge_id);
-        this.router.navigateByUrl('tabs/tab3/' + form.value['gauge_inc_id'] + '/' + this.nearestGauge[0].gauge_id);
     };
     Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -218,7 +292,10 @@ var Tab1Page = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_2__["Geolocation"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+            _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_7__["EmailComposer"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]])
     ], Tab1Page);
     return Tab1Page;
 }());

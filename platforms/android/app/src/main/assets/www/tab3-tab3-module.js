@@ -14701,7 +14701,7 @@ return src;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab3PageModule", function() { return Tab3PageModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
@@ -14742,7 +14742,7 @@ var Tab3PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button text=\"Back\" defaultHref=\"/tabs/tab2\"></ion-back-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n \r\n\r\n  <ion-card>\r\n   \r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button text=\"Back\" defaultHref=\"/tabs/tab2\"></ion-back-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n \r\n\r\n  <ion-card>\r\n    <ion-button (click)= \"getReadingsAll()\"  >All data</ion-button>\r\n    <ion-button (click)= \"getReadingsOney()\"   >Last Year</ion-button>  \r\n  <!-- <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button> -->\r\n  <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button>\r\n    <ion-button (click)= \"getReadingsThree()\"  >Last Three Months</ion-button>\r\n    <ion-button (click)= \"getReadingsOnem()\">Last One Month</ion-button>\r\n \r\n\r\n\r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n\r\n  \r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
 
 /***/ }),
 
@@ -14776,6 +14776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
 
 
 
@@ -14784,7 +14786,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Tab3Page = /** @class */ (function () {
-    function Tab3Page(http, route, splash) {
+    function Tab3Page(alertController, http, route, splash) {
+        this.alertController = alertController;
         this.http = http;
         this.route = route;
         this.splash = splash;
@@ -14792,18 +14795,32 @@ var Tab3Page = /** @class */ (function () {
     Tab3Page.prototype.ngOnInit = function () {
         this.loadAllData = false;
         this.splash.show();
+        this.getHeight();
         this.getReadings();
+        // this.getHeight();
         this.getReadingsForTable();
         this.splash.hide();
+        //  this.handleButtonClick();
         //this.drawGraph();
     };
     //drawGraph(){
     // console.log(this.data);
     // }
+    /*
+    async handleButtonClick() {
+      console.log("Hello");
+     const alert =  await this.alertController.create({
+       
+       header: 'Data has been submitted successfully',
+       buttons: ['OK']
+     });
+      await alert.present();
+   }*/
     Tab3Page.prototype.getReadingsForTable = function () {
         var _this = this;
         var id = this.route.snapshot.paramMap.get('id');
-        this.http.get('http://liquidearthlake.org/json/getjsondatasixm/' + id)
+        this.http
+            .get('http://liquidearthlake.org/json/getjsondatasixm/' + id)
             .subscribe(function (data) {
             _this.data = data;
             console.log(data);
@@ -14811,8 +14828,24 @@ var Tab3Page = /** @class */ (function () {
             console.log(error);
         });
     };
+    Tab3Page.prototype.getHeight = function () {
+        var _this = this;
+        var id = this.route.snapshot.paramMap.get('id');
+        //let variable = this.route.snapshot.paramMap.get('unit');
+        //console.log('hi' + variable);
+        console.log(id);
+        this.http
+            .get('http://liquidearthlake.org/json/getgauge/' + id)
+            .subscribe(function (data) {
+            _this.height_data = data;
+            console.log(_this.height_data[0].unit);
+        }, function (error) {
+            console.log(error);
+        });
+    };
     Tab3Page.prototype.getReadings = function () {
         var _this = this;
+        console.log(this.height_data);
         var scale_size = 15;
         var reading_date = [];
         var reading_height = [];
@@ -14820,6 +14853,197 @@ var Tab3Page = /** @class */ (function () {
         this.name = this.route.snapshot.paramMap.get('name');
         this.http
             .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id=' + id)
+            .subscribe(function (data) {
+            //this.data =data;
+            console.log(_this.data);
+            for (var i = 0; i < data.length; ++i) {
+                reading_date.push(_this.formatedate(String(data[i].date)));
+                reading_height.push(data[i].height);
+                console.log(data[i].height);
+            }
+            var start_date = _this.formatedate(String(data[0].date));
+            var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
+            console.log(start_date1);
+            var end_date = _this.formatedate(String(data[data.length - 1].date));
+            var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
+            console.log(end_date1);
+            var modified_end_date;
+            var diff_date_in_days = end_date1.diff(start_date1, 'days');
+            if (diff_date_in_days % scale_size == 0) {
+                modified_end_date = end_date1;
+            }
+            else {
+                var num_steps_x_axis = diff_date_in_days / scale_size;
+                modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
+            }
+            console.log(modified_end_date);
+            _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: reading_date,
+                    datasets: [{
+                            label: 'Lake Level',
+                            data: reading_height,
+                            lineTension: 0.25,
+                            fill: false,
+                            borderColor: 'rgba(65,105,225,1)',
+                            backgroundColor: 'transparent',
+                            pointBorderColor: 'rgba(65,105,225,1)',
+                            pointBackgroundColor: 'rgba(65,105,225,1)',
+                            borderWidth: 2,
+                            borderDash: [0, 0],
+                            pointRadius: 2,
+                            pointHoverRadius: 4,
+                            pointHitRadius: 30,
+                            pointBorderWidth: 2,
+                            pointStyle: 'rectRounded'
+                        }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 80,
+                            fontColor: 'black'
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                                type: "time",
+                                time: {
+                                    unit: 'day',
+                                    unitStepSize: scale_size,
+                                    max: modified_end_date,
+                                    tooltipFormat: "MM/DD/YYYY",
+                                    displayFormats: {
+                                        day: 'MM/DD/YYYY'
+                                    }
+                                }
+                            }],
+                        yAxes: [{
+                                gridLines: {
+                                //color: "black",
+                                // borderDash: [2, 5],
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: (_this.height_data[0].unit),
+                                    fontColor: "green"
+                                }
+                            }]
+                    }
+                }
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    Tab3Page.prototype.getReadingsThree = function () {
+        var _this = this;
+        var scale_size = 10000;
+        var reading_date = [];
+        var reading_height = [];
+        var id = this.route.snapshot.paramMap.get('id');
+        this.name = this.route.snapshot.paramMap.get('name');
+        this.http
+            .get('https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id=' + id)
+            .subscribe(function (data) {
+            //this.data =data;
+            console.log(_this.data);
+            for (var i = 0; i < data.length; ++i) {
+                reading_date.push(_this.formatedate(String(data[i].date)));
+                console.log(data[i].height);
+                reading_height.push(data[i].height);
+            }
+            var start_date = _this.formatedate(String(data[0].date));
+            var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
+            console.log(start_date1);
+            var end_date = _this.formatedate(String(data[data.length - 1].date));
+            console.log(end_date);
+            var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
+            var modified_end_date;
+            var diff_date_in_days = end_date1.diff(start_date1, 'days');
+            console.log(diff_date_in_days);
+            if (diff_date_in_days % scale_size != 0) {
+                modified_end_date = end_date1;
+            }
+            else {
+                var num_steps_x_axis = diff_date_in_days / scale_size;
+                modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
+            }
+            console.log(modified_end_date);
+            _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: reading_date,
+                    datasets: [{
+                            label: 'Lake Level',
+                            data: reading_height,
+                            lineTension: 0.25,
+                            fill: false,
+                            borderColor: 'rgba(65,105,225,1)',
+                            backgroundColor: 'transparent',
+                            pointBorderColor: 'rgba(65,105,225,1)',
+                            pointBackgroundColor: 'rgba(65,105,225,1)',
+                            borderWidth: 2,
+                            borderDash: [0, 0],
+                            pointRadius: 2,
+                            pointHoverRadius: 4,
+                            pointHitRadius: 30,
+                            pointBorderWidth: 2,
+                            pointStyle: 'rectRounded'
+                        }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 80,
+                            fontColor: 'black'
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                                type: "time",
+                                time: {
+                                    unit: 'day',
+                                    unitStepSize: scale_size,
+                                    max: modified_end_date,
+                                    tooltipFormat: "MM/DD/YYYY",
+                                    displayFormats: {
+                                        day: 'MM/DD/YYYY'
+                                    }
+                                }
+                            }],
+                        yAxes: [{
+                                gridLines: {
+                                //color: "black",
+                                // borderDash: [2, 5],
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: (_this.height_data[0].unit),
+                                    fontColor: "green"
+                                }
+                            }]
+                    }
+                }
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    Tab3Page.prototype.getReadingsAll = function () {
+        var _this = this;
+        var scale_size = 100;
+        var reading_date = [];
+        var reading_height = [];
+        var id = this.route.snapshot.paramMap.get('id');
+        this.name = this.route.snapshot.paramMap.get('name');
+        this.http
+            .get('https://liquidearthlake.org/gauge/getjsondataall?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
@@ -14892,7 +15116,194 @@ var Tab3Page = /** @class */ (function () {
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    labelString: "Height(Feet)",
+                                    labelString: (_this.height_data[0].unit),
+                                    fontColor: "green"
+                                }
+                            }]
+                    }
+                }
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    Tab3Page.prototype.getReadingsOney = function () {
+        var _this = this;
+        var scale_size = 50;
+        var reading_date = [];
+        var reading_height = [];
+        var id = this.route.snapshot.paramMap.get('id');
+        this.name = this.route.snapshot.paramMap.get('name');
+        this.http
+            .get('https://liquidearthlake.org/gauge/getjsondataoney?gauge_inc_id=' + id)
+            .subscribe(function (data) {
+            //this.data =data;
+            console.log(_this.data);
+            for (var i = 0; i < data.length; ++i) {
+                reading_date.push(_this.formatedate(String(data[i].date)));
+                reading_height.push(data[i].height);
+            }
+            var start_date = _this.formatedate(String(data[0].date));
+            var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
+            var end_date = _this.formatedate(String(data[data.length - 1].date));
+            var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
+            var modified_end_date;
+            var diff_date_in_days = end_date1.diff(start_date1, 'days');
+            if (diff_date_in_days % scale_size == 0) {
+                modified_end_date = end_date1;
+            }
+            else {
+                var num_steps_x_axis = diff_date_in_days / scale_size;
+                modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
+            }
+            console.log(modified_end_date);
+            _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: reading_date,
+                    datasets: [{
+                            label: 'Lake Level',
+                            data: reading_height,
+                            lineTension: 0.25,
+                            fill: false,
+                            borderColor: 'rgba(65,105,225,1)',
+                            backgroundColor: 'transparent',
+                            pointBorderColor: 'rgba(65,105,225,1)',
+                            pointBackgroundColor: 'rgba(65,105,225,1)',
+                            borderWidth: 2,
+                            borderDash: [0, 0],
+                            pointRadius: 2,
+                            pointHoverRadius: 4,
+                            pointHitRadius: 30,
+                            pointBorderWidth: 2,
+                            pointStyle: 'rectRounded'
+                        }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 80,
+                            fontColor: 'black'
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                                type: "time",
+                                time: {
+                                    unit: 'day',
+                                    unitStepSize: scale_size,
+                                    max: modified_end_date,
+                                    tooltipFormat: "MM/DD/YYYY",
+                                    displayFormats: {
+                                        day: 'MM/DD/YYYY'
+                                    }
+                                }
+                            }],
+                        yAxes: [{
+                                gridLines: {
+                                //color: "black",
+                                // borderDash: [2, 5],
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: (_this.height_data[0].unit),
+                                    fontColor: "green"
+                                }
+                            }]
+                    }
+                }
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    Tab3Page.prototype.getReadingsOnem = function () {
+        var _this = this;
+        console.log('Hello');
+        var scale_size = 100;
+        var reading_date = [];
+        var reading_height = [];
+        var id = this.route.snapshot.paramMap.get('id');
+        this.name = this.route.snapshot.paramMap.get('name');
+        this.http
+            .get('https://liquidearthlake.org/gauge/getjsondataonem?gauge_inc_id=' + id)
+            .subscribe(function (data) {
+            //this.data =data;
+            console.log(_this.data);
+            for (var i = 0; i < data.length; ++i) {
+                reading_date.push(_this.formatedate(String(data[i].date)));
+                reading_height.push(data[i].height);
+            }
+            var start_date = _this.formatedate(String(data[0].date));
+            var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
+            var end_date = _this.formatedate(String(data[data.length - 1].date));
+            var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
+            var modified_end_date;
+            var diff_date_in_days = end_date1.diff(start_date1, 'days');
+            console.log(diff_date_in_days);
+            if (diff_date_in_days % scale_size == 0) {
+                modified_end_date = end_date1;
+                console.log(end_date1);
+            }
+            else {
+                var num_steps_x_axis = diff_date_in_days / scale_size;
+                modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
+            }
+            console.log(modified_end_date);
+            _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: reading_date,
+                    datasets: [{
+                            label: 'Lake Level',
+                            data: reading_height,
+                            lineTension: 0.25,
+                            fill: false,
+                            borderColor: 'rgba(65,105,225,1)',
+                            backgroundColor: 'transparent',
+                            pointBorderColor: 'rgba(65,105,225,1)',
+                            pointBackgroundColor: 'rgba(65,105,225,1)',
+                            borderWidth: 2,
+                            borderDash: [0, 0],
+                            pointRadius: 2,
+                            pointHoverRadius: 4,
+                            pointHitRadius: 30,
+                            pointBorderWidth: 2,
+                            pointStyle: 'rectRounded'
+                        }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            boxWidth: 80,
+                            fontColor: 'black'
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                                type: "time",
+                                time: {
+                                    unit: 'day',
+                                    unitStepSize: scale_size,
+                                    max: modified_end_date,
+                                    tooltipFormat: "MM/DD/YYYY",
+                                    displayFormats: {
+                                        day: 'MM/DD/YYYY'
+                                    }
+                                }
+                            }],
+                        yAxes: [{
+                                gridLines: {
+                                //color: "black",
+                                // borderDash: [2, 5],
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: (_this.height_data[0].unit),
                                     fontColor: "green"
                                 }
                             }]
@@ -14919,7 +15330,7 @@ var Tab3Page = /** @class */ (function () {
             template: __webpack_require__(/*! ./tab3.page.html */ "./src/app/tab3/tab3.page.html"),
             styles: [__webpack_require__(/*! ./tab3.page.scss */ "./src/app/tab3/tab3.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
     ], Tab3Page);
     return Tab3Page;
 }());

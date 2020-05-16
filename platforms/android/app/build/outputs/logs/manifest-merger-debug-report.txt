@@ -1,13 +1,34 @@
 -- Merging decision tree log ---
+provider#de.appplant.cordova.emailcomposer.Provider
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:12:9-14:20
+	android:grantUriPermissions
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:12:106-140
+	android:authorities
+		INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:12:19-80
+	android:exported
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:12:81-105
+	android:name
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:12:141-198
 manifest
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bd02ac663582d769479c933c53285a21\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0751441302d48645fbd7b57b20f53b57\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\39b021e19b84ea511ea32104d34c0fb6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\18615e6b9e484c234b090e02e3375711\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\c60fc8cfd268f15471c59126997fa2cf\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\e3cfbaaef7fcf62ce59b6542b9613430\AndroidManifest.xml:17:1-22:12
 MERGED from [:CordovaLib] C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:20:1-27:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-19:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\48e4ebbd58b7e8681a79d4bd8056c6a5\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\60539bcad717507165c020f4c27d30c9\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\e923806164a45f8eeada1aeec208de5d\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\40e332a8ed354ca2f61aa454bcbd2b49\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:1-22:12
 	package
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:2:98-124
 		INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml
@@ -43,7 +64,7 @@ ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\
 	android:name
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:4:22-64
 application
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:5:5-12:19
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:5:5-15:19
 	android:supportsRtl
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:5:114-140
 	android:label
@@ -79,34 +100,60 @@ ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\
 	android:name
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:9:27-74
 uses-sdk
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:5-74
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:5-74
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:5-74
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:5-74
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bd02ac663582d769479c933c53285a21\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\bd02ac663582d769479c933c53285a21\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0751441302d48645fbd7b57b20f53b57\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0751441302d48645fbd7b57b20f53b57\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\39b021e19b84ea511ea32104d34c0fb6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\39b021e19b84ea511ea32104d34c0fb6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\18615e6b9e484c234b090e02e3375711\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\18615e6b9e484c234b090e02e3375711\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\c60fc8cfd268f15471c59126997fa2cf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\c60fc8cfd268f15471c59126997fa2cf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\e3cfbaaef7fcf62ce59b6542b9613430\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\e3cfbaaef7fcf62ce59b6542b9613430\AndroidManifest.xml:20:5-44
 MERGED from [:CordovaLib] C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:25:5-44
-INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:5-74
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\48e4ebbd58b7e8681a79d4bd8056c6a5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\48e4ebbd58b7e8681a79d4bd8056c6a5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\60539bcad717507165c020f4c27d30c9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\60539bcad717507165c020f4c27d30c9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\e923806164a45f8eeada1aeec208de5d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\e923806164a45f8eeada1aeec208de5d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\40e332a8ed354ca2f61aa454bcbd2b49\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Dipayan Banik\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\40e332a8ed354ca2f61aa454bcbd2b49\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:5-74
 	android:targetSdkVersion
-		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:42-71
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:42-71
 	android:minSdkVersion
-		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:15-41
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:15-41
 		INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:14:5-81
-	android:name
-		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:14:22-78
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:15:5-79
-	android:name
-		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:15:22-76
-uses-feature#android.hardware.location.gps
-ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:5-66
-	android:name
-		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:16:19-63
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:17:5-81
 	android:name
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:17:22-78
-uses-permission#android.permission.ACCESS_NETWORK_STATE
+uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:18:5-79
 	android:name
 		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:18:22-76
+uses-feature#android.hardware.location.gps
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:19:5-66
+	android:name
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:19:19-63
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:20:5-81
+	android:name
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:20:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:21:5-79
+	android:name
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:21:22-76
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:13-130
+	android:resource
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:75-127
+	android:name
+		ADDED from C:\Users\Dipayan Banik\Desktop\LOCSS_IONIC\platforms\android\app\src\main\AndroidManifest.xml:13:24-74
