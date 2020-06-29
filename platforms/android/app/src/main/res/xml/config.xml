@@ -35,9 +35,6 @@
     <feature name="Cache">
         <param name="android-package" value="org.apache.cordova.plugin.cache.Cache" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-    </feature>
     <allow-navigation href="http://localhost/*" />
     <allow-navigation href="https://localhost/*" />
     <allow-navigation href="ionic://*" />

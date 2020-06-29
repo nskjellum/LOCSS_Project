@@ -1,21 +1,6 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\nskje\\Documents\\GitHub\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\nskje\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\093363421d9fb6a95c904a8a0816a433\\res\\values-mk\\values-mk.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Dipayan Banik\\Desktop\\LOCSS_IONIC\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
             "map": [
                 {

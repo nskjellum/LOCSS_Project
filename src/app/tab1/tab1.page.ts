@@ -1,7 +1,3 @@
-import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
-
-
-
 import { Component} from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
@@ -41,7 +37,6 @@ export class Tab1Page{
   value = 0 ;
 
   constructor (
-    private networkService:NetworkService,
     private geolocation:Geolocation,
     private alertController:AlertController,
     private http:HttpClient,
@@ -131,12 +126,7 @@ export class Tab1Page{
 
   
 
- getCurrentNetwork() {
 
-    //let NetworkService = new networkService();
-   // console.log('Network Test');
-
- }
 
   getCurrentDateTime(){
       let date = new Date();
@@ -234,17 +224,6 @@ export class Tab1Page{
 
 
   async onSubmit(form:NgForm){
-  // Check Network Status before creating toast
-  //If Offline, Create Toast to indicate data will be sent when online again.
-
-
-    let status = this.networkService.getCurrentNetworkStatus();
-
-    if(status === ConnectionStatus.Online)
-    {
-
-    console.log('Connected to Network. Submitting Information');
-
 
     let toast = await this.toastCtrl.create({
       message: 'Data submitted successfuly',
@@ -256,8 +235,6 @@ export class Tab1Page{
 
     this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
     console.log(form);
-
-    //API CALL
     this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
     .subscribe(data => {
       console.log(data['_body']);
@@ -269,23 +246,6 @@ export class Tab1Page{
     console.log(this.nearestGauge[0].gauge_id);
     this.router.navigateByUrl('tabs/tab3/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
   }
-  else
-  {
 
-    console.log('Not connected to Network. Saving submission.');
-
-    let toast = await this.toastCtrl.create({
-          message: 'Data will submit when connected to network',
-          duration: 2000,
-          position: "bottom"
-        });
-    toast.present();
-
-    // Method to Store Data in Ionic Storage
-    // This data must be retrieved whenever the app goes online.
-
-  }
-
-}
  
 }

@@ -330,29 +330,6 @@ module.exports = [
         "clobbers": [
             "cache"
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "id": "cordova-plugin-network-information.network",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "id": "cordova-plugin-network-information.Connection",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "Connection"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/src/browser/network.js",
-        "id": "cordova-plugin-network-information.NetworkInfoProxy",
-        "pluginId": "cordova-plugin-network-information",
-        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -370,8 +347,7 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-sqlite-storage": "5.0.0",
-    "org.apache.cordova.plugin.cache": "1.0.5",
-    "cordova-plugin-network-information": "2.0.2"
+    "org.apache.cordova.plugin.cache": "1.0.5"
 }
 // BOTTOM OF METADATA
 });
