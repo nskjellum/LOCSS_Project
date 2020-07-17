@@ -562,7 +562,6 @@ var AppComponent = /** @class */ (function () {
             _this.splashScreen.hide();
             _this.networkService.onNetworkChange().subscribe(function (status) {
                 if (status == _services_network_service__WEBPACK_IMPORTED_MODULE_1__["ConnectionStatus"].Online) {
-                    _this.offlineManager.checkForEvents().subscribe();
                 }
             });
         });
@@ -795,10 +794,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
-
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 
 
 
@@ -812,54 +809,14 @@ var OfflineManagerService = /** @class */ (function () {
         this.http = http;
         this.toastController = toastController;
     }
-    OfflineManagerService.prototype.checkForEvents = function () {
-        var _this = this;
-        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["from"])(this.storage.get(STORAGE_REQ_KEY)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (storedOperations) {
-            var storedObj = JSON.parse(storedOperations);
-            if (storedObj && storedObj.length > 0) {
-                return _this.sendRequests(storedObj).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(function () {
-                    var toast = _this.toastController.create({
-                        message: "Local data succesfully synced to API!",
-                        duration: 3000,
-                        position: 'bottom'
-                    });
-                    toast.then(function (toast) { return toast.present(); });
-                    _this.storage.remove(STORAGE_REQ_KEY);
-                }));
-            }
-            else {
-                console.log('no local events to sync');
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
-            }
-        }));
-    };
-    OfflineManagerService.prototype.storeRequest = function (url, type, data) {
-        var _this = this;
+    OfflineManagerService.prototype.storeRequest = function (data) {
         var toast = this.toastController.create({
-            message: "Your data is stored locally because you seem to be offline.",
+            message: "Your request is being saved because you are offline. It will be sent when you reconnect.",
             duration: 3000,
             position: 'bottom'
         });
         toast.then(function (toast) { return toast.present(); });
-        var action = {
-            url: url,
-            type: type,
-            data: data,
-            time: new Date().getTime(),
-            id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-        };
-        // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-        return this.storage.get(STORAGE_REQ_KEY).then(function (storedOperations) {
-            var storedObj = JSON.parse(storedOperations);
-            if (storedObj) {
-                storedObj.push(action);
-            }
-            else {
-                storedObj = [action];
-            }
-            // Save old & new local transactions back to Storage
-            return _this.storage.set(STORAGE_REQ_KEY, JSON.stringify(storedObj));
-        });
+        return this.storage.set(STORAGE_REQ_KEY, data);
     };
     OfflineManagerService.prototype.sendRequests = function (operations) {
         var obs = [];
@@ -872,11 +829,25 @@ var OfflineManagerService = /** @class */ (function () {
         // Send out all local events and return once they are finished
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["forkJoin"])(obs);
     };
+    OfflineManagerService.prototype.retrieveRequest = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/, this.storage.get(STORAGE_REQ_KEY)];
+            });
+        });
+    };
+    OfflineManagerService.prototype.clearAll = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/, this.storage.remove(STORAGE_REQ_KEY)];
+            });
+        });
+    };
     OfflineManagerService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"]])
     ], OfflineManagerService);
     return OfflineManagerService;
 }());
@@ -946,7 +917,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\nskje\Documents\GitHub\LOCSS_Project\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\nskje\AndroidStudioProjects\LOCSS_Project\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -41,7 +41,7 @@ export class AppComponent {
 
       this.networkService.onNetworkChange().subscribe((status: ConnectionStatus) => {
         if (status == ConnectionStatus.Online) {
-          this.offlineManager.checkForEvents().subscribe();
+          
         }
       });
     });

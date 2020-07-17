@@ -1,4 +1,4 @@
-#Mon Jun 29 12:27:45 EDT 2020
-base.0=C\:\\Users\\nskje\\Documents\\GitHub\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Fri Jul 17 13:05:46 EDT 2020
+base.0=C\:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

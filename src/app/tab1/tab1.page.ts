@@ -1,6 +1,6 @@
-import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
 
 
+//
 
 import { Component} from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
@@ -14,6 +14,13 @@ import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
+//
+
+import { Storage } from '@ionic/storage';
+import { ApiService } from '../services/api.service';
+import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
+import { Network } from '@ionic-native/network/ngx'
+//
 
 
 const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
@@ -41,19 +48,32 @@ export class Tab1Page{
   value = 0 ;
 
   constructor (
-    private networkService:NetworkService,
     private geolocation:Geolocation,
     private alertController:AlertController,
     private http:HttpClient,
     private toastCtrl: ToastController, 
     private router:Router,
     private emailcomposer: EmailComposer,
-    private navCtrl: NavController
-  
-    ){}
+    private navCtrl: NavController,
+
+    private networkService:NetworkService,
+    private network: Network,
+    private apiService: ApiService,
+
+    )
+    {
+
+        //subscribes to network to send all requests on connect
+      //this.network.onConnect().subscribe(() => {
+
+      //        this.sendSaved();
+
+       //     });
+
+    }
 
   ngOnInit(){
-    
+
     this.getCurrentDateTime()
     this.getAllGauges();
     this.getLocation();
@@ -63,7 +83,12 @@ export class Tab1Page{
     }
     else{
     }
-    //this.getLocation();
+
+          this.network.onConnect().subscribe(() => {
+
+            this.sendSaved();
+
+          });
 
     
   }
@@ -129,14 +154,6 @@ export class Tab1Page{
       await alert.present();
   }
 
-  
-
- getCurrentNetwork() {
-
-    //let NetworkService = new networkService();
-   // console.log('Network Test');
-
- }
 
   getCurrentDateTime(){
       let date = new Date();
@@ -254,10 +271,14 @@ export class Tab1Page{
 
     toast.present();
 
-    this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
+    this.nearestGauge= this.gauges.filter(m => m.id == form.value['ga   uge_inc_id']);
     console.log(form);
 
     //API CALL
+
+    console.log('Check Console Here');
+    console.log(form.value);
+
     this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
     .subscribe(data => {
       console.log(data['_body']);
@@ -274,18 +295,53 @@ export class Tab1Page{
 
     console.log('Not connected to Network. Saving submission.');
 
-    let toast = await this.toastCtrl.create({
-          message: 'Data will submit when connected to network',
-          duration: 2000,
-          position: "bottom"
-        });
-    toast.present();
+
 
     // Method to Store Data in Ionic Storage
     // This data must be retrieved whenever the app goes online.
 
+    this.apiService.handleRequest(form.value);
+
   }
 
 }
+
+    async sendSaved() {
+
+    console.log('Sending any saved requests.')
+
+     this.apiService.getRequest().then((result) => {
+
+
+               if(result != null) {
+               //API CALL
+
+                   console.log('Sending non-null request');
+
+                   console.log(result);
+                   console.log('Data JSON Form');
+                   console.log(JSON.stringify({result}));
+
+
+                       this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}) )
+                       .subscribe(data => {
+                         console.log(data['_body']);
+                        }, error => {
+                         console.log(error);
+                       });
+                   console.log('Request Sent');
+                    this.apiService.clearStorage();
+               }
+                });
+            let toast = await this.toastCtrl.create({
+                message: 'Offline Requests Successfully Sent',
+                duration: 2000,
+                position: "bottom"
+                                  });
+
+    }
+
+
+
  
 }

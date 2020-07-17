@@ -14,7 +14,35 @@ const API_URL = 'https://reqres.in/api';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient, private networkService: NetworkService, private storage: Storage, private offlineManager: OfflineManagerService) { }
+  constructor(
+  private http: HttpClient,
+  private networkService: NetworkService,
+  private storage: Storage,
+  private offlineManager: OfflineManagerService) { }
+
+  ngOnInit() {
+
+
+  }
+
+  async handleRequest(data) {
+
+  this.offlineManager.storeRequest(data);
+
+
+  }
+
+  async getRequest() {
+
+    return this.offlineManager.retrieveRequest();
+
+  }
+
+  async clearStorage() {
+
+    return this.offlineManager.clearAll();
+
+    }
 
 
 }
