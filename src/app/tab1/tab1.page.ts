@@ -271,22 +271,34 @@ export class Tab1Page{
 
     toast.present();
 
-    this.nearestGauge= this.gauges.filter(m => m.id == form.value['ga   uge_inc_id']);
+    this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
     console.log(form);
 
     //API CALL
 
     console.log('Check Console Here');
     console.log(form.value);
+    console.log('Data JSON Form');
+    let result = form.value;
+    console.log(JSON.stringify({result}));
 
-    this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
+
+
+
+//"http://liquidearthlake.org/json/reading/store", form.value
+//"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
+//"http://liquidearthlake.org/json/store/offline", result
+
+
+
+    this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
     .subscribe(data => {
       console.log(data['_body']);
      }, error => {
       console.log(error);
     });
     console.log(this.gauges);
-    
+
     console.log(this.nearestGauge[0].gauge_id);
     this.router.navigateByUrl('tabs/tab3/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
   }
@@ -323,7 +335,7 @@ export class Tab1Page{
                    console.log(JSON.stringify({result}));
 
 
-                       this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}) )
+                       this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}) )
                        .subscribe(data => {
                          console.log(data['_body']);
                         }, error => {
