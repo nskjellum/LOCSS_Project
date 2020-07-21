@@ -345,7 +345,7 @@ var Tab1Page = /** @class */ (function () {
     };
     Tab1Page.prototype.onSubmit = function (form) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var status, toast;
+            var status, toast, result;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -365,7 +365,12 @@ var Tab1Page = /** @class */ (function () {
                         //API CALL
                         console.log('Check Console Here');
                         console.log(form.value);
-                        this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
+                        console.log('Data JSON Form');
+                        result = form.value;
+                        console.log(JSON.stringify({ result: result }));
+                        //"http://liquidearthlake.org/json/reading/store", form.value
+                        //"http://liquidearthlake.org/json/store/offline", JSON.stringify({result})
+                        this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({ result: result }))
                             .subscribe(function (data) {
                             console.log(data['_body']);
                         }, function (error) {
@@ -401,7 +406,7 @@ var Tab1Page = /** @class */ (function () {
                                 console.log(result);
                                 console.log('Data JSON Form');
                                 console.log(JSON.stringify({ result: result }));
-                                _this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result: result }))
+                                _this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({ result: result }))
                                     .subscribe(function (data) {
                                     console.log(data['_body']);
                                 }, function (error) {
