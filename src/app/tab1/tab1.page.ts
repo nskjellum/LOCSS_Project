@@ -278,20 +278,8 @@ export class Tab1Page{
 
     console.log('Check Console Here');
     console.log(form.value);
-    console.log('Data JSON Form');
-    let result = form.value;
-    console.log(JSON.stringify({result}));
 
-
-
-
-//"http://liquidearthlake.org/json/reading/store", form.value
-//"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
-//"http://liquidearthlake.org/json/store/offline", result
-
-
-
-    this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
+    this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
     .subscribe(data => {
       console.log(data['_body']);
      }, error => {
@@ -335,7 +323,7 @@ export class Tab1Page{
                    console.log(JSON.stringify({result}));
 
 
-                       this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}) )
+                       this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}) )
                        .subscribe(data => {
                          console.log(data['_body']);
                         }, error => {
