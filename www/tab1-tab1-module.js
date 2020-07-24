@@ -345,7 +345,7 @@ var Tab1Page = /** @class */ (function () {
     };
     Tab1Page.prototype.onSubmit = function (form) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var status, toast;
+            var status, toast, result;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -360,16 +360,31 @@ var Tab1Page = /** @class */ (function () {
                     case 1:
                         toast = _a.sent();
                         toast.present();
-                        this.nearestGauge = this.gauges.filter(function (m) { return m.id == form.value['ga   uge_inc_id']; });
+                        this.nearestGauge = this.gauges.filter(function (m) { return m.id == form.value['gauge_inc_id']; });
                         console.log(form);
                         //API CALL
                         console.log('Check Console Here');
                         console.log(form.value);
-                        this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
-                            .subscribe(function (data) {
-                            console.log(data['_body']);
+                        console.log('Data JSON Form');
+                        result = form.value;
+                        console.log(JSON.stringify({ result: result }));
+                        //"http://liquidearthlake.org/json/reading/store", form.value
+                        //"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
+                        //"http://liquidearthlake.org/json/store/offline", result
+                        //"http://liquidearthlake.org/json/reading/store", JSON.stringify({result})
+                        this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result: result }), {
+                            headers: { 'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Access-Control-Allow-Methods': 'POST'
+                            }
+                        })
+                            .subscribe(function (response) {
+                            console.log('Response is Here');
+                            console.log(JSON.stringify(response));
                         }, function (error) {
+                            console.log('Error Printed Here');
                             console.log(error);
+                            console.log(JSON.stringify(error));
                         });
                         console.log(this.gauges);
                         console.log(this.nearestGauge[0].gauge_id);
@@ -401,11 +416,19 @@ var Tab1Page = /** @class */ (function () {
                                 console.log(result);
                                 console.log('Data JSON Form');
                                 console.log(JSON.stringify({ result: result }));
-                                _this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result: result }))
-                                    .subscribe(function (data) {
-                                    console.log(data['_body']);
+                                _this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result: result }), {
+                                    headers: { 'Content-Type': 'application/json',
+                                        'Accept': 'application/json',
+                                        'Access-Control-Allow-Methods': 'POST'
+                                    }
+                                })
+                                    .subscribe(function (response) {
+                                    console.log('Response is Here');
+                                    console.log(JSON.stringify(response));
                                 }, function (error) {
+                                    console.log('Error Printed Here');
                                     console.log(error);
+                                    console.log(JSON.stringify(error));
                                 });
                                 console.log('Request Sent');
                                 _this.apiService.clearStorage();

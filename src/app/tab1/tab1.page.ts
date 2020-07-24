@@ -6,7 +6,9 @@ import { Component} from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -263,6 +265,8 @@ export class Tab1Page{
     console.log('Connected to Network. Submitting Information');
 
 
+
+
     let toast = await this.toastCtrl.create({
       message: 'Data submitted successfuly',
       duration: 2000,
@@ -285,18 +289,34 @@ export class Tab1Page{
 
 
 
+
+
+
 //"http://liquidearthlake.org/json/reading/store", form.value
 //"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
 //"http://liquidearthlake.org/json/store/offline", result
+//"http://liquidearthlake.org/json/reading/store", JSON.stringify({result})
 
 
 
-    this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
-    .subscribe(data => {
-      console.log(data['_body']);
-     }, error => {
-      console.log(error);
-    });
+
+
+    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
+            headers: { 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Methods': 'POST'
+                }
+             })
+    .subscribe(response => {
+
+      console.log('Response is Here');
+      console.log(JSON.stringify(response));
+     }, error =>  {
+          console.log('Error Printed Here');
+          console.log(error);
+          console.log(JSON.stringify(error));
+            });
+
     console.log(this.gauges);
 
     console.log(this.nearestGauge[0].gauge_id);
@@ -335,12 +355,22 @@ export class Tab1Page{
                    console.log(JSON.stringify({result}));
 
 
-                       this.http.post("http://liquidearthlake.org/json/store/offline", JSON.stringify({result}) )
-                       .subscribe(data => {
-                         console.log(data['_body']);
-                        }, error => {
-                         console.log(error);
-                       });
+    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
+            headers: { 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Methods': 'POST'
+                }
+             })
+    .subscribe(response => {
+
+              console.log('Response is Here');
+              console.log(JSON.stringify(response));
+     }, error =>  {
+                 console.log('Error Printed Here');
+                    console.log(error);
+                     console.log(JSON.stringify(error));
+            });
+
                    console.log('Request Sent');
                     this.apiService.clearStorage();
                }

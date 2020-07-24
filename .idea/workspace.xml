@@ -9,7 +9,20 @@
   <component name="ChangeListManager">
     <list default="true" id="bfb0aafe-fe46-4962-b345-f4dcdb439f63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +44,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_28" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-04-29T18:15:21.282Z" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../offlineTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AlertExample" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,26 +86,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="542" y="187" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1593714806366" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1594753978545">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595619854644">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594753978545" />
-    <state width="1877" height="168" key="GridCell.Tab.0.bottom" timestamp="1595003806865">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595619854644" />
+    <state width="1877" height="432" key="GridCell.Tab.0.bottom" timestamp="1595622129414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="168" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595003806865" />
-    <state width="1877" height="168" key="GridCell.Tab.0.center" timestamp="1595003806865">
+    <state width="1877" height="432" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
+    <state width="1877" height="432" key="GridCell.Tab.0.center" timestamp="1595622129414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="168" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595003806865" />
-    <state width="1877" height="168" key="GridCell.Tab.0.left" timestamp="1595003806853">
+    <state width="1877" height="432" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
+    <state width="1877" height="432" key="GridCell.Tab.0.left" timestamp="1595622129413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="168" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595003806853" />
-    <state width="1877" height="168" key="GridCell.Tab.0.right" timestamp="1595003806865">
+    <state width="1877" height="432" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129413" />
+    <state width="1877" height="432" key="GridCell.Tab.0.right" timestamp="1595622129414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="168" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595003806865" />
+    <state width="1877" height="432" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
     <state x="451" y="171" key="SettingsEditor" timestamp="1593701090325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
