@@ -33,25 +33,25 @@ var ApiService = /** @class */ (function () {
     }
     ApiService.prototype.ngOnInit = function () {
     };
-    ApiService.prototype.handleRequest = function (data) {
+    ApiService.prototype.handleRequest = function (data, key) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                this.offlineManager.storeRequest(data);
+                this.offlineManager.storeRequest(data, key);
                 return [2 /*return*/];
             });
         });
     };
-    ApiService.prototype.getRequest = function () {
+    ApiService.prototype.getRequest = function (key) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, this.offlineManager.retrieveRequest()];
+                return [2 /*return*/, this.offlineManager.retrieveRequest(key)];
             });
         });
     };
-    ApiService.prototype.clearStorage = function () {
+    ApiService.prototype.clearStorage = function (key) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, this.offlineManager.clearAll()];
+                return [2 /*return*/, this.offlineManager.clearOne(key)];
             });
         });
     };
@@ -191,6 +191,7 @@ var Tab1Page = /** @class */ (function () {
         this.apiService = apiService;
         this.gauges = [];
         this.value = 0;
+        this.db = 0;
         //        this.sendSaved();
         //     });
     }
@@ -394,7 +395,8 @@ var Tab1Page = /** @class */ (function () {
                         console.log('Not connected to Network. Saving submission.');
                         // Method to Store Data in Ionic Storage
                         // This data must be retrieved whenever the app goes online.
-                        this.apiService.handleRequest(form.value);
+                        this.apiService.handleRequest(form.value, this.db);
+                        this.db++;
                         _a.label = 3;
                     case 3: return [2 /*return*/];
                 }
@@ -409,7 +411,11 @@ var Tab1Page = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log('Sending any saved requests.');
-                        this.apiService.getRequest().then(function (result) {
+                        this.db;
+                        _a.label = 1;
+                    case 1:
+                        if (!(this.db >= 0)) return [3 /*break*/, 4];
+                        this.apiService.getRequest(this.db).then(function (result) {
                             if (result != null) {
                                 //API CALL
                                 console.log('Sending non-null request');
@@ -430,8 +436,8 @@ var Tab1Page = /** @class */ (function () {
                                     console.log(error);
                                     console.log(JSON.stringify(error));
                                 });
+                                console.log(_this.db);
                                 console.log('Request Sent');
-                                _this.apiService.clearStorage();
                             }
                         });
                         return [4 /*yield*/, this.toastCtrl.create({
@@ -439,8 +445,17 @@ var Tab1Page = /** @class */ (function () {
                                 duration: 2000,
                                 position: "bottom"
                             })];
-                    case 1:
+                    case 2:
                         toast = _a.sent();
+                        this.apiService.clearStorage(this.db);
+                        _a.label = 3;
+                    case 3:
+                        this.db--;
+                        return [3 /*break*/, 1];
+                    case 4:
+                        if (this.db < 0) {
+                            this.db = 0;
+                        }
                         return [2 /*return*/];
                 }
             });

@@ -48,6 +48,7 @@ export class Tab1Page{
   gauge_data:any;
   problem_data:any;
   value = 0 ;
+  db = 0;
 
   constructor (
     private geolocation:Geolocation,
@@ -332,8 +333,8 @@ export class Tab1Page{
     // Method to Store Data in Ionic Storage
     // This data must be retrieved whenever the app goes online.
 
-    this.apiService.handleRequest(form.value);
-
+    this.apiService.handleRequest(form.value, this.db);
+    this.db++;
   }
 
 }
@@ -342,7 +343,9 @@ export class Tab1Page{
 
     console.log('Sending any saved requests.')
 
-     this.apiService.getRequest().then((result) => {
+    for(this.db; this.db >= 0; this.db--) {
+
+     this.apiService.getRequest(this.db).then((result) => {
 
 
                if(result != null) {
@@ -371,8 +374,9 @@ export class Tab1Page{
                      console.log(JSON.stringify(error));
             });
 
+                   console .log(this.db);
                    console.log('Request Sent');
-                    this.apiService.clearStorage();
+
                }
                 });
             let toast = await this.toastCtrl.create({
@@ -381,8 +385,13 @@ export class Tab1Page{
                 position: "bottom"
                                   });
 
+        this.apiService.clearStorage(this.db);
     }
 
+    if(this.db < 0) {
+    this.db = 0;
+    }
+}
 
 
  

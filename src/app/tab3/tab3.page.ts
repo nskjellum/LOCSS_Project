@@ -33,7 +33,7 @@ export class Tab3Page {
     this.getHeight(); 
     this.getReadings();
    // this.getHeight();
-    this.getReadingsForTable();
+    this.getReadingsForTable(6);
     this.splash.hide();
   //  this.handleButtonClick();
     
@@ -59,24 +59,114 @@ export class Tab3Page {
 
 
 
-  getReadingsForTable(){
+  getReadingsForTable(range){
     let id=this.route.snapshot.paramMap.get('id');
+
+    var source;
+
+    if(range == 0) {
+    //All Data
+    let source = ('http://liquidearthlake.org/json/getjsondataall/'+id);
+
+        this.http
+        .get(source)
+          .subscribe((data : any) =>
+          {
+
+            this.data=data;
+           console.log(data);
+
+
+          },
+          (error : any) =>
+          {
+            console.log(error);
+          });
+
+    }
+    else if(range == 1) {
+    //One Year
+    let source = ('http://liquidearthlake.org/json/getjsondataoney/'+id);
+
+        this.http
+        .get(source)
+          .subscribe((data : any) =>
+          {
+
+            this.data=data;
+           console.log(data);
+
+
+          },
+          (error : any) =>
+          {
+            console.log(error);
+          });
+
+    }
+    else if(range == 2) {
+    //Three Months
+    let source = ('http://liquidearthlake.org/json/getjsondatathreem/'+id);
+
+        this.http
+        .get(source)
+          .subscribe((data : any) =>
+          {
+
+            this.data=data;
+           console.log(data);
+
+
+          },
+          (error : any) =>
+          {
+            console.log(error);
+          });
+
+        }
+    else if(range == 3) {
+    //One Month
+    let source = ('http://liquidearthlake.org/json/getjsondataonem/'+id);
+
+        this.http
+        .get(source)
+          .subscribe((data : any) =>
+          {
+
+            this.data=data;
+           console.log(data);
+
+
+          },
+          (error : any) =>
+          {
+            console.log(error);
+          });
+
+        }
+    else {
+        //Default Six Months
+       let source = ('http://liquidearthlake.org/json/getjsondatasixm/'+id);
+
+           this.http
+           .get(source)
+             .subscribe((data : any) =>
+             {
+
+               this.data=data;
+              console.log(data);
+
+
+             },
+             (error : any) =>
+             {
+               console.log(error);
+             });
+
+
+    }
     
-    
-    this.http
-    .get('http://liquidearthlake.org/json/getjsondatasixm/'+id)
-      .subscribe((data : any) =>
-      {
-      
-        this.data=data;
-       console.log(data);
-     
-        
-      },
-      (error : any) =>
-      {
-        console.log(error);
-      });
+
   }
 
   getHeight(){
@@ -125,6 +215,7 @@ export class Tab3Page {
     {
         //this.data =data;
         console.log(this.data);
+        console.log(JSON.stringify(this.data));
         
         for (var i=0;i<data.length;++i)
         {
@@ -219,10 +310,13 @@ export class Tab3Page {
     {
        console.log(error);
     });
-    
+
+    this.getReadingsForTable(6);
+
   }
 
-  
+
+
 
   getReadingsThree(){
     var scale_size=10000;
@@ -338,7 +432,9 @@ export class Tab3Page {
     {
        console.log(error);
     });
-    
+
+    this.getReadingsForTable(2);
+
   }
 
   
@@ -443,7 +539,9 @@ export class Tab3Page {
     {
        console.log(error);
     });
-    
+
+    this.getReadingsForTable(0);
+
   }
 
   
@@ -548,7 +646,9 @@ export class Tab3Page {
     {
        console.log(error);
     });
-    
+
+   this.getReadingsForTable(1);
+
   }
   
   getReadingsOnem(){
@@ -659,7 +759,8 @@ export class Tab3Page {
     {
        console.log(error);
     });
-    
+
+    this.getReadingsForTable(3);
   }
   
   

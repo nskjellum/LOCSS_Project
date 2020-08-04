@@ -14798,7 +14798,7 @@ var Tab3Page = /** @class */ (function () {
         this.getHeight();
         this.getReadings();
         // this.getHeight();
-        this.getReadingsForTable();
+        this.getReadingsForTable(6);
         this.splash.hide();
         //  this.handleButtonClick();
         //this.drawGraph();
@@ -14816,17 +14816,70 @@ var Tab3Page = /** @class */ (function () {
      });
       await alert.present();
    }*/
-    Tab3Page.prototype.getReadingsForTable = function () {
+    Tab3Page.prototype.getReadingsForTable = function (range) {
         var _this = this;
         var id = this.route.snapshot.paramMap.get('id');
-        this.http
-            .get('http://liquidearthlake.org/json/getjsondatasixm/' + id)
-            .subscribe(function (data) {
-            _this.data = data;
-            console.log(data);
-        }, function (error) {
-            console.log(error);
-        });
+        var source;
+        if (range == 0) {
+            //All Data
+            var source_1 = ('http://liquidearthlake.org/json/getjsondataall/' + id);
+            this.http
+                .get(source_1)
+                .subscribe(function (data) {
+                _this.data = data;
+                console.log(data);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else if (range == 1) {
+            //One Year
+            var source_2 = ('http://liquidearthlake.org/json/getjsondataoney/' + id);
+            this.http
+                .get(source_2)
+                .subscribe(function (data) {
+                _this.data = data;
+                console.log(data);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else if (range == 2) {
+            //Three Months
+            var source_3 = ('http://liquidearthlake.org/json/getjsondatathreem/' + id);
+            this.http
+                .get(source_3)
+                .subscribe(function (data) {
+                _this.data = data;
+                console.log(data);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else if (range == 3) {
+            //One Month
+            var source_4 = ('http://liquidearthlake.org/json/getjsondataonem/' + id);
+            this.http
+                .get(source_4)
+                .subscribe(function (data) {
+                _this.data = data;
+                console.log(data);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            //Default Six Months
+            var source_5 = ('http://liquidearthlake.org/json/getjsondatasixm/' + id);
+            this.http
+                .get(source_5)
+                .subscribe(function (data) {
+                _this.data = data;
+                console.log(data);
+            }, function (error) {
+                console.log(error);
+            });
+        }
     };
     Tab3Page.prototype.getHeight = function () {
         var _this = this;
@@ -14856,6 +14909,7 @@ var Tab3Page = /** @class */ (function () {
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
+            console.log(JSON.stringify(_this.data));
             for (var i = 0; i < data.length; ++i) {
                 reading_date.push(_this.formatedate(String(data[i].date)));
                 reading_height.push(data[i].height);
@@ -14938,6 +14992,7 @@ var Tab3Page = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+        this.getReadingsForTable(6);
     };
     Tab3Page.prototype.getReadingsThree = function () {
         var _this = this;
@@ -15034,6 +15089,7 @@ var Tab3Page = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+        this.getReadingsForTable(2);
     };
     Tab3Page.prototype.getReadingsAll = function () {
         var _this = this;
@@ -15126,6 +15182,7 @@ var Tab3Page = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+        this.getReadingsForTable(0);
     };
     Tab3Page.prototype.getReadingsOney = function () {
         var _this = this;
@@ -15218,6 +15275,7 @@ var Tab3Page = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+        this.getReadingsForTable(1);
     };
     Tab3Page.prototype.getReadingsOnem = function () {
         var _this = this;
@@ -15313,6 +15371,7 @@ var Tab3Page = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+        this.getReadingsForTable(3);
     };
     Tab3Page.prototype.formatedate = function (date) {
         return moment__WEBPACK_IMPORTED_MODULE_6__().format(date);

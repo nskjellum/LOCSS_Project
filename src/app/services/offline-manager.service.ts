@@ -24,7 +24,7 @@ export class OfflineManagerService {
  
 
  
-  storeRequest(data) {
+  storeRequest(data, key) {
     let toast = this.toastController.create({
       message: `Your request is being saved because you are offline. It will be sent when you reconnect.`,
       duration: 3000,
@@ -32,7 +32,7 @@ export class OfflineManagerService {
     });
     toast.then(toast => toast.present());
 
-      return this.storage.set(STORAGE_REQ_KEY, data);
+      return this.storage.set(key, data);
 
   }
  
@@ -49,16 +49,16 @@ export class OfflineManagerService {
     return forkJoin(obs);
   }
 
-  async retrieveRequest() {
+  async retrieveRequest(key) {
 
 
-    return this.storage.get(STORAGE_REQ_KEY);
+    return this.storage.get(key);
 
   }
 
-  async clearAll() {
+  async clearOne(key) {
 
-  return this.storage.remove(STORAGE_REQ_KEY);
+  return this.storage.remove(key);
 
   }
 

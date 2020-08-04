@@ -25,22 +25,22 @@ export class ApiService {
 
   }
 
-  async handleRequest(data) {
+  async handleRequest(data, key) {
 
-  this.offlineManager.storeRequest(data);
+  this.offlineManager.storeRequest(data, key);
 
-
-  }
-
-  async getRequest() {
-
-    return this.offlineManager.retrieveRequest();
 
   }
 
-  async clearStorage() {
+  async getRequest(key) {
 
-    return this.offlineManager.clearAll();
+    return this.offlineManager.retrieveRequest(key);
+
+  }
+
+  async clearStorage(key) {
+
+    return this.offlineManager.clearOne(key);
 
     }
 

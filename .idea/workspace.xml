@@ -14,15 +14,30 @@
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab3-tab3-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/offline-manager.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/offline-manager.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab3/tab3.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab3-tab3-module.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,26 +101,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="542" y="187" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1593714806366" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595619854644">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1596129560385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595619854644" />
-    <state width="1877" height="432" key="GridCell.Tab.0.bottom" timestamp="1595622129414">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596129560385" />
+    <state width="1877" height="-40" key="GridCell.Tab.0.bottom" timestamp="1596469443923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="432" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
-    <state width="1877" height="432" key="GridCell.Tab.0.center" timestamp="1595622129414">
+    <state width="1877" height="-40" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596469443922" />
+    <state width="1877" height="-40" key="GridCell.Tab.0.center" timestamp="1596469443922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="432" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
-    <state width="1877" height="432" key="GridCell.Tab.0.left" timestamp="1595622129413">
+    <state width="1877" height="-40" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596469443922" />
+    <state width="1877" height="-40" key="GridCell.Tab.0.left" timestamp="1596469443790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="432" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129413" />
-    <state width="1877" height="432" key="GridCell.Tab.0.right" timestamp="1595622129414">
+    <state width="1877" height="-40" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596469443790" />
+    <state width="1877" height="-40" key="GridCell.Tab.0.right" timestamp="1596469443922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="432" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595622129414" />
+    <state width="1877" height="-40" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596469443922" />
     <state x="451" y="171" key="SettingsEditor" timestamp="1593701090325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

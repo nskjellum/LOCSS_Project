@@ -809,14 +809,14 @@ var OfflineManagerService = /** @class */ (function () {
         this.http = http;
         this.toastController = toastController;
     }
-    OfflineManagerService.prototype.storeRequest = function (data) {
+    OfflineManagerService.prototype.storeRequest = function (data, key) {
         var toast = this.toastController.create({
             message: "Your request is being saved because you are offline. It will be sent when you reconnect.",
             duration: 3000,
             position: 'bottom'
         });
         toast.then(function (toast) { return toast.present(); });
-        return this.storage.set(STORAGE_REQ_KEY, data);
+        return this.storage.set(key, data);
     };
     OfflineManagerService.prototype.sendRequests = function (operations) {
         var obs = [];
@@ -829,17 +829,17 @@ var OfflineManagerService = /** @class */ (function () {
         // Send out all local events and return once they are finished
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["forkJoin"])(obs);
     };
-    OfflineManagerService.prototype.retrieveRequest = function () {
+    OfflineManagerService.prototype.retrieveRequest = function (key) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, this.storage.get(STORAGE_REQ_KEY)];
+                return [2 /*return*/, this.storage.get(key)];
             });
         });
     };
-    OfflineManagerService.prototype.clearAll = function () {
+    OfflineManagerService.prototype.clearOne = function (key) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, this.storage.remove(STORAGE_REQ_KEY)];
+                return [2 /*return*/, this.storage.remove(key)];
             });
         });
     };
