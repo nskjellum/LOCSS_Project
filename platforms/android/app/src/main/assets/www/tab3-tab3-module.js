@@ -14794,7 +14794,7 @@ var Tab3Page = /** @class */ (function () {
     }
     Tab3Page.prototype.ngOnInit = function () {
         this.loadAllData = false;
-        this.splash.show();
+        //this.splash.show();
         this.getHeight();
         this.getReadings();
         // this.getHeight();

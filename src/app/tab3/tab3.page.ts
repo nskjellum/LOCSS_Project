@@ -29,7 +29,7 @@ export class Tab3Page {
 
   ngOnInit() {
     this.loadAllData=false;
-    this.splash.show(); 
+    //this.splash.show();
     this.getHeight(); 
     this.getReadings();
    // this.getHeight();
