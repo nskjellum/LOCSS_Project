@@ -30,13 +30,15 @@ export class Tab3Page {
   ngOnInit() {
     this.loadAllData=false;
     //this.splash.show();
+
+
+
     this.getHeight(); 
     this.getReadings();
    // this.getHeight();
     this.getReadingsForTable(6);
-    this.splash.hide();
+    //this.splash.hide();
   //  this.handleButtonClick();
-    
     //this.drawGraph();
   }
   //drawGraph(){
@@ -210,7 +212,10 @@ export class Tab3Page {
 
 
     this.http
-    .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id)
+    .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id,
+
+
+    )
     .subscribe((data : any) =>
     {
         //this.data =data;
@@ -324,19 +329,22 @@ export class Tab3Page {
     var reading_height=[];
     let id=this.route.snapshot.paramMap.get('id');
     this.name=this.route.snapshot.paramMap.get('name');
+
+
+
     this.http
     .get('https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id='+ id)
     .subscribe((data : any) =>
     {
         //this.data =data;
         console.log(this.data);
-        
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
             console.log(data[i].height);
             reading_height.push(data[i].height);
-    
+
         }
         var start_date= this.formatedate(String(data[0].date));
         var start_date1= moment(start_date);
@@ -382,7 +390,7 @@ export class Tab3Page {
                   pointHitRadius: 30,
                   pointBorderWidth: 2,
                   pointStyle: 'rectRounded'
-            
+
               }]
           },
           options: {
@@ -413,20 +421,20 @@ export class Tab3Page {
                       // borderDash: [2, 5],
                     },
 
-                   
+
                     scaleLabel: {
                         display: true,
                         labelString: (this.height_data[0].unit) ,
                         fontColor: "green"
-                        
+
                     }
                 }]
             }
           }
-    
+
         });
-        
-       
+
+
     },
     (error : any) =>
     {
