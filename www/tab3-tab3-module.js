@@ -14904,6 +14904,7 @@ var Tab3Page = /** @class */ (function () {
         var reading_height = [];
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
+        //'http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id
         this.http
             .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id=' + id)
             .subscribe(function (data) {
@@ -14994,6 +14995,9 @@ var Tab3Page = /** @class */ (function () {
         });
         this.getReadingsForTable(6);
     };
+    //'http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id
+    //'https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id='+ id
+    //'http://liquidearthlake.org/json/getthreechart?gauge_inc_id='+id
     Tab3Page.prototype.getReadingsThree = function () {
         var _this = this;
         var scale_size = 10000;
@@ -15002,7 +15006,7 @@ var Tab3Page = /** @class */ (function () {
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
         this.http
-            .get('https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id=' + id)
+            .get('http://liquidearthlake.org/json/getthreechart?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
@@ -15091,6 +15095,8 @@ var Tab3Page = /** @class */ (function () {
         });
         this.getReadingsForTable(2);
     };
+    //'https://liquidearthlake.org/gauge/getjsondataall?gauge_inc_id='+ id
+    //http://liquidearthlake.org/json/getallchart?gauge_inc_id=
     Tab3Page.prototype.getReadingsAll = function () {
         var _this = this;
         var scale_size = 100;
@@ -15099,7 +15105,7 @@ var Tab3Page = /** @class */ (function () {
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
         this.http
-            .get('https://liquidearthlake.org/gauge/getjsondataall?gauge_inc_id=' + id)
+            .get('http://liquidearthlake.org/json/getallchart?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
@@ -15191,8 +15197,10 @@ var Tab3Page = /** @class */ (function () {
         var reading_height = [];
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
+        //'https://liquidearthlake.org/gauge/getjsondataoney?gauge_inc_id='+ id
+        //http://liquidearthlake.org/json/getyearchart?gauge_inc_id=
         this.http
-            .get('https://liquidearthlake.org/gauge/getjsondataoney?gauge_inc_id=' + id)
+            .get('http://liquidearthlake.org/json/getyearchart?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
@@ -15285,8 +15293,10 @@ var Tab3Page = /** @class */ (function () {
         var reading_height = [];
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
+        //'https://liquidearthlake.org/gauge/getjsondataonem?gauge_inc_id='+ id
+        //http://liquidearthlake.org/json/getonechart?gauge_inc_id=
         this.http
-            .get('https://liquidearthlake.org/gauge/getjsondataonem?gauge_inc_id=' + id)
+            .get('http://liquidearthlake.org/json/getonechart?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
             console.log(_this.data);
