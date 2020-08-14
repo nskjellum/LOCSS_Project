@@ -25,6 +25,13 @@ export class Tab3Page {
   name:any;
   loadAllData:boolean;
 
+  allOn = false;
+  yearOn = false;
+  sixOn = false;
+  threeOn = false;
+  oneOn = false;
+  buttonVal = 0;
+
 
 
   ngOnInit() {
@@ -218,7 +225,11 @@ export class Tab3Page {
         //this.data =data;
         console.log(this.data);
         console.log(JSON.stringify(this.data));
-        
+
+        if (data.length =! 0) {
+
+
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
@@ -306,7 +317,12 @@ export class Tab3Page {
     
         });
         
-       
+       }
+       else {
+
+            this.presentAlert();
+
+       }
     },
     (error : any) =>
     {
@@ -314,6 +330,7 @@ export class Tab3Page {
     });
 
     this.getReadingsForTable(6);
+    this.changeButtonColor(2);
 
   }
 
@@ -334,7 +351,9 @@ export class Tab3Page {
     {
         //this.data =data;
         console.log(this.data);
-        
+
+        if (data.length != 0) {
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
@@ -429,7 +448,11 @@ export class Tab3Page {
           }
     
         });
-        
+
+        }
+        else {
+        this.presentAlert();
+        }
        
     },
     (error : any) =>
@@ -438,6 +461,8 @@ export class Tab3Page {
     });
 
     this.getReadingsForTable(2);
+    this.changeButtonColor(3);
+
 
   }
 
@@ -456,7 +481,9 @@ export class Tab3Page {
     {
         //this.data =data;
         console.log(this.data);
-        
+
+        if (data.length != 0) {
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
@@ -538,7 +565,12 @@ export class Tab3Page {
           }
     
         });
-        
+        }
+        else {
+
+        this.presentAlert();
+
+        }
        
     },
     (error : any) =>
@@ -547,6 +579,7 @@ export class Tab3Page {
     });
 
     this.getReadingsForTable(0);
+    this.changeButtonColor(0);
 
   }
 
@@ -567,7 +600,9 @@ export class Tab3Page {
     {
         //this.data =data;
         console.log(this.data);
-        
+
+        if (data.length != 0) {
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
@@ -649,7 +684,13 @@ export class Tab3Page {
           }
     
         });
-        
+
+        }
+        else {
+
+        this.presentAlert();
+
+        }
        
     },
     (error : any) =>
@@ -658,6 +699,7 @@ export class Tab3Page {
     });
 
    this.getReadingsForTable(1);
+   this.changeButtonColor(1);
 
   }
   
@@ -681,7 +723,9 @@ export class Tab3Page {
     {
         //this.data =data;
         console.log(this.data);
-        
+
+        if (data.length != 0) {
+
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
@@ -767,7 +811,11 @@ export class Tab3Page {
     
         });
         
-       
+       }
+       else {
+
+       this.presentAlert();
+       }
     },
     (error : any) =>
     {
@@ -775,14 +823,32 @@ export class Tab3Page {
     });
 
     this.getReadingsForTable(3);
+    this.changeButtonColor(4);
   }
   
   
+    changeButtonColor(buttonNumber) {
 
+       this.buttonVal = buttonNumber;
 
+    }
 
+    async presentAlert() {
 
+        const alert = await this.alertController.create({
 
+        header: 'No Data Available',
+        message: 'No Data Found for Specified Range',
+        buttons: [
+            {
+            text: 'Okay'
+            }
+            ]
+        })
+
+        await alert.present();
+
+    }
 
 
 
