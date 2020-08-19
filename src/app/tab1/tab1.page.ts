@@ -179,7 +179,8 @@ export class Tab1Page{
       this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+resp.coords.latitude+'/'+resp.coords.longitude)
       .subscribe((data : any) =>
       {
-        
+
+
           console.log(data);
           this.nearestGauge=data;
           this.nearestGaugeID=data.gauge_id;
@@ -240,6 +241,7 @@ export class Tab1Page{
     .subscribe((data : any) =>
     {
       this.gauges=data;
+      console.log('Data printed here.');
       console.log(data);
       
     },
@@ -393,6 +395,15 @@ export class Tab1Page{
     }
 }
 
+
+ OnChange(event) {
+
+ this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
+ this.nearestGaugeID= this.nearestGauge[0].gauge_id;
+ console.log('New Gauge Value');
+ console.log(this.nearestGaugeID);
+
+ }
 
  
 }
