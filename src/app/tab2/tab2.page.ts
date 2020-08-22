@@ -37,7 +37,7 @@ export class Tab2Page {
   }
 
  
-  /*
+
   
   getLocation(){
 
@@ -74,9 +74,9 @@ export class Tab2Page {
      
  
   }
-*/
 
 
+/*
 
 getLocation(){
   console.log('Hi');
@@ -95,6 +95,7 @@ getLocation(){
     })
 }
 
+*/
 
 }
 

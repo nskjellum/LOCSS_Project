@@ -41,6 +41,10 @@ export class Tab1Page{
   nearestGauge:any;
   nearestGaugeID:string;
   nearestGaugeIncID:number;
+
+  height_data:any;
+  units = "Centimeters";
+
   gauges=[];
   date:any;
   time:any;
@@ -80,6 +84,7 @@ export class Tab1Page{
     this.getCurrentDateTime()
     this.getAllGauges();
     this.getLocation();
+    this.setUnits(this.nearestGaugeIncID)
     
     if(!this.isGeoLocationFound){
         //this.presentAlertPrompt();
@@ -403,7 +408,49 @@ export class Tab1Page{
  console.log('New Gauge Value');
  console.log(this.nearestGaugeID);
 
+ this.setUnits(event.target.value);
+
+
+
  }
 
+    setUnits(id) {
+
+             this.http
+             .get('http://liquidearthlake.org/json/getgauge/'+id)
+               .subscribe((data : any) =>
+               {
+
+               this.height_data=data;
+
+
+
+                    if(this.height_data[0].unit == "FEET") {
+
+                        this.units = "Feet";
+
+                    }
+                    else if(this.height_data[0].unit == "METER") {
+
+                        this.units = "Meters";
+
+                    }
+                    else if(this.height_data[0].unit == "CENTIMETER") {
+
+
+                                      this.units = "Centimeters";
+
+                      }
+
+
+                        console.log(this.units);
+
+               },
+               (error : any) =>
+               {
+                 console.log(error);
+               });
+
+    }
  
 }

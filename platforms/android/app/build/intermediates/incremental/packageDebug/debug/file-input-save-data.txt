@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jul 01 16:36:38 EDT 2020
+#Wed Aug 19 13:19:50 EDT 2020
 1391.set=ASSET
 1034.base=C\:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 881.path=www/svg/chatbubble-outline.svg
