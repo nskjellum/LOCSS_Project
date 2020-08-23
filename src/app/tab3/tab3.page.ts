@@ -7,11 +7,17 @@ import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import * as $ from 'jquery';
 
+
+
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
+
+
+
 
 
 export class Tab3Page {
@@ -26,6 +32,7 @@ export class Tab3Page {
   loadAllData:boolean;
 
   buttonVal = 0;
+
 
 
 
@@ -259,6 +266,13 @@ export class Tab3Page {
               modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
             }
             console.log(modified_end_date);
+
+             if (this.barChart) {
+                    console.log('Destroying Chart');
+
+                    this.barChart.destroy();
+                        }
+
             this.barChart = new Chart(this.barCanvas.nativeElement, {
 
               type: 'line',
@@ -327,6 +341,11 @@ export class Tab3Page {
        }
        else {
 
+        if (this.barChart) {
+
+        console.log('Destroying Other Chart');
+       this.barChart.destroy();
+       }
             this.presentAlert();
 
 
@@ -399,6 +418,13 @@ export class Tab3Page {
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
         console.log(modified_end_date);
+
+             if (this.barChart) {
+                    console.log('Destroying Chart');
+
+                    this.barChart.destroy();
+                        }
+
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'line',
@@ -466,6 +492,11 @@ export class Tab3Page {
 
         }
         else {
+        if (this.barChart) {
+
+        console.log('Destroying Other Chart');
+       this.barChart.destroy();
+       }
         this.presentAlert();
         }
        
@@ -519,6 +550,13 @@ export class Tab3Page {
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
         console.log(modified_end_date);
+
+             if (this.barChart) {
+                    console.log('Destroying Chart');
+
+                    this.barChart.destroy();
+                        }
+
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'line',
@@ -583,6 +621,11 @@ export class Tab3Page {
         }
         else {
 
+        if (this.barChart) {
+
+        console.log('Destroying Other Chart');
+       this.barChart.destroy();
+       }
         this.presentAlert();
 
         }
@@ -638,6 +681,13 @@ export class Tab3Page {
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
         console.log(modified_end_date);
+
+             if (this.barChart) {
+                    console.log('Destroying Chart');
+
+                    this.barChart.destroy();
+                        }
+
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'line',
@@ -703,6 +753,11 @@ export class Tab3Page {
         }
         else {
 
+        if (this.barChart) {
+
+        console.log('Destroying Other Chart');
+       this.barChart.destroy();
+       }
         this.presentAlert();
 
         }
@@ -764,6 +819,15 @@ export class Tab3Page {
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
         console.log(modified_end_date);
+
+
+    if (this.barChart) {
+        console.log('Destroying Chart');
+
+        this.barChart.destroy();
+            }
+
+
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'line',
@@ -825,10 +889,16 @@ export class Tab3Page {
           }
     
         });
-        
+
        }
        else {
 
+
+        if (this.barChart) {
+
+        console.log('Destroying Other Chart');
+       this.barChart.destroy();
+       }
        this.presentAlert();
        }
     },

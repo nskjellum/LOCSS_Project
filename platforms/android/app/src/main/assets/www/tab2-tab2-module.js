@@ -122,7 +122,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ionic_cache__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ionic-cache */ "./node_modules/ionic-cache/dist/index.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 
 
 
@@ -131,7 +130,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //import  { Http } from '@angular/http';
-
 
 var Tab2Page = /** @class */ (function () {
     function Tab2Page(storage, http, splash, geolocation, cache) {
@@ -150,55 +148,25 @@ var Tab2Page = /** @class */ (function () {
     Tab2Page.prototype.getAllGauges = function () {
         console.log(this.lat);
     };
-    /*
-    
-    getLocation(){
-  
-      var cachedRespone =
-      this.geolocation.getCurrentPosition().then((resp) => {
-          this.http.get('http://liquidearthlake.org/json/getalldistances/'+ resp.coords.latitude+'/'+ resp.coords.longitude)
-          .subscribe((data : any) =>
-          {
-           
-            console.log(data);
-            this.gauges=data;
-            
-          },
-          (error : any) =>
-          {
-            console.log(error);
-          });
-       }).catch((error) => {
-         
-         console.log('Error getting location', error);
-         this.http.get('http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469)
-         .subscribe((data : any) =>
-         {
-           
-           console.log(data);
-           this.gauges=data;
-           
-         },
-         (error : any) =>
-         {
-           console.log(error);
-         });
-       });
-       
-   
-    }
-  */
     Tab2Page.prototype.getLocation = function () {
         var _this = this;
-        console.log('Hi');
-        var url = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
-        var cacheKey = url;
-        var request = this.http.get(url, { observe: 'response' });
-        return this.cache.loadFromObservable(cacheKey, request)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (res) { return res.body; }))
-            .subscribe(function (res) {
-            _this.gauges = res;
-            console.log(res);
+        var cachedRespone = this.geolocation.getCurrentPosition().then(function (resp) {
+            _this.http.get('http://liquidearthlake.org/json/getalldistances/' + resp.coords.latitude + '/' + resp.coords.longitude)
+                .subscribe(function (data) {
+                console.log(data);
+                _this.gauges = data;
+            }, function (error) {
+                console.log(error);
+            });
+        }).catch(function (error) {
+            console.log('Error getting location', error);
+            _this.http.get('http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469)
+                .subscribe(function (data) {
+                console.log(data);
+                _this.gauges = data;
+            }, function (error) {
+                console.log(error);
+            });
         });
     };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

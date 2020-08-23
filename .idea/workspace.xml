@@ -14,24 +14,28 @@
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/debug/www/tab1-tab1-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab1-tab1-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab2-tab2-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab2-tab2-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab2-tab2-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab2-tab2-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/assets/release/www/tab3-tab3-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageRelease/release/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageRelease/release/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageRelease/release/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/packageRelease/release/file-input-save-data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/reports/lint-results-release-fatal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab1-tab1-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab1/tab1.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab1/tab1.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab2/tab2.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab3/tab3.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab2-tab2-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab2-tab2-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab2-tab2-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab2-tab2-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/tab3-tab3-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tab3/tab3.page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab1-tab1-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab2-tab2-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab2-tab2-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab2-tab2-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab2-tab2-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab3-tab3-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab3-tab3-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/tab3-tab3-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/tab3-tab3-module.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,9 +131,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1598110769573" />
-    <state x="613" y="242" width="672" height="678" key="search.everywhere.popup" timestamp="1593700531917">
+    <state x="613" y="242" width="672" height="678" key="search.everywhere.popup" timestamp="1598117886238">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="613" y="242" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593700531917" />
+    <state x="613" y="242" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598117886238" />
   </component>
 </project>
