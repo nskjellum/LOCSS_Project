@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Aug 23 15:05:22 EDT 2020
+#Mon Aug 24 14:29:23 EDT 2020
 1391.set=ASSET
 1034.base=C\:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\assets\\release
 881.path=www/plugins/cordova-plugin-statusbar/www/statusbar.js

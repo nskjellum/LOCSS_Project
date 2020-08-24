@@ -37,7 +37,7 @@ export class Tab2Page {
   }
 
  
-
+/*
   
   getLocation(){
 
@@ -74,17 +74,25 @@ export class Tab2Page {
      
  
   }
+*/
 
 
-/*
 
 getLocation(){
   console.log('Hi');
-  let url = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
+
+
+
+  this.geolocation.getCurrentPosition().then((resp) => {
+  this.lat = resp.coords.latitude;
+  this.long = resp.coords.longitude;
+
+
+  let url = 'http://liquidearthlake.org/json/getalldistances/'+ this.lat +'/'+ this.long;
   let cacheKey = url;
   let request = this.http.get(url, { observe: 'response'});
-  
-  
+
+
 
   return this.cache.loadFromObservable(cacheKey, request)
   .pipe(map(res => res.body))
@@ -93,9 +101,14 @@ getLocation(){
       this.gauges = res;
       console.log(res);
     })
+
+  }).catch((error) => {
+        console.log('Error Getting Location', Error);
+  });
+
 }
 
-*/
+
 
 }
 
