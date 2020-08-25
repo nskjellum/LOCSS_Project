@@ -79,16 +79,11 @@ export class Tab2Page {
 
 
 getLocation(){
-  console.log('Hi');
+  console.log('Caching User Location');
 
 
 
-  this.geolocation.getCurrentPosition().then((resp) => {
-  this.lat = resp.coords.latitude;
-  this.long = resp.coords.longitude;
-
-
-  let url = 'http://liquidearthlake.org/json/getalldistances/'+ this.lat +'/'+ this.long;
+  let url = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
   let cacheKey = url;
   let request = this.http.get(url, { observe: 'response'});
 
@@ -101,10 +96,6 @@ getLocation(){
       this.gauges = res;
       console.log(res);
     })
-
-  }).catch((error) => {
-        console.log('Error Getting Location', Error);
-  });
 
 }
 
