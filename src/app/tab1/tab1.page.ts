@@ -51,7 +51,6 @@ export class Tab1Page{
     
     this.getCurrentDateTime()
     this.getAllGauges();
-    this.getLocation();
     
     if(!this.isGeoLocationFound){
         //this.presentAlertPrompt();
@@ -211,6 +210,7 @@ export class Tab1Page{
     {
       this.gauges=data;
       console.log(data);
+      this.getLocation();
       
     },
     (error : any) =>
