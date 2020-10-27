@@ -123,7 +123,7 @@ var Tab1PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Add Measurement\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- <ion-content padding class = \"background-image\"> -->\r\n<ion-content>\r\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" >\r\n    <ion-list>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Gauge ID</ion-label>\r\n        <ion-input placeholder=\"Enter Lake ID Here if Offline\" type=\"text\"  [(ngModel)]=\"nearestGaugeID\" name=\"gauge_id\"></ion-input>\r\n        <ion-select  [(ngModel)]=\"nearestGaugeIncID\" (ionChange) = \"OnChange($event)\" name=\"gauge_inc_id\">\r\n          <ion-select-option *ngFor=\"let gauge of gauges\" value=\"{{gauge.id}}\">{{gauge.gauge_id + ' - ' + gauge.name + ' - ' + gauge.city}}</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n  \r\n      <ion-item>\r\n        <ion-label position=\"floating\">Height (centimeters)</ion-label>\r\n        <ion-input type=\"number\" ngModel name=\"height\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Date</ion-label>\r\n        <ion-input type=\"date\" [(ngModel)]=\"date\" name=\"date\"  required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Time</ion-label>\r\n        <ion-input type=\"time\" [(ngModel)]=\"time\" name=\"time\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Is Bubble Level Okay?</ion-label>\r\n        <ion-select [(ngModel)]=\"isBubbleLevelOkay\" name=\"is_bubble_level_okay\" required>\r\n          <ion-select-option value=\"Yes\" selected>Yes</ion-select-option>\r\n          <ion-select-option value=\"No\">No</ion-select-option>\r\n          <ion-select-option value=\"I Do Not Know\">I Don't Know</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Notes</ion-label>\r\n        <ion-input type=\"textarea\" ngModel name=\"notes\"></ion-input>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-button type=\"submit\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Add Measurement</ion-button>\r\n   <!-- <ion-button click= \"presentAlert();\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Report a problem</ion-button>-->\r\n  </form>\r\n\r\n\r\n\r\n\r\n  <ion-button [href]=\"'/gauge-list-map'\" expand =\"block\">Map View</ion-button>\r\n  <ion-button (click)= \"presentAlert()\" expand = \"block\" color=\"danger\">Report a problem</ion-button>\r\n\r\n\r\n    \r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Add Measurement\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- <ion-content padding class = \"background-image\"> -->\r\n<ion-content>\r\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" >\r\n    <ion-list>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Gauge ID</ion-label>\r\n        <ion-input placeholder=\"Enter Lake ID Here if Offline\" type=\"text\"  [(ngModel)]=\"nearestGaugeID\" name=\"gauge_id\"></ion-input>\r\n        <ion-select  [(ngModel)]=\"nearestGaugeIncID\" (ionChange) = \"OnChange($event)\" name=\"gauge_inc_id\">\r\n          <ion-select-option *ngFor=\"let gauge of gauges\" value=\"{{gauge.id}}\">{{gauge.gauge_id + ' - ' + gauge.name + ' - ' + gauge.city}}</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n  \r\n      <ion-item>\r\n        <ion-label position=\"floating\">Height in {{units}} </ion-label>\r\n        <ion-input type=\"number\" ngModel name=\"height\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Date</ion-label>\r\n        <ion-input type=\"date\" [(ngModel)]=\"date\" name=\"date\"  required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Time</ion-label>\r\n        <ion-input type=\"time\" [(ngModel)]=\"time\" name=\"time\" required></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Is Bubble Level Okay?</ion-label>\r\n        <ion-select [(ngModel)]=\"isBubbleLevelOkay\" name=\"is_bubble_level_okay\" required>\r\n          <ion-select-option value=\"Yes\" selected>Yes</ion-select-option>\r\n          <ion-select-option value=\"No\">No</ion-select-option>\r\n          <ion-select-option value=\"I Do Not Know\">I Don't Know</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\" >Notes</ion-label>\r\n        <ion-input type=\"textarea\" ngModel name=\"notes\"></ion-input>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-button type=\"submit\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Add Measurement</ion-button>\r\n   <!-- <ion-button click= \"presentAlert();\" color=\"primary\" expand=\"block\" [disabled] =\"!f.valid\">Report a problem</ion-button>-->\r\n  </form>\r\n\r\n\r\n\r\n\r\n  <ion-button [href]=\"'/gauge-list-map'\" expand =\"block\">Map View</ion-button>\r\n  <ion-button (click)= \"presentAlert()\" expand = \"block\" color=\"danger\">Report a problem</ion-button>\r\n\r\n\r\n    \r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 var URL = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
 var Tab1Page = /** @class */ (function () {
-    function Tab1Page(geolocation, alertController, http, toastCtrl, router, emailcomposer, navCtrl, networkService, network, apiService) {
+    function Tab1Page(geolocation, alertController, http, toastCtrl, router, route, emailcomposer, navCtrl, networkService, network, apiService) {
         //subscribes to network to send all requests on connect
         //this.network.onConnect().subscribe(() => {
         this.geolocation = geolocation;
@@ -184,11 +184,13 @@ var Tab1Page = /** @class */ (function () {
         this.http = http;
         this.toastCtrl = toastCtrl;
         this.router = router;
+        this.route = route;
         this.emailcomposer = emailcomposer;
         this.navCtrl = navCtrl;
         this.networkService = networkService;
         this.network = network;
         this.apiService = apiService;
+        this.units = "Centimeters";
         this.gauges = [];
         this.value = 0;
         this.db = 0;
@@ -200,6 +202,7 @@ var Tab1Page = /** @class */ (function () {
         this.getCurrentDateTime();
         this.getAllGauges();
         this.getLocation();
+        this.setUnits(this.nearestGaugeIncID);
         if (!this.isGeoLocationFound) {
             //this.presentAlertPrompt();
         }
@@ -208,6 +211,11 @@ var Tab1Page = /** @class */ (function () {
         this.network.onConnect().subscribe(function () {
             _this.sendSaved();
         });
+    };
+    Tab1Page.prototype.ionViewWillEnter = function () {
+        console.log('Tab1 Being Viewed');
+        var id = this.route.snapshot.paramMap.get('id');
+        console.log(id);
     };
     Tab1Page.prototype.presentAlert = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -467,6 +475,27 @@ var Tab1Page = /** @class */ (function () {
         this.nearestGaugeID = this.nearestGauge[0].gauge_id;
         console.log('New Gauge Value');
         console.log(this.nearestGaugeID);
+        this.setUnits(event.target.value);
+    };
+    Tab1Page.prototype.setUnits = function (id) {
+        var _this = this;
+        this.http
+            .get('http://liquidearthlake.org/json/getgauge/' + id)
+            .subscribe(function (data) {
+            _this.height_data = data;
+            if (_this.height_data[0].unit == "FEET") {
+                _this.units = "Feet";
+            }
+            else if (_this.height_data[0].unit == "METER") {
+                _this.units = "Meters";
+            }
+            else if (_this.height_data[0].unit == "CENTIMETER") {
+                _this.units = "Centimeters";
+            }
+            console.log(_this.units);
+        }, function (error) {
+            console.log(error);
+        });
     };
     Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -479,6 +508,7 @@ var Tab1Page = /** @class */ (function () {
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
             _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_7__["EmailComposer"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
             src_app_services_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],

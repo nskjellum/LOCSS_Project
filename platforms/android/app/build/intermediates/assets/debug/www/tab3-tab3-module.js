@@ -14742,7 +14742,7 @@ var Tab3PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button text=\"Back\" defaultHref=\"/tabs/tab2\"></ion-back-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n \r\n\r\n  <ion-card>\r\n    <ion-button\r\n            [color]=\"buttonVal == 0 ? 'success': ''\"\r\n            (click)= \"getReadingsAll()\"\r\n            >All data\r\n    </ion-button>\r\n    <ion-button\r\n\r\n            [color]=\"buttonVal == 1 ? 'success': ''\"\r\n            (click)= \"getReadingsOney()\"\r\n             >Last Year\r\n    </ion-button>\r\n\r\n  <!-- <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button> -->\r\n  <ion-button\r\n              [color]=\"buttonVal == 2 ? 'success': ''\"\r\n              (click)= \"getReadings()\"\r\n              >Last Six Months\r\n  </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 3 ? 'success': ''\"\r\n            (click)= \"getReadingsThree()\"\r\n            >Last Three Months\r\n    </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 4 ? 'success': ''\"\r\n            (click)= \"getReadingsOnem()\"\r\n            >Last One Month\r\n    </ion-button>\r\n \r\n\r\n\r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n\r\n  \r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button text=\"Back\" defaultHref=\"/tabs/tab2\"></ion-back-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n\r\n\r\n  <ion-card>\r\n    <ion-button\r\n            [color]=\"buttonVal == 0 ? 'success': ''\"\r\n            (click)= \"getReadingsAll()\"\r\n            >All data\r\n    </ion-button>\r\n    <ion-button\r\n\r\n            [color]=\"buttonVal == 1 ? 'success': ''\"\r\n            (click)= \"getReadingsOney()\"\r\n             >Last Year\r\n    </ion-button>\r\n\r\n  <!-- <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button> -->\r\n  <ion-button\r\n              [color]=\"buttonVal == 2 ? 'success': ''\"\r\n              (click)= \"getReadings()\"\r\n              >Last Six Months\r\n  </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 3 ? 'success': ''\"\r\n            (click)= \"getReadingsThree()\"\r\n            >Last Three Months\r\n    </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 4 ? 'success': ''\"\r\n            (click)= \"getReadingsOnem()\"\r\n            >Last One Month\r\n    </ion-button>\r\n\r\n  <ion-button\r\n\r\n            color=\"success\"\r\n            (click)= \"goToPage()\"\r\n\r\n            >Add Measurement\r\n  </ion-button>\r\n\r\n\r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n\r\n  \r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
 
 /***/ }),
 
@@ -14786,16 +14786,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Tab3Page = /** @class */ (function () {
-    function Tab3Page(alertController, http, route, splash) {
+    function Tab3Page(alertController, http, route, router, splash) {
         this.alertController = alertController;
         this.http = http;
         this.route = route;
+        this.router = router;
         this.splash = splash;
-        this.allOn = false;
-        this.yearOn = false;
-        this.sixOn = false;
-        this.threeOn = false;
-        this.oneOn = false;
         this.buttonVal = 0;
     }
     Tab3Page.prototype.ngOnInit = function () {
@@ -14911,117 +14907,16 @@ var Tab3Page = /** @class */ (function () {
         var id = this.route.snapshot.paramMap.get('id');
         this.name = this.route.snapshot.paramMap.get('name');
         //'http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id
+        //http://liquidearthlake.org/json/getsixchart?gauge_inc_id
         this.http
-            .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id=' + id)
+            .get('http://liquidearthlake.org/json/getsixchart?gauge_inc_id=' + id)
             .subscribe(function (data) {
             //this.data =data;
+            console.log('Original Data');
             console.log(_this.data);
+            console.log('Data Check');
             console.log(JSON.stringify(_this.data));
-            if (data.length = !0) {
-                for (var i = 0; i < data.length; ++i) {
-                    reading_date.push(_this.formatedate(String(data[i].date)));
-                    reading_height.push(data[i].height);
-                    console.log(data[i].height);
-                }
-                var start_date = _this.formatedate(String(data[0].date));
-                var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
-                console.log(start_date1);
-                var end_date = _this.formatedate(String(data[data.length - 1].date));
-                var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
-                console.log(end_date1);
-                var modified_end_date;
-                var diff_date_in_days = end_date1.diff(start_date1, 'days');
-                if (diff_date_in_days % scale_size == 0) {
-                    modified_end_date = end_date1;
-                }
-                else {
-                    var num_steps_x_axis = diff_date_in_days / scale_size;
-                    modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
-                }
-                console.log(modified_end_date);
-                _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
-                    type: 'line',
-                    data: {
-                        labels: reading_date,
-                        datasets: [{
-                                label: 'Lake Level',
-                                data: reading_height,
-                                lineTension: 0.25,
-                                fill: false,
-                                borderColor: 'rgba(65,105,225,1)',
-                                backgroundColor: 'transparent',
-                                pointBorderColor: 'rgba(65,105,225,1)',
-                                pointBackgroundColor: 'rgba(65,105,225,1)',
-                                borderWidth: 2,
-                                borderDash: [0, 0],
-                                pointRadius: 2,
-                                pointHoverRadius: 4,
-                                pointHitRadius: 30,
-                                pointBorderWidth: 2,
-                                pointStyle: 'rectRounded'
-                            }]
-                    },
-                    options: {
-                        legend: {
-                            display: false,
-                            position: 'top',
-                            labels: {
-                                boxWidth: 80,
-                                fontColor: 'black'
-                            }
-                        },
-                        scales: {
-                            xAxes: [{
-                                    type: "time",
-                                    time: {
-                                        unit: 'day',
-                                        unitStepSize: scale_size,
-                                        max: modified_end_date,
-                                        tooltipFormat: "MM/DD/YYYY",
-                                        displayFormats: {
-                                            day: 'MM/DD/YYYY'
-                                        }
-                                    }
-                                }],
-                            yAxes: [{
-                                    gridLines: {
-                                    //color: "black",
-                                    // borderDash: [2, 5],
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: (_this.height_data[0].unit),
-                                        fontColor: "green"
-                                    }
-                                }]
-                        }
-                    }
-                });
-            }
-            else {
-                _this.presentAlert();
-            }
-        }, function (error) {
-            console.log(error);
-        });
-        this.getReadingsForTable(6);
-        this.changeButtonColor(2);
-    };
-    //'http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id
-    //'https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id='+ id
-    //'http://liquidearthlake.org/json/getthreechart?gauge_inc_id='+id
-    Tab3Page.prototype.getReadingsThree = function () {
-        var _this = this;
-        var scale_size = 10000;
-        var reading_date = [];
-        var reading_height = [];
-        var id = this.route.snapshot.paramMap.get('id');
-        this.name = this.route.snapshot.paramMap.get('name');
-        this.http
-            .get('http://liquidearthlake.org/json/getthreechart?gauge_inc_id=' + id)
-            .subscribe(function (data) {
-            //this.data =data;
-            console.log(_this.data);
+            console.log(data.length);
             if (data.length != 0) {
                 for (var i = 0; i < data.length; ++i) {
                     reading_date.push(_this.formatedate(String(data[i].date)));
@@ -15045,6 +14940,10 @@ var Tab3Page = /** @class */ (function () {
                     modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
                 }
                 console.log(modified_end_date);
+                if (_this.barChart) {
+                    console.log('Destroying Chart');
+                    _this.barChart.destroy();
+                }
                 _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
                     type: 'line',
                     data: {
@@ -15105,6 +15004,128 @@ var Tab3Page = /** @class */ (function () {
                 });
             }
             else {
+                if (_this.barChart) {
+                    console.log('Destroying Other Chart');
+                    _this.barChart.destroy();
+                }
+                _this.presentAlert();
+            }
+        }, function (error) {
+            console.log(error);
+        });
+        this.getReadingsForTable(6);
+        this.changeButtonColor(2);
+    };
+    //'http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id
+    //'https://liquidearthlake.org/gauge/getjsondatathreem?gauge_inc_id='+ id
+    //'http://liquidearthlake.org/json/getthreechart?gauge_inc_id='+id
+    Tab3Page.prototype.getReadingsThree = function () {
+        var _this = this;
+        var scale_size = 10000;
+        var reading_date = [];
+        var reading_height = [];
+        var id = this.route.snapshot.paramMap.get('id');
+        this.name = this.route.snapshot.paramMap.get('name');
+        this.http
+            .get('http://liquidearthlake.org/json/getthreechart?gauge_inc_id=' + id)
+            .subscribe(function (data) {
+            //this.data =data;
+            console.log('Original Data');
+            console.log(_this.data);
+            console.log('Data Check');
+            console.log(JSON.stringify(_this.data));
+            console.log(data.length);
+            if (data.length != 0) {
+                for (var i = 0; i < data.length; ++i) {
+                    reading_date.push(_this.formatedate(String(data[i].date)));
+                    console.log(data[i].height);
+                    reading_height.push(data[i].height);
+                }
+                var start_date = _this.formatedate(String(data[0].date));
+                var start_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(start_date);
+                console.log(start_date1);
+                var end_date = _this.formatedate(String(data[data.length - 1].date));
+                console.log(end_date);
+                var end_date1 = moment__WEBPACK_IMPORTED_MODULE_6__(end_date);
+                var modified_end_date;
+                var diff_date_in_days = end_date1.diff(start_date1, 'days');
+                console.log(diff_date_in_days);
+                if (diff_date_in_days % scale_size != 0) {
+                    modified_end_date = end_date1;
+                }
+                else {
+                    var num_steps_x_axis = diff_date_in_days / scale_size;
+                    modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
+                }
+                console.log(modified_end_date);
+                if (_this.barChart) {
+                    console.log('Destroying Chart');
+                    _this.barChart.destroy();
+                }
+                _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
+                    type: 'line',
+                    data: {
+                        labels: reading_date,
+                        datasets: [{
+                                label: 'Lake Level',
+                                data: reading_height,
+                                lineTension: 0.25,
+                                fill: false,
+                                borderColor: 'rgba(65,105,225,1)',
+                                backgroundColor: 'transparent',
+                                pointBorderColor: 'rgba(65,105,225,1)',
+                                pointBackgroundColor: 'rgba(65,105,225,1)',
+                                borderWidth: 2,
+                                borderDash: [0, 0],
+                                pointRadius: 2,
+                                pointHoverRadius: 4,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'rectRounded'
+                            }]
+                    },
+                    options: {
+                        legend: {
+                            display: false,
+                            position: 'top',
+                            labels: {
+                                boxWidth: 80,
+                                fontColor: 'black'
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                    type: "time",
+                                    time: {
+                                        unit: 'day',
+                                        unitStepSize: scale_size,
+                                        max: modified_end_date,
+                                        tooltipFormat: "MM/DD/YYYY",
+                                        displayFormats: {
+                                            day: 'MM/DD/YYYY'
+                                        }
+                                    }
+                                }],
+                            yAxes: [{
+                                    gridLines: {
+                                    //color: "black",
+                                    // borderDash: [2, 5],
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: (_this.height_data[0].unit),
+                                        fontColor: "green"
+                                    }
+                                }]
+                        }
+                    }
+                });
+            }
+            else {
+                if (_this.barChart) {
+                    console.log('Destroying Other Chart');
+                    _this.barChart.destroy();
+                }
                 _this.presentAlert();
             }
         }, function (error) {
@@ -15146,6 +15167,10 @@ var Tab3Page = /** @class */ (function () {
                     modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
                 }
                 console.log(modified_end_date);
+                if (_this.barChart) {
+                    console.log('Destroying Chart');
+                    _this.barChart.destroy();
+                }
                 _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
                     type: 'line',
                     data: {
@@ -15206,6 +15231,10 @@ var Tab3Page = /** @class */ (function () {
                 });
             }
             else {
+                if (_this.barChart) {
+                    console.log('Destroying Other Chart');
+                    _this.barChart.destroy();
+                }
                 _this.presentAlert();
             }
         }, function (error) {
@@ -15247,6 +15276,10 @@ var Tab3Page = /** @class */ (function () {
                     modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
                 }
                 console.log(modified_end_date);
+                if (_this.barChart) {
+                    console.log('Destroying Chart');
+                    _this.barChart.destroy();
+                }
                 _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
                     type: 'line',
                     data: {
@@ -15307,6 +15340,10 @@ var Tab3Page = /** @class */ (function () {
                 });
             }
             else {
+                if (_this.barChart) {
+                    console.log('Destroying Other Chart');
+                    _this.barChart.destroy();
+                }
                 _this.presentAlert();
             }
         }, function (error) {
@@ -15351,6 +15388,10 @@ var Tab3Page = /** @class */ (function () {
                     modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
                 }
                 console.log(modified_end_date);
+                if (_this.barChart) {
+                    console.log('Destroying Chart');
+                    _this.barChart.destroy();
+                }
                 _this.barChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](_this.barCanvas.nativeElement, {
                     type: 'line',
                     data: {
@@ -15411,6 +15452,10 @@ var Tab3Page = /** @class */ (function () {
                 });
             }
             else {
+                if (_this.barChart) {
+                    console.log('Destroying Other Chart');
+                    _this.barChart.destroy();
+                }
                 _this.presentAlert();
             }
         }, function (error) {
@@ -15452,6 +15497,10 @@ var Tab3Page = /** @class */ (function () {
     Tab3Page.prototype.LoadAllReadings = function () {
         this.loadAllData = true;
     };
+    Tab3Page.prototype.goToPage = function () {
+        var id = this.route.snapshot.paramMap.get('id');
+        this.router.navigate(['tabs/tab1', { id: this.id }]);
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('barCanvas'),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -15462,7 +15511,7 @@ var Tab3Page = /** @class */ (function () {
             template: __webpack_require__(/*! ./tab3.page.html */ "./src/app/tab3/tab3.page.html"),
             styles: [__webpack_require__(/*! ./tab3.page.scss */ "./src/app/tab3/tab3.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
     ], Tab3Page);
     return Tab3Page;
 }());

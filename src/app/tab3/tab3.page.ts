@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
@@ -22,7 +22,7 @@ import * as $ from 'jquery';
 
 export class Tab3Page {
   
-  constructor(private alertController: AlertController, private http: HttpClient, private route: ActivatedRoute,private splash: SplashScreen){}
+  constructor(private alertController: AlertController, private http: HttpClient, private route: ActivatedRoute, private router: Router, private splash: SplashScreen){}
   @ViewChild('barCanvas') barCanvas;
 
   barChart: any;
@@ -30,6 +30,7 @@ export class Tab3Page {
   height_data:any;
   name:any;
   loadAllData:boolean;
+  id: any;
 
   buttonVal = 0;
 
@@ -71,11 +72,17 @@ export class Tab3Page {
   getReadingsForTable(range){
     let id=this.route.snapshot.paramMap.get('id');
 
+    console.log("Id for Readings");
+    console.log(id);
+
     var source;
 
     if(range == 0) {
     //All Data
     let source = ('http://liquidearthlake.org/json/getjsondataall/'+id);
+
+            console.log("Source for table");
+            console.log(source);
 
         this.http
         .get(source)
@@ -97,6 +104,10 @@ export class Tab3Page {
     //One Year
     let source = ('http://liquidearthlake.org/json/getjsondataoney/'+id);
 
+
+            console.log("Source for table");
+            console.log(source);
+
         this.http
         .get(source)
           .subscribe((data : any) =>
@@ -116,6 +127,10 @@ export class Tab3Page {
     else if(range == 2) {
     //Three Months
     let source = ('http://liquidearthlake.org/json/getjsondatathreem/'+id);
+
+
+            console.log("Source for table");
+            console.log(source);
 
         this.http
         .get(source)
@@ -137,6 +152,10 @@ export class Tab3Page {
     //One Month
     let source = ('http://liquidearthlake.org/json/getjsondataonem/'+id);
 
+
+            console.log("Source for table");
+            console.log(source);
+
         this.http
         .get(source)
           .subscribe((data : any) =>
@@ -156,6 +175,9 @@ export class Tab3Page {
     else {
         //Default Six Months
        let source = ('http://liquidearthlake.org/json/getjsondatasixm/'+id);
+
+            console.log("Source for table");
+            console.log(source);
 
            this.http
            .get(source)
@@ -183,7 +205,8 @@ export class Tab3Page {
     let id=this.route.snapshot.paramMap.get('id');
     //let variable = this.route.snapshot.paramMap.get('unit');
     //console.log('hi' + variable);
-   
+
+   console.log("Id for height");
     console.log(id);
     
    
@@ -946,6 +969,15 @@ export class Tab3Page {
       this.loadAllData=true;
   }
 
-  
+  goToPage() {
+
+
+    let id=this.route.snapshot.paramMap.get('id');
+    console.log("ID for add measurement");
+    console.log(id);
+    this.router.navigate(['tabs/tab1', {id: id}]);
+
+
+  }
 
 }

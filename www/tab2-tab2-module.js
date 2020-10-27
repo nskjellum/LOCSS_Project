@@ -190,21 +190,15 @@ var Tab2Page = /** @class */ (function () {
     */
     Tab2Page.prototype.getLocation = function () {
         var _this = this;
-        console.log('Hi');
-        this.geolocation.getCurrentPosition().then(function (resp) {
-            _this.lat = resp.coords.latitude;
-            _this.long = resp.coords.longitude;
-            var url = 'http://liquidearthlake.org/json/getalldistances/' + _this.lat + '/' + _this.long;
-            var cacheKey = url;
-            var request = _this.http.get(url, { observe: 'response' });
-            return _this.cache.loadFromObservable(cacheKey, request)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (res) { return res.body; }))
-                .subscribe(function (res) {
-                _this.gauges = res;
-                console.log(res);
-            });
-        }).catch(function (error) {
-            console.log('Error Getting Location', Error);
+        console.log('Caching User Location');
+        var url = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
+        var cacheKey = url;
+        var request = this.http.get(url, { observe: 'response' });
+        return this.cache.loadFromObservable(cacheKey, request)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (res) { return res.body; }))
+            .subscribe(function (res) {
+            _this.gauges = res;
+            console.log(res);
         });
     };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

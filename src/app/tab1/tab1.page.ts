@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
 import * as moment from 'moment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
@@ -60,6 +60,7 @@ export class Tab1Page{
     private http:HttpClient,
     private toastCtrl: ToastController, 
     private router:Router,
+    private route:ActivatedRoute,
     private emailcomposer: EmailComposer,
     private navCtrl: NavController,
 
@@ -100,6 +101,34 @@ export class Tab1Page{
 
     
   }
+
+  ionViewWillEnter() {
+
+    console.log('Tab1 Being Viewed');
+
+             let id=this.route.snapshot.paramMap.get('id');
+             console.log(id);
+
+    if(id != null) {
+         console.log("Changing ID from Route");
+
+
+         console.log(this.gauges);
+
+         this.nearestGauge = this.gauges.filter(m => m.id == id)
+         this.nearestGaugeID= this.nearestGauge[0].gauge_id;
+
+
+         console.log('New Gauge Value on Entering');
+         console.log(this.nearestGaugeID);
+
+         this.setUnits(id);
+
+
+    }
+
+  }
+
 
   async presentAlert(){
 
@@ -403,6 +432,7 @@ export class Tab1Page{
 
  OnChange(event) {
 
+    console.log(this.gauges);
  this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
  this.nearestGaugeID= this.nearestGauge[0].gauge_id;
  console.log('New Gauge Value');
@@ -415,6 +445,8 @@ export class Tab1Page{
  }
 
     setUnits(id) {
+
+        console.log("Setting Units");
 
              this.http
              .get('http://liquidearthlake.org/json/getgauge/'+id)

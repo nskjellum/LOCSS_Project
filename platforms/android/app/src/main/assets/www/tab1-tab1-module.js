@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 var URL = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
 var Tab1Page = /** @class */ (function () {
-    function Tab1Page(geolocation, alertController, http, toastCtrl, router, emailcomposer, navCtrl, networkService, network, apiService) {
+    function Tab1Page(geolocation, alertController, http, toastCtrl, router, route, emailcomposer, navCtrl, networkService, network, apiService) {
         //subscribes to network to send all requests on connect
         //this.network.onConnect().subscribe(() => {
         this.geolocation = geolocation;
@@ -184,6 +184,7 @@ var Tab1Page = /** @class */ (function () {
         this.http = http;
         this.toastCtrl = toastCtrl;
         this.router = router;
+        this.route = route;
         this.emailcomposer = emailcomposer;
         this.navCtrl = navCtrl;
         this.networkService = networkService;
@@ -210,6 +211,11 @@ var Tab1Page = /** @class */ (function () {
         this.network.onConnect().subscribe(function () {
             _this.sendSaved();
         });
+    };
+    Tab1Page.prototype.ionViewWillEnter = function () {
+        console.log('Tab1 Being Viewed');
+        var id = this.route.snapshot.paramMap.get('id');
+        console.log(id);
     };
     Tab1Page.prototype.presentAlert = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -502,6 +508,7 @@ var Tab1Page = /** @class */ (function () {
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
             _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_7__["EmailComposer"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
             src_app_services_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
