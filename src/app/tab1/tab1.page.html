@@ -12,13 +12,14 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">Gauge ID</ion-label>
-        <ion-select  [(ngModel)]="nearestGaugeIncID" name="gauge_inc_id" required>
+        <ion-input placeholder="Enter Lake ID Here if Offline" type="text"  [(ngModel)]="nearestGaugeID" name="gauge_id"></ion-input>
+        <ion-select  [(ngModel)]="nearestGaugeIncID" (ionChange) = "OnChange($event)" name="gauge_inc_id">
           <ion-select-option *ngFor="let gauge of gauges" value="{{gauge.id}}">{{gauge.gauge_id + ' - ' + gauge.name + ' - ' + gauge.city}}</ion-select-option>
         </ion-select>
       </ion-item>
   
       <ion-item>
-        <ion-label position="floating">Height (centimeters)</ion-label>
+        <ion-label position="floating">Height in {{units}} </ion-label>
         <ion-input type="number" ngModel name="height" required></ion-input>
       </ion-item>
       <ion-item>

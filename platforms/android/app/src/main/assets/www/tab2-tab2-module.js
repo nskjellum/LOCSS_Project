@@ -151,46 +151,46 @@ var Tab2Page = /** @class */ (function () {
         console.log(this.lat);
     };
     /*
+      
+      getLocation(){
     
-    getLocation(){
-  
-      var cachedRespone =
-      this.geolocation.getCurrentPosition().then((resp) => {
-          this.http.get('http://liquidearthlake.org/json/getalldistances/'+ resp.coords.latitude+'/'+ resp.coords.longitude)
-          .subscribe((data : any) =>
-          {
+        var cachedRespone =
+        this.geolocation.getCurrentPosition().then((resp) => {
+            this.http.get('http://liquidearthlake.org/json/getalldistances/'+ resp.coords.latitude+'/'+ resp.coords.longitude)
+            .subscribe((data : any) =>
+            {
+             
+              console.log(data);
+              this.gauges=data;
+              
+            },
+            (error : any) =>
+            {
+              console.log(error);
+            });
+         }).catch((error) => {
            
-            console.log(data);
-            this.gauges=data;
-            
-          },
-          (error : any) =>
-          {
-            console.log(error);
-          });
-       }).catch((error) => {
-         
-         console.log('Error getting location', error);
-         this.http.get('http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469)
-         .subscribe((data : any) =>
-         {
-           
-           console.log(data);
-           this.gauges=data;
-           
-         },
-         (error : any) =>
-         {
-           console.log(error);
+           console.log('Error getting location', error);
+           this.http.get('http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469)
+           .subscribe((data : any) =>
+           {
+             
+             console.log(data);
+             this.gauges=data;
+             
+           },
+           (error : any) =>
+           {
+             console.log(error);
+           });
          });
-       });
-       
-   
-    }
-  */
+         
+     
+      }
+    */
     Tab2Page.prototype.getLocation = function () {
         var _this = this;
-        console.log('Hi');
+        console.log('Caching User Location');
         var url = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
         var cacheKey = url;
         var request = this.http.get(url, { observe: 'response' });

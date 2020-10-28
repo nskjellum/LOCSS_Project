@@ -17,16 +17,49 @@
 
 <ion-content>
 
- 
+
+
+
 
   <ion-card>
-    <ion-button (click)= "getReadingsAll()"  >All data</ion-button>
-    <ion-button (click)= "getReadingsOney()"   >Last Year</ion-button>  
+    <ion-button
+            [color]="buttonVal == 0 ? 'success': ''"
+            (click)= "getReadingsAll()"
+            >All data
+    </ion-button>
+    <ion-button
+
+            [color]="buttonVal == 1 ? 'success': ''"
+            (click)= "getReadingsOney()"
+             >Last Year
+    </ion-button>
+
   <!-- <ion-button color ="success" (click)= "getReadings()" >Last Six Months</ion-button> -->
-  <ion-button color ="success" (click)= "getReadings()" >Last Six Months</ion-button>
-    <ion-button (click)= "getReadingsThree()"  >Last Three Months</ion-button>
-    <ion-button (click)= "getReadingsOnem()">Last One Month</ion-button>
- 
+  <ion-button
+              [color]="buttonVal == 2 ? 'success': ''"
+              (click)= "getReadings()"
+              >Last Six Months
+  </ion-button>
+
+    <ion-button
+            [color]="buttonVal == 3 ? 'success': ''"
+            (click)= "getReadingsThree()"
+            >Last Three Months
+    </ion-button>
+
+    <ion-button
+            [color]="buttonVal == 4 ? 'success': ''"
+            (click)= "getReadingsOnem()"
+            >Last One Month
+    </ion-button>
+
+  <ion-button
+
+            color="success"
+            (click)= "goToPage()"
+
+            >Add Measurement
+  </ion-button>
 
 
     <ion-card-content zooming="true" direction="xy"> 
