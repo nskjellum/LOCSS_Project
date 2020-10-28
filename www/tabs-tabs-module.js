@@ -52,7 +52,7 @@ var TabsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\r\n\r\n \r\n\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n\r\n    <ion-tab-button tab=\"tab4\">\r\n      <ion-icon name=\"home\"></ion-icon>\r\n      <ion-label>Home</ion-label>\r\n    </ion-tab-button>\r\n  \r\n\r\n\r\n    <ion-tab-button (click)=\"onClickAddMeasurement()\">\r\n      <ion-icon name=\"flash\"></ion-icon>\r\n      <ion-label>Add Measurement</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab2\">\r\n      <ion-icon name=\"apps\"></ion-icon>\r\n      <ion-label>View Data</ion-label>\r\n    </ion-tab-button>\r\n\r\n \r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n"
+module.exports = "<ion-tabs>\r\n\r\n \r\n\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n\r\n    <ion-tab-button tab=\"tab4\">\r\n      <ion-icon name=\"home\"></ion-icon>\r\n      <ion-label>Home</ion-label>\r\n    </ion-tab-button>\r\n  \r\n\r\n\r\n    <ion-tab-button tab=\"tab1\">\r\n      <ion-icon name=\"flash\"></ion-icon>\r\n      <ion-label>Add Measurement</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab2\">\r\n      <ion-icon name=\"apps\"></ion-icon>\r\n      <ion-label>View Data</ion-label>\r\n    </ion-tab-button>\r\n\r\n \r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n"
 
 /***/ }),
 
@@ -79,28 +79,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPage", function() { return TabsPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
 
 
 var TabsPage = /** @class */ (function () {
-    function TabsPage(router) {
-        this.router = router;
+    function TabsPage() {
     }
-    TabsPage.prototype.onClickAddMeasurement = function () {
-        //if(this.router.url.indexOf('tabs/tab3') > -1 || (this.router.url.indexOf('tabs/tab1') > -1 && this.router.url.split('/').length > 3)) {
-        // this.router.navigateByUrl('/tabs/tab1/' + this.router.url.split('/')[3]);
-        //} else {
-        this.router.navigateByUrl('/tabs/tab1/');
-        // }
-    };
     TabsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-tabs',
             template: __webpack_require__(/*! ./tabs.page.html */ "./src/app/tabs/tabs.page.html"),
             styles: [__webpack_require__(/*! ./tabs.page.scss */ "./src/app/tabs/tabs.page.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        })
     ], TabsPage);
     return TabsPage;
 }());
@@ -138,11 +127,7 @@ var routes = [
                     {
                         path: '',
                         loadChildren: '../tab1/tab1.module#Tab1PageModule'
-                    },
-                    {
-                        path: ':gaugeId',
-                        loadChildren: '../tab1/tab1.module#Tab1PageModule'
-                    },
+                    }
                 ]
             },
             {
