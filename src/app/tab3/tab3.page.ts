@@ -31,9 +31,7 @@ export class Tab3Page {
     this.loadAllData=false;
     this.splash.show(); 
     this.getHeight(); 
-    this.getReadings();
    // this.getHeight();
-    this.getReadingsForTable();
     this.splash.hide();
   //  this.handleButtonClick();
     
@@ -57,6 +55,9 @@ export class Tab3Page {
    await alert.present();
 }*/
 
+  goBack() {
+    window.history.back();
+  }
 
 
   getReadingsForTable(){
@@ -95,7 +96,8 @@ export class Tab3Page {
       
       this.height_data=data;
        console.log(this.height_data[0].unit);
-     
+      this.getReadings();
+      this.getReadingsForTable();
         
       },
       (error : any) =>
