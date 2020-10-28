@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../services/api.service */ "./src/app/services/api.service.ts");
 /* harmony import */ var src_app_services_network_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/services/network.service */ "./src/app/services/network.service.ts");
 /* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
-//
 
 
 
@@ -176,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 var URL = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
 var Tab1Page = /** @class */ (function () {
-    function Tab1Page(geolocation, alertController, http, toastCtrl, router, route, emailcomposer, navCtrl, networkService, network, apiService) {
+    function Tab1Page(geolocation, alertController, http, toastCtrl, router, route, emailcomposer, navCtrl, changeDetectorRef, networkService, network, apiService) {
         //subscribes to network to send all requests on connect
         //this.network.onConnect().subscribe(() => {
         this.geolocation = geolocation;
@@ -187,6 +186,7 @@ var Tab1Page = /** @class */ (function () {
         this.route = route;
         this.emailcomposer = emailcomposer;
         this.navCtrl = navCtrl;
+        this.changeDetectorRef = changeDetectorRef;
         this.networkService = networkService;
         this.network = network;
         this.apiService = apiService;
@@ -201,8 +201,6 @@ var Tab1Page = /** @class */ (function () {
         var _this = this;
         this.getCurrentDateTime();
         this.getAllGauges();
-        this.getLocation();
-        this.setUnits(this.nearestGaugeIncID);
         if (!this.isGeoLocationFound) {
             //this.presentAlertPrompt();
         }
@@ -216,6 +214,15 @@ var Tab1Page = /** @class */ (function () {
         console.log('Tab1 Being Viewed');
         var id = this.route.snapshot.paramMap.get('id');
         console.log(id);
+        if (id != null) {
+            console.log("Changing ID from Route");
+            console.log(this.gauges);
+            this.nearestGauge = this.gauges.filter(function (m) { return m.id == id; });
+            this.nearestGaugeID = this.nearestGauge[0].gauge_id;
+            console.log('New Gauge Value on Entering');
+            console.log(this.nearestGaugeID);
+            this.setUnits(id);
+        }
     };
     Tab1Page.prototype.presentAlert = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -290,13 +297,17 @@ var Tab1Page = /** @class */ (function () {
         var _this = this;
         this.geolocation.getCurrentPosition().then(function (resp) {
             _this.isGeoLocationFound = true;
-            _this.http.get('http://liquidearthlake.org/json/getnearestgauge/' + resp.coords.latitude + '/' + resp.coords.longitude)
+            var coords = resp.coords.latitude + '/' + resp.coords.longitude;
+            if (_this.router.url.split('/')[3]) {
+                var gauge = _this.gauges.find(function (g) { return g.id == parseInt(_this.router.url.split('/')[3]); });
+                coords = gauge.latitude + '/' + gauge.longitude;
+            }
+            _this.http.get('http://liquidearthlake.org/json/getnearestgauge/' + coords)
                 .subscribe(function (data) {
-                console.log(data);
                 _this.nearestGauge = data;
                 _this.nearestGaugeID = data.gauge_id;
                 _this.nearestGaugeIncID = data.id;
-                console.log(_this.nearestGaugeIncID);
+                _this.setUnits(_this.nearestGaugeIncID);
             }, function (error) {
                 console.log(error);
             });
@@ -347,8 +358,7 @@ var Tab1Page = /** @class */ (function () {
         this.http.get('http://liquidearthlake.org/json/gauges')
             .subscribe(function (data) {
             _this.gauges = data;
-            console.log('Data printed here.');
-            console.log(data);
+            _this.getLocation();
         }, function (error) {
             console.log(error);
         });
@@ -471,6 +481,7 @@ var Tab1Page = /** @class */ (function () {
         });
     };
     Tab1Page.prototype.OnChange = function (event) {
+        console.log(this.gauges);
         this.nearestGauge = this.gauges.filter(function (m) { return m.id == event.target.value; });
         this.nearestGaugeID = this.nearestGauge[0].gauge_id;
         console.log('New Gauge Value');
@@ -479,6 +490,7 @@ var Tab1Page = /** @class */ (function () {
     };
     Tab1Page.prototype.setUnits = function (id) {
         var _this = this;
+        console.log("Setting Units");
         this.http
             .get('http://liquidearthlake.org/json/getgauge/' + id)
             .subscribe(function (data) {
@@ -511,6 +523,7 @@ var Tab1Page = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
             _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_7__["EmailComposer"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
             src_app_services_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
             _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_10__["Network"],
             _services_api_service__WEBPACK_IMPORTED_MODULE_8__["ApiService"]])
