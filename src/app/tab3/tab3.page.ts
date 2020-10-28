@@ -972,12 +972,7 @@ export class Tab3Page {
 
   goToPage() {
 
-
-    let id=this.route.snapshot.paramMap.get('id');
-    console.log("ID for add measurement");
-    console.log(id);
-    this.router.navigate(['tabs/tab1', {id: id}]);
-
+       this.router.navigateByUrl('/tabs/tab1/' + this.router.url.split('/')[3]);
 
   }
 
