@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-back-button text="Back" defaultHref="/tabs/tab2"></ion-back-button>
+          <ion-button (click)="goBack()">
+            <ion-icon name="arrow-back-sharp" style="zoom:120%;"></ion-icon>
+            <span class="button-text pl-1" part="text" style="letter-spacing:0;">Back</span>
+          </ion-button>
         </ion-buttons>
       
     <ion-title>

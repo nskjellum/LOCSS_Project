@@ -1,8 +1,4 @@
-
-
-//
-
-import { Component} from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
@@ -63,7 +59,7 @@ export class Tab1Page{
     private route:ActivatedRoute,
     private emailcomposer: EmailComposer,
     private navCtrl: NavController,
-
+    public changeDetectorRef: ChangeDetectorRef,
     private networkService:NetworkService,
     private network: Network,
     private apiService: ApiService,
@@ -84,8 +80,6 @@ export class Tab1Page{
 
     this.getCurrentDateTime()
     this.getAllGauges();
-    this.getLocation();
-    this.setUnits(this.nearestGaugeIncID)
     
     if(!this.isGeoLocationFound){
         //this.presentAlertPrompt();
@@ -200,9 +194,6 @@ export class Tab1Page{
       console.log(this.date);
       console.log(this.time);
   }
-
- 
-
  
 
   // Get The  Geolocation
@@ -210,17 +201,18 @@ export class Tab1Page{
   getLocation(){
     this.geolocation.getCurrentPosition().then((resp) => {
       this.isGeoLocationFound=true;
-      this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+resp.coords.latitude+'/'+resp.coords.longitude)
+      let coords = resp.coords.latitude+'/'+resp.coords.longitude;
+      if(this.router.url.split('/')[3]) {
+        let gauge = this.gauges.find(g => g.id == parseInt(this.router.url.split('/')[3]));
+        coords = gauge.latitude + '/' + gauge.longitude;
+      }
+      this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+coords)
       .subscribe((data : any) =>
       {
-
-
-          console.log(data);
-          this.nearestGauge=data;
-          this.nearestGaugeID=data.gauge_id;
-          this.nearestGaugeIncID=data.id;
-          console.log(this.nearestGaugeIncID);
-        
+        this.nearestGauge=data;
+        this.nearestGaugeID=data.gauge_id;
+        this.nearestGaugeIncID=data.id;
+        this.setUnits(this.nearestGaugeIncID);
       },
       (error : any) =>
       {
@@ -275,9 +267,7 @@ export class Tab1Page{
     .subscribe((data : any) =>
     {
       this.gauges=data;
-      console.log('Data printed here.');
-      console.log(data);
-      
+      this.getLocation();
     },
     (error : any) =>
     {
