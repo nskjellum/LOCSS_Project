@@ -86,7 +86,7 @@
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
-      "id": "cordova-sqlite-storage"
+      "id": "cordova-sqlite-storage@^5.0.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -103,6 +103,14 @@
     "source": {
       "type": "registry",
       "id": "https://github.com/tiltshiftfocus/cordova-plugin-cache.git"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information"
     },
     "is_top_level": true,
     "variables": {}

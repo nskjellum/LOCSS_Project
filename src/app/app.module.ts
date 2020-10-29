@@ -17,6 +17,8 @@ import { CacheModule } from 'ionic-cache';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { Network } from '@ionic-native/network/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,7 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Geolocation,
     EmailComposer,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+     Network
   ],
   bootstrap: [AppComponent]
 })

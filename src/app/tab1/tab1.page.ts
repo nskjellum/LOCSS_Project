@@ -2,14 +2,23 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+
 import * as moment from 'moment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
+//
+
+import { Storage } from '@ionic/storage';
+import { ApiService } from '../services/api.service';
+import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
+import { Network } from '@ionic-native/network/ngx'
+//
 
 
 const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
@@ -28,6 +37,10 @@ export class Tab1Page{
   nearestGauge:any;
   nearestGaugeID:string;
   nearestGaugeIncID:number;
+
+  height_data:any;
+  units = "Centimeters";
+
   gauges=[];
   date:any;
   time:any;
@@ -35,6 +48,7 @@ export class Tab1Page{
   gauge_data:any;
   problem_data:any;
   value = 0 ;
+  db = 0;
 
   constructor (
     private geolocation:Geolocation,
@@ -42,14 +56,28 @@ export class Tab1Page{
     private http:HttpClient,
     private toastCtrl: ToastController, 
     private router:Router,
+    private route:ActivatedRoute,
     private emailcomposer: EmailComposer,
     private navCtrl: NavController,
-    public changeDetectorRef: ChangeDetectorRef
+    public changeDetectorRef: ChangeDetectorRef,
+    private networkService:NetworkService,
+    private network: Network,
+    private apiService: ApiService,
 
-    ){}
+    )
+    {
+
+        //subscribes to network to send all requests on connect
+      //this.network.onConnect().subscribe(() => {
+
+      //        this.sendSaved();
+
+       //     });
+
+    }
 
   ngOnInit(){
-    
+
     this.getCurrentDateTime()
     this.getAllGauges();
     
@@ -58,10 +86,43 @@ export class Tab1Page{
     }
     else{
     }
-    //this.getLocation();
+
+          this.network.onConnect().subscribe(() => {
+
+            this.sendSaved();
+
+          });
 
     
   }
+
+  ionViewWillEnter() {
+
+    console.log('Tab1 Being Viewed');
+
+             let id=this.route.snapshot.paramMap.get('id');
+             console.log(id);
+
+    if(id != null) {
+         console.log("Changing ID from Route");
+
+
+         console.log(this.gauges);
+
+         this.nearestGauge = this.gauges.filter(m => m.id == id)
+         this.nearestGaugeID= this.nearestGauge[0].gauge_id;
+
+
+         console.log('New Gauge Value on Entering');
+         console.log(this.nearestGaugeID);
+
+         this.setUnits(id);
+
+
+    }
+
+  }
+
 
   async presentAlert(){
 
@@ -124,9 +185,6 @@ export class Tab1Page{
       await alert.present();
   }
 
-  
-
-
 
   getCurrentDateTime(){
       let date = new Date();
@@ -154,6 +212,7 @@ export class Tab1Page{
         this.nearestGauge=data;
         this.nearestGaugeID=data.gauge_id;
         this.nearestGaugeIncID=data.id;
+        this.setUnits(this.nearestGaugeIncID);
       },
       (error : any) =>
       {
@@ -221,6 +280,19 @@ export class Tab1Page{
 
 
   async onSubmit(form:NgForm){
+  // Check Network Status before creating toast
+  //If Offline, Create Toast to indicate data will be sent when online again.
+
+
+    let status = this.networkService.getCurrentNetworkStatus();
+
+    if(status === ConnectionStatus.Online)
+    {
+
+    console.log('Connected to Network. Submitting Information');
+
+
+
 
     let toast = await this.toastCtrl.create({
       message: 'Data submitted successfuly',
@@ -232,17 +304,175 @@ export class Tab1Page{
 
     this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
     console.log(form);
-    this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
-    .subscribe(data => {
-      console.log(data['_body']);
-     }, error => {
-      console.log(error);
-    });
+
+    //API CALL
+
+    console.log('Check Console Here');
+    console.log(form.value);
+    console.log('Data JSON Form');
+    let result = form.value;
+    console.log(JSON.stringify({result}));
+
+
+
+
+
+
+
+//"http://liquidearthlake.org/json/reading/store", form.value
+//"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
+//"http://liquidearthlake.org/json/store/offline", result
+//"http://liquidearthlake.org/json/reading/store", JSON.stringify({result})
+
+
+
+
+
+    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
+            headers: { 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Methods': 'POST'
+                }
+             })
+    .subscribe(response => {
+
+      console.log('Response is Here');
+      console.log(JSON.stringify(response));
+     }, error =>  {
+          console.log('Error Printed Here');
+          console.log(error);
+          console.log(JSON.stringify(error));
+            });
+
     console.log(this.gauges);
-    
+
     console.log(this.nearestGauge[0].gauge_id);
     this.router.navigateByUrl('tabs/tab3/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
   }
+  else
+  {
 
+    console.log('Not connected to Network. Saving submission.');
+
+
+
+    // Method to Store Data in Ionic Storage
+    // This data must be retrieved whenever the app goes online.
+
+    this.apiService.handleRequest(form.value, this.db);
+    this.db++;
+  }
+
+}
+
+    async sendSaved() {
+
+    console.log('Sending any saved requests.')
+
+    for(this.db; this.db >= 0; this.db--) {
+
+     this.apiService.getRequest(this.db).then((result) => {
+
+
+               if(result != null) {
+               //API CALL
+
+                   console.log('Sending non-null request');
+
+                   console.log(result);
+                   console.log('Data JSON Form');
+                   console.log(JSON.stringify({result}));
+
+
+    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
+            headers: { 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Methods': 'POST'
+                }
+             })
+    .subscribe(response => {
+
+              console.log('Response is Here');
+              console.log(JSON.stringify(response));
+     }, error =>  {
+                 console.log('Error Printed Here');
+                    console.log(error);
+                     console.log(JSON.stringify(error));
+            });
+
+                   console .log(this.db);
+                   console.log('Request Sent');
+
+               }
+                });
+            let toast = await this.toastCtrl.create({
+                message: 'Offline Requests Successfully Sent',
+                duration: 2000,
+                position: "bottom"
+                                  });
+
+        this.apiService.clearStorage(this.db);
+    }
+
+    if(this.db < 0) {
+    this.db = 0;
+    }
+}
+
+
+ OnChange(event) {
+
+    console.log(this.gauges);
+ this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
+ this.nearestGaugeID= this.nearestGauge[0].gauge_id;
+ console.log('New Gauge Value');
+ console.log(this.nearestGaugeID);
+
+ this.setUnits(event.target.value);
+
+
+
+ }
+
+    setUnits(id) {
+
+        console.log("Setting Units");
+
+             this.http
+             .get('http://liquidearthlake.org/json/getgauge/'+id)
+               .subscribe((data : any) =>
+               {
+
+               this.height_data=data;
+
+
+
+                    if(this.height_data[0].unit == "FEET") {
+
+                        this.units = "Feet";
+
+                    }
+                    else if(this.height_data[0].unit == "METER") {
+
+                        this.units = "Meters";
+
+                    }
+                    else if(this.height_data[0].unit == "CENTIMETER") {
+
+
+                                      this.units = "Centimeters";
+
+                      }
+
+
+                        console.log(this.units);
+
+               },
+               (error : any) =>
+               {
+                 console.log(error);
+               });
+
+    }
  
 }

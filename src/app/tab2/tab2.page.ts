@@ -37,7 +37,7 @@ export class Tab2Page {
   }
 
  
-  /*
+/*
   
   getLocation(){
 
@@ -79,12 +79,15 @@ export class Tab2Page {
 
 
 getLocation(){
-  console.log('Hi');
+  console.log('Caching User Location');
+
+
+
   let url = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
   let cacheKey = url;
   let request = this.http.get(url, { observe: 'response'});
-  
-  
+
+
 
   return this.cache.loadFromObservable(cacheKey, request)
   .pipe(map(res => res.body))
@@ -93,7 +96,9 @@ getLocation(){
       this.gauges = res;
       console.log(res);
     })
+
 }
+
 
 
 }
