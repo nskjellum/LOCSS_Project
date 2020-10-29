@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
@@ -28,7 +28,8 @@ const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page{
+export class Tab1Page implements OnInit, AfterViewInit{
+  @ViewChild('heightInput') heightInput: any;
 
 
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -92,8 +93,10 @@ export class Tab1Page{
             this.sendSaved();
 
           });
+  }
 
-    
+  ngAfterViewInit() {
+    this.heightInput.el.setFocus();
   }
 
   ionViewWillEnter() {
