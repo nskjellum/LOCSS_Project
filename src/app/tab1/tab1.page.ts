@@ -67,7 +67,9 @@ export class Tab1Page implements OnInit, AfterViewInit{
 
     )
     {
-
+      this.router.routeReuseStrategy.shouldReuseRoute = function(){
+        return false;
+     }
         //subscribes to network to send all requests on connect
       //this.network.onConnect().subscribe(() => {
 
@@ -123,6 +125,8 @@ export class Tab1Page implements OnInit, AfterViewInit{
 
 
     }
+
+    this.heightInput.el.setFocus();
 
   }
 
@@ -205,9 +209,11 @@ export class Tab1Page implements OnInit, AfterViewInit{
     this.geolocation.getCurrentPosition().then((resp) => {
       this.isGeoLocationFound=true;
       let coords = resp.coords.latitude+'/'+resp.coords.longitude;
-      if(this.router.url.split('/')[3]) {
+      if(this.router.url.split('/')[3] && this.router.url.split('/')[3] != 'closest') {
         let gauge = this.gauges.find(g => g.id == parseInt(this.router.url.split('/')[3]));
         coords = gauge.latitude + '/' + gauge.longitude;
+      } else if (this.router.url.split('/')[3] && this.router.url.split('/')[3] == 'closest') {
+        this.router.navigateByUrl('/tabs/tab1');
       }
       this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+coords)
       .subscribe((data : any) =>

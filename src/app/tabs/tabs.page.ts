@@ -17,7 +17,7 @@ export class TabsPage {
     if(this.router.url.indexOf('tabs/tab3') > -1 || (this.router.url.indexOf('tabs/tab1') > -1 && this.router.url.split('/').length > 3)) {
       this.router.navigateByUrl('/tabs/tab1/' + this.router.url.split('/')[3]);
     } else {
-      window.location.href = '/tabs/tab1';
+      this.router.navigateByUrl('/tabs/tab1');
     }
   }
 }
