@@ -216,6 +216,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
         this.nearestGaugeID=data.gauge_id;
         this.nearestGaugeIncID=data.id;
         this.setUnits(this.nearestGaugeIncID);
+        this.heightInput.el.setFocus();
       },
       (error : any) =>
       {
