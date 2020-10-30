@@ -30,6 +30,7 @@ const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0
 })
 export class Tab1Page implements OnInit, AfterViewInit{
   @ViewChild('heightInput') heightInput: any;
+  @ViewChild('notesInput') notesInput: any;
 
 
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -98,6 +99,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit() {
+    this.notesInput.el.setFocus();
     this.heightInput.el.setFocus();
   }
 
@@ -126,6 +128,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
 
     }
 
+    this.notesInput.el.setFocus();
     this.heightInput.el.setFocus();
 
   }
@@ -222,6 +225,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
         this.nearestGaugeID=data.gauge_id;
         this.nearestGaugeIncID=data.id;
         this.setUnits(this.nearestGaugeIncID);
+        this.notesInput.el.setFocus();
         this.heightInput.el.setFocus();
       },
       (error : any) =>
@@ -476,6 +480,8 @@ export class Tab1Page implements OnInit, AfterViewInit{
 
 
                         console.log(this.units);
+                        this.notesInput.el.setFocus();
+                        this.heightInput.el.setFocus();
 
                },
                (error : any) =>
