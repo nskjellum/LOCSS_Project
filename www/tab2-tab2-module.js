@@ -89,7 +89,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n    \r\n  \r\n\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button  text=\"Back\" defaultHref=\"/tabs/tab1\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>\r\n      List of Gauges\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content no-padding>\r\n       <ion-grid>\r\n         <ion-row>\r\n           <ion-col><ion-item style=\"color:blue\" [href]=\"'/gauge-list-map'\">Map View</ion-item></ion-col>\r\n      \r\n         </ion-row>\r\n       </ion-grid>\r\n\t     <ion-grid>\r\n\r\n\r\n          <ion-row style=\"font-weight: bold;\">\r\n            <ion-col >Gauge ID</ion-col> \t\r\n            <ion-col>Gauge Name</ion-col>\r\n            <ion-col>Distance (Mile)</ion-col>\r\n            \r\n          </ion-row>\r\n         \r\n          <ion-row *ngFor=\"let gauge of gauges\" >\r\n          \r\n              <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{gauge['gauge_id']}}</ion-col> -->\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['gauge_id'].slice(0,4)}}</div></ion-item></ion-col>\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>\r\n             <!-- <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['city']}}</div></ion-item></ion-col>-->\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\"> {{gauge['distance']}}</ion-item></ion-col>\r\n             \r\n          </ion-row>\r\n       \r\n        </ion-grid>\r\n\r\n\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n    \r\n  \r\n\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button  text=\"Back\" defaultHref=\"/tabs/tab1\"></ion-back-button>\r\n        </ion-buttons>\r\n    <ion-title>\r\n      List of Gauges\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content no-padding>\r\n       <ion-grid>\r\n         <ion-row>\r\n           <ion-col><ion-item style=\"color:blue\" [href]=\"'/gauge-list-map'\">Map View</ion-item></ion-col>\r\n      \r\n         </ion-row>\r\n       </ion-grid>\r\n\t     <ion-grid>\r\n\r\n\r\n          <ion-row style=\"font-weight: bold;\">\r\n            <ion-col > <button (click)=\"sortGauges('gauge_id')\" > Gauge ID </button> </ion-col>\r\n            <ion-col> <button (click)=\"sortGauges('name')\" > Gauge Name </button> </ion-col>\r\n\r\n              <!-- Consider Implementing Conversion for Miles - Kilometers based on nearest Gauge -->\r\n            <ion-col> <button (click)=\"sortGauges('distance')\" > Distance (Mile) </button> </ion-col>\r\n            \r\n          </ion-row>\r\n         \r\n          <ion-row *ngFor=\"let gauge of gauges\" >\r\n          \r\n              <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{gauge['gauge_id']}}</ion-col> -->\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['gauge_id'].slice(0,4)}}</div></ion-item></ion-col>\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>\r\n             <!-- <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\">  <div no-margin no-padding>{{gauge['city']}}</div></ion-item></ion-col>-->\r\n              <ion-col no-padding><ion-item no-margin [href]=\"'tabs/tab3/'+gauge['id']+'/'+gauge['name']\" routerDirection=\"forward\"> {{gauge['distance']}}</ion-item></ion-col>\r\n             \r\n          </ion-row>\r\n       \r\n        </ion-grid>\r\n\r\n\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -140,6 +140,13 @@ var Tab2Page = /** @class */ (function () {
         this.splash = splash;
         this.geolocation = geolocation;
         this.cache = cache;
+        //Determines direction of column sorting.
+        // 0 Sorted by Increasing Distance
+        // 1 Id - Alphabetical Ascending
+        // 2 Name - Alphabetical Ascending
+        // 4 Descending Order - Descending Order
+        // (Used for all repeat pushes of the button.)
+        this.sortStatus = 0;
         this.filmsKey = 'my-films-group';
     }
     Tab2Page.prototype.ngOnInit = function () {
@@ -200,6 +207,46 @@ var Tab2Page = /** @class */ (function () {
             _this.gauges = res;
             console.log(res);
         });
+    };
+    Tab2Page.prototype.sortGauges = function (col) {
+        console.log("Sorting column by", col);
+        //If sortStatus is not 1, sorts by ascending, otherwise, descending.
+        if (col === 'gauge_id') {
+            if (this.sortStatus != 1) {
+                this.gauges.sort(function (a, b) { return (b[col] < a[col]) ? 1 : -1; });
+                this.sortStatus = 1;
+            }
+            else {
+                this.gauges.sort(function (a, b) { return (b[col] > a[col]) ? 1 : -1; });
+                this.sortStatus = 4;
+            }
+        }
+        //If sortStatus is not 2, sorts by ascending, otherwise, descending.
+        else if (col === 'name') {
+            if (this.sortStatus != 2) {
+                this.gauges.sort(function (a, b) { return (b[col] < a[col]) ? 1 : -1; });
+                this.sortStatus = 2;
+            }
+            else {
+                this.gauges.sort(function (a, b) { return (b[col] > a[col]) ? 1 : -1; });
+                this.sortStatus = 4;
+            }
+        }
+        //If sortStatus is not 0, sorts by ascending, otherwise, descending.
+        else if (col === 'distance') {
+            if (this.sortStatus != 0) {
+                this.gauges.sort(function (a, b) { return (b[col] < a[col]) ? 1 : -1; });
+                this.sortStatus = 0;
+            }
+            else {
+                this.gauges.sort(function (a, b) { return (b[col] > a[col]) ? 1 : -1; });
+                this.sortStatus = 4;
+            }
+        }
+        console.log(this.gauges);
+        //let a = ["9", "1" , "3" , "7" , "5"];
+        //a.sort((a,b) => (a > b)?1:-1);
+        //console.log(a);
     };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({

@@ -4,12 +4,12 @@
         "source": "C:\\Users\\nskje\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\093363421d9fb6a95c904a8a0816a433\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "C:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
-        "source": "C:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
-    },
-    {
         "merged": "C:\\Users\\Dipayan Banik\\Desktop\\LOCSS_IONIC\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_action.xml.flat",
         "source": "C:\\Users\\Dipayan Banik\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\0751441302d48645fbd7b57b20f53b57\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
+        "source": "C:\\Users\\nskje\\AndroidStudioProjects\\LOCSS_Project\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
     },
     {
         "merged": "C:\\Users\\Dipayan Banik\\Desktop\\LOCSS_IONIC\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",

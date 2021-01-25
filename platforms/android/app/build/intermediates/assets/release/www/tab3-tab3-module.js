@@ -14742,7 +14742,7 @@ var Tab3PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-back-button text=\"Back\" defaultHref=\"/tabs/tab2\"></ion-back-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n\r\n\r\n  <ion-card>\r\n    <ion-button\r\n            [color]=\"buttonVal == 0 ? 'success': ''\"\r\n            (click)= \"getReadingsAll()\"\r\n            >All data\r\n    </ion-button>\r\n    <ion-button\r\n\r\n            [color]=\"buttonVal == 1 ? 'success': ''\"\r\n            (click)= \"getReadingsOney()\"\r\n             >Last Year\r\n    </ion-button>\r\n\r\n  <!-- <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button> -->\r\n  <ion-button\r\n              [color]=\"buttonVal == 2 ? 'success': ''\"\r\n              (click)= \"getReadings()\"\r\n              >Last Six Months\r\n  </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 3 ? 'success': ''\"\r\n            (click)= \"getReadingsThree()\"\r\n            >Last Three Months\r\n    </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 4 ? 'success': ''\"\r\n            (click)= \"getReadingsOnem()\"\r\n            >Last One Month\r\n    </ion-button>\r\n \r\n\r\n\r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n\r\n  \r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n          <ion-button (click)=\"goBack()\">\r\n            <ion-icon name=\"arrow-back-sharp\" style=\"zoom:120%;\"></ion-icon>\r\n            <span class=\"button-text pl-1\" part=\"text\" style=\"letter-spacing:0;\">Back</span>\r\n          </ion-button>\r\n        </ion-buttons>\r\n      \r\n    <ion-title>\r\n        {{name}}\r\n    </ion-title>\r\n  </ion-toolbar> \r\n  \r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n\r\n\r\n  <ion-card>\r\n    <ion-button\r\n            [color]=\"buttonVal == 0 ? 'success': ''\"\r\n            (click)= \"getReadingsAll()\"\r\n            >All data\r\n    </ion-button>\r\n    <ion-button\r\n\r\n            [color]=\"buttonVal == 1 ? 'success': ''\"\r\n            (click)= \"getReadingsOney()\"\r\n             >Last Year\r\n    </ion-button>\r\n\r\n  <!-- <ion-button color =\"success\" (click)= \"getReadings()\" >Last Six Months</ion-button> -->\r\n  <ion-button\r\n              [color]=\"buttonVal == 2 ? 'success': ''\"\r\n              (click)= \"getReadings()\"\r\n              >Last Six Months\r\n  </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 3 ? 'success': ''\"\r\n            (click)= \"getReadingsThree()\"\r\n            >Last Three Months\r\n    </ion-button>\r\n\r\n    <ion-button\r\n            [color]=\"buttonVal == 4 ? 'success': ''\"\r\n            (click)= \"getReadingsOnem()\"\r\n            >Last One Month\r\n    </ion-button>\r\n\r\n  <ion-button\r\n\r\n            color=\"success\"\r\n            (click)= \"goToPage()\"\r\n\r\n            >Add Measurement\r\n  </ion-button>\r\n\r\n\r\n    <ion-card-content zooming=\"true\" direction=\"xy\"> \r\n      <canvas #barCanvas></canvas>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card>\r\n    \r\n    <ion-card-header>\r\n      {{name}}\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n\r\n  \r\n     \r\n      <ion-grid zooming=\"true\" direction=\"xy\" border=\"1\">\r\n        <ion-row style=\"font-weight: bold;\">\r\n          <ion-col>Date</ion-col>\r\n          <ion-col>Height</ion-col>\r\n        </ion-row>\r\n        <ng-container *ngFor=\"let dat of data;let i = index;\" >\r\n          <ion-row  *ngIf=\"loadAllData || i<4\">\r\n            <!-- <ion-col style=\"color: #92a8d1;border-style: solid;\r\n              border-width: 2px;\">{{dat['date']}}</ion-col> -->\r\n             <!-- <ion-col style=\"color: green;border-style: solid;\r\n              border-width: 2px;\">{{dat['height']}}</ion-col> -->\r\n              <ion-col>{{dat['date']}}</ion-col>\r\n              <ion-col>{{dat['height']}}</ion-col>\r\n\r\n\r\n          </ion-row>\r\n        </ng-container>\r\n        <ion-button *ngIf=\"!loadAllData\" color=\"success\" expand=\"block\" (click)=\"LoadAllReadings()\">Load All Readings</ion-button>\r\n      </ion-grid>\r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n \r\n\r\n</ion-content>\r\n\r\n"
 
 /***/ }),
 
@@ -14786,10 +14786,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Tab3Page = /** @class */ (function () {
-    function Tab3Page(alertController, http, route, splash) {
+    function Tab3Page(alertController, http, route, router, splash) {
         this.alertController = alertController;
         this.http = http;
         this.route = route;
+        this.router = router;
         this.splash = splash;
         this.buttonVal = 0;
     }
@@ -14797,9 +14798,7 @@ var Tab3Page = /** @class */ (function () {
         this.loadAllData = false;
         //this.splash.show();
         this.getHeight();
-        this.getReadings();
         // this.getHeight();
-        this.getReadingsForTable(6);
         this.splash.hide();
         //  this.handleButtonClick();
         //this.drawGraph();
@@ -14817,13 +14816,20 @@ var Tab3Page = /** @class */ (function () {
      });
       await alert.present();
    }*/
+    Tab3Page.prototype.goBack = function () {
+        window.history.back();
+    };
     Tab3Page.prototype.getReadingsForTable = function (range) {
         var _this = this;
         var id = this.route.snapshot.paramMap.get('id');
+        console.log("Id for Readings");
+        console.log(id);
         var source;
         if (range == 0) {
             //All Data
             var source_1 = ('http://liquidearthlake.org/json/getjsondataall/' + id);
+            console.log("Source for table");
+            console.log(source_1);
             this.http
                 .get(source_1)
                 .subscribe(function (data) {
@@ -14836,6 +14842,8 @@ var Tab3Page = /** @class */ (function () {
         else if (range == 1) {
             //One Year
             var source_2 = ('http://liquidearthlake.org/json/getjsondataoney/' + id);
+            console.log("Source for table");
+            console.log(source_2);
             this.http
                 .get(source_2)
                 .subscribe(function (data) {
@@ -14848,6 +14856,8 @@ var Tab3Page = /** @class */ (function () {
         else if (range == 2) {
             //Three Months
             var source_3 = ('http://liquidearthlake.org/json/getjsondatathreem/' + id);
+            console.log("Source for table");
+            console.log(source_3);
             this.http
                 .get(source_3)
                 .subscribe(function (data) {
@@ -14860,6 +14870,8 @@ var Tab3Page = /** @class */ (function () {
         else if (range == 3) {
             //One Month
             var source_4 = ('http://liquidearthlake.org/json/getjsondataonem/' + id);
+            console.log("Source for table");
+            console.log(source_4);
             this.http
                 .get(source_4)
                 .subscribe(function (data) {
@@ -14872,6 +14884,8 @@ var Tab3Page = /** @class */ (function () {
         else {
             //Default Six Months
             var source_5 = ('http://liquidearthlake.org/json/getjsondatasixm/' + id);
+            console.log("Source for table");
+            console.log(source_5);
             this.http
                 .get(source_5)
                 .subscribe(function (data) {
@@ -14887,12 +14901,15 @@ var Tab3Page = /** @class */ (function () {
         var id = this.route.snapshot.paramMap.get('id');
         //let variable = this.route.snapshot.paramMap.get('unit');
         //console.log('hi' + variable);
+        console.log("Id for height");
         console.log(id);
         this.http
             .get('http://liquidearthlake.org/json/getgauge/' + id)
             .subscribe(function (data) {
             _this.height_data = data;
             console.log(_this.height_data[0].unit);
+            _this.getReadings();
+            _this.getReadingsForTable(6);
         }, function (error) {
             console.log(error);
         });
@@ -15496,6 +15513,9 @@ var Tab3Page = /** @class */ (function () {
     Tab3Page.prototype.LoadAllReadings = function () {
         this.loadAllData = true;
     };
+    Tab3Page.prototype.goToPage = function () {
+        this.router.navigateByUrl('/tabs/tab1/' + this.router.url.split('/')[3]);
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('barCanvas'),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -15506,7 +15526,7 @@ var Tab3Page = /** @class */ (function () {
             template: __webpack_require__(/*! ./tab3.page.html */ "./src/app/tab3/tab3.page.html"),
             styles: [__webpack_require__(/*! ./tab3.page.scss */ "./src/app/tab3/tab3.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"]])
     ], Tab3Page);
     return Tab3Page;
 }());
