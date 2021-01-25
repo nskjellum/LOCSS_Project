@@ -19,21 +19,30 @@ export class Tab2Page {
   lat:any;
   long:any;
   tmp:any;
+
+  //Determines direction of column sorting.
+  // 0 Sorted by Increasing Distance
+  // 1 Id - Alphabetical Ascending
+  // 2 Name - Alphabetical Ascending
+  // 4 Descending Order - Descending Order
+  // (Used for all repeat pushes of the button.)
+
+  sortStatus:number=0;
   public films: Observable <any>;
   filmsKey = 'my-films-group';
   
-	constructor(private storage: Storage, private http: HttpClient, private splash:SplashScreen,private geolocation:Geolocation, private cache: CacheService){}
+  constructor(private storage: Storage, private http: HttpClient, private splash:SplashScreen,private geolocation:Geolocation, private cache: CacheService){}
 
-	ngOnInit(){
+  ngOnInit(){
      // this.splash.show();
       this.getLocation();
       this.getAllGauges();
       
-	}
+  }
 
-	getAllGauges(){
+  getAllGauges(){
      console.log(this.lat);
-	 
+   
   }
 
  
@@ -99,7 +108,58 @@ getLocation(){
 
 }
 
+sortGauges(col) {
+console.log("Sorting column by", col);
 
+
+//If sortStatus is not 1, sorts by ascending, otherwise, descending.
+if(col === 'gauge_id') {
+
+    if(this.sortStatus != 1) {
+        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+        this.sortStatus = 1;
+        }
+    else {
+        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+        this.sortStatus = 4;
+        }
+}
+//If sortStatus is not 2, sorts by ascending, otherwise, descending.
+else if(col === 'name'){
+
+    if(this.sortStatus != 2) {
+        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+        this.sortStatus = 2;
+        }
+    else {
+        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+        this.sortStatus = 4;
+        }
+}
+//If sortStatus is not 0, sorts by ascending, otherwise, descending.
+else if(col === 'distance'){
+
+    if(this.sortStatus != 0) {
+        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+        this.sortStatus = 0;
+        }
+    else {
+        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+        this.sortStatus = 4;
+        }
+}
+
+
+
+
+console.log(this.gauges);
+
+//let a = ["9", "1" , "3" , "7" , "5"];
+//a.sort((a,b) => (a > b)?1:-1);
+//console.log(a);
 
 }
 
+
+
+}

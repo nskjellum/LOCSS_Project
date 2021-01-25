@@ -19,13 +19,15 @@
       
          </ion-row>
        </ion-grid>
-	     <ion-grid>
+       <ion-grid>
 
 
           <ion-row style="font-weight: bold;">
-            <ion-col >Gauge ID</ion-col> 	
-            <ion-col>Gauge Name</ion-col>
-            <ion-col>Distance (Mile)</ion-col>
+            <ion-col > <button (click)="sortGauges('gauge_id')" > Gauge ID </button> </ion-col>
+            <ion-col> <button (click)="sortGauges('name')" > Gauge Name </button> </ion-col>
+
+              <!-- Consider Implementing Conversion for Miles - Kilometers based on nearest Gauge -->
+            <ion-col> <button (click)="sortGauges('distance')" > Distance (Mile) </button> </ion-col>
             
           </ion-row>
          
