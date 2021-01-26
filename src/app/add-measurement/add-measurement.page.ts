@@ -29,6 +29,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit {
   @ViewChild('hiddenInput') hiddenInput: ElementRef;
 
 
+  //If you can see this, you can read!
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
   isGeoLocationFound: boolean;
