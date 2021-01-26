@@ -35,10 +35,10 @@
           
               <!-- <ion-col style="color: #92a8d1;border-style: solid;
               border-width: 2px;">{{gauge['gauge_id']}}</ion-col> -->
-              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['gauge_id'].slice(0,4)}}</div></ion-item></ion-col>
-              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>
-             <!-- <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['city']}}</div></ion-item></ion-col>-->
-              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward"> {{gauge['distance']}}</ion-item></ion-col>
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['gauge_id'].slice(0,4)}}</div></ion-item></ion-col>
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>
+             <!-- <ion-col no-padding><ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['city']}}</div></ion-item></ion-col>-->
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward"> {{gauge['distance']}}</ion-item></ion-col>
              
           </ion-row>
        

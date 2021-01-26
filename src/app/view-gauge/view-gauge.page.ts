@@ -11,16 +11,16 @@ import * as $ from 'jquery';
 
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-view-gauge',
+  templateUrl: 'view-gauge.page.html',
+  styleUrls: ['view-gauge.page.scss']
 })
 
 
 
 
 
-export class Tab3Page {
+export class ViewGaugePage {
   
   constructor(private alertController: AlertController, private http: HttpClient, private route: ActivatedRoute, private router: Router, private splash: SplashScreen){}
   @ViewChild('barCanvas') barCanvas;

@@ -361,7 +361,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
     console.log(this.gauges);
 
     console.log(this.nearestGauge[0].gauge_id);
-    this.router.navigateByUrl('tabs/tab3/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
+    this.router.navigateByUrl('tabs/view-gauge/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
   }
   else
   {

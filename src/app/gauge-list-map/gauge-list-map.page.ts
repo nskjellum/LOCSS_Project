@@ -151,9 +151,9 @@ addMarker(lat,lng,label,id,name) {
   marker.addListener("mouseout",function () {
       infoWindow.close();
   });*/
-  console.log('tabs/tab3/'+id+'/'+name);
+  console.log('tabs/view-gauge/'+id+'/'+name);
   marker.addListener('click', ()=> {
-    this.router.navigateByUrl('tabs/tab3/'+id+'/'+name);
+    this.router.navigateByUrl('tabs/view-gauge/'+id+'/'+name);
 
   });
 
