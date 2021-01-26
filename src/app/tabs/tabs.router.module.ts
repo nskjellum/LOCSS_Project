@@ -8,15 +8,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'add-measurement',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../add-measurement/add-measurement.module#AddMeasurementPageModule'
           },
           {
             path: ':gaugeId',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../add-measurement/add-measurement.module#AddMeasurementPageModule'
           },
           
         ]
@@ -50,7 +50,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/add-measurement',
         pathMatch: 'full'
       }
     ]
@@ -62,7 +62,7 @@ const routes: Routes = [
   }
  /* {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/add-measurement',
     pathMatch: 'full'
   }*/
 ];

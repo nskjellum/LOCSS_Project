@@ -24,11 +24,11 @@ import { Network } from '@ionic-native/network/ngx'
 const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-add-measurement',
+  templateUrl: 'add-measurement.page.html',
+  styleUrls: ['add-measurement.page.scss']
 })
-export class Tab1Page implements OnInit, AfterViewInit{
+export class AddMeasurementPage implements OnInit, AfterViewInit{
   @ViewChild('heightInput') heightInput: any;
   @ViewChild('hiddenInput') hiddenInput: ElementRef;
 
@@ -105,7 +105,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
 
   ionViewWillEnter() {
 
-    console.log('Tab1 Being Viewed');
+    console.log('AddMeasurement Being Viewed');
 
              let id=this.route.snapshot.paramMap.get('id');
              console.log(id);
@@ -216,7 +216,7 @@ export class Tab1Page implements OnInit, AfterViewInit{
         let gauge = this.gauges.find(g => g.id == parseInt(this.router.url.split('/')[3]));
         coords = gauge.latitude + '/' + gauge.longitude;
       } else if (this.router.url.split('/')[3] && this.router.url.split('/')[3] == 'closest') {
-        this.router.navigateByUrl('/tabs/tab1');
+        this.router.navigateByUrl('/tabs/add-measurement');
       }
       this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+coords)
       .subscribe((data : any) =>
