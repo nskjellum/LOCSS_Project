@@ -31,11 +31,11 @@ const routes: Routes = [
        ]
      },
       {
-        path: 'tab4',
+        path: 'home',
         children: [
           {
             path: '',
-            loadChildren: '../tab4/tab4.module#Tab4PageModule'
+            loadChildren: '../home/home.module#HomePageModule'
           }
         ]
       },
@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab4',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
  /* {
