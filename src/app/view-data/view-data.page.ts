@@ -9,11 +9,11 @@ import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { map } from 'rxjs/operators';
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-view-data',
+  templateUrl: 'view-data.page.html',
+  styleUrls: ['view-data.page.scss']
 })
-export class Tab2Page {
+export class ViewDataPage {
 
   gauges:any;
   lat:any;
