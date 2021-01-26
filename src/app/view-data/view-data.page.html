@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Back" defaultHref="/tabs/add-measurement"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      List of Gauges
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item style="color:blue" [href]="'/gauge-list-map'">Map View</ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row style="font-weight: bold;">
+      <ion-col> <button (click)="sortGauges('gauge_id')"> Gauge ID </button> </ion-col>
+      <ion-col> <button (click)="sortGauges('name')"> Gauge Name </button> </ion-col>
+      <!-- Consider Implementing Conversion for Miles - Kilometers based on nearest Gauge -->
+      <ion-col> <button (click)="sortGauges('distance')"> Distance (Mile) </button> </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let gauge of gauges">
+      <ion-col no-padding>
+        <ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">
+          <div no-margin no-padding>{{gauge['gauge_id'].slice(0,4)}}</div>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding>
+        <ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">
+          <div no-margin no-padding>{{gauge['name']}}</div>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding>
+        <ion-item no-margin [href]="'tabs/view-gauge/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">
+          {{gauge['distance']}}</ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

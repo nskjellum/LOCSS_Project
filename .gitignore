@@ -1,0 +1,23 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore node_modules folder
+node_modules
+
+# Ignore SASS config files
+.sass-cache
+
+# Ignore www folder
+www
+
+# Ignore platforms folder
+platforms
+
+# Ignore plugins folder
+plugins
+
+# Ignore .vscode folder
+.vscode
+
+# Ignore .idea folder
+.idea
