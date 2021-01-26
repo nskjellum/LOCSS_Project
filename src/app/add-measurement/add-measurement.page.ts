@@ -1,9 +1,8 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-
 
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,88 +11,86 @@ import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
-
 import { Storage } from '@ionic/storage';
 import { ApiService } from '../services/api.service';
 import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
 import { Network } from '@ionic-native/network/ngx'
 
 
-const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
+const URL = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
 
 @Component({
   selector: 'app-add-measurement',
   templateUrl: 'add-measurement.page.html',
   styleUrls: ['add-measurement.page.scss']
 })
-export class AddMeasurementPage implements OnInit, AfterViewInit{
+export class AddMeasurementPage implements OnInit, AfterViewInit {
   @ViewChild('heightInput') heightInput: any;
   @ViewChild('hiddenInput') hiddenInput: ElementRef;
 
 
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
-  isGeoLocationFound:boolean;
-  nearestGauge:any;
-  nearestGaugeID:string;
-  nearestGaugeIncID:number;
+  isGeoLocationFound: boolean;
+  nearestGauge: any;
+  nearestGaugeID: string;
+  nearestGaugeIncID: number;
 
-  height_data:any;
+  height_data: any;
   units = "Centimeters";
 
-  gauges=[];
-  date:any;
-  time:any;
-  isBubbleLevelOkay:string;
-  gauge_data:any;
-  problem_data:any;
-  value = 0 ;
+  gauges = [];
+  date: any;
+  time: any;
+  isBubbleLevelOkay: string;
+  gauge_data: any;
+  problem_data: any;
+  value = 0;
   db = 0;
 
-  constructor (
-    private geolocation:Geolocation,
-    private alertController:AlertController,
-    private http:HttpClient,
-    private toastCtrl: ToastController, 
-    private router:Router,
-    private route:ActivatedRoute,
+  constructor(
+    private geolocation: Geolocation,
+    private alertController: AlertController,
+    private http: HttpClient,
+    private toastCtrl: ToastController,
+    private router: Router,
+    private route: ActivatedRoute,
     private emailcomposer: EmailComposer,
     private navCtrl: NavController,
     public changeDetectorRef: ChangeDetectorRef,
-    private networkService:NetworkService,
+    private networkService: NetworkService,
     private network: Network,
     private apiService: ApiService,
 
-    )
-    {
-      this.router.routeReuseStrategy.shouldReuseRoute = function(){
-        return false;
-     }
-        //subscribes to network to send all requests on connect
-      //this.network.onConnect().subscribe(() => {
-
-      //        this.sendSaved();
-
-       //     });
-
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
     }
+    //subscribes to network to send all requests on connect
+    //this.network.onConnect().subscribe(() => {
 
-  ngOnInit(){
+    //        this.sendSaved();
+
+    //     });
+
+  }
+
+  ngOnInit() {
 
     this.getCurrentDateTime()
     this.getAllGauges();
-    
-    if(!this.isGeoLocationFound){
-        //this.presentAlertPrompt();
+
+    if (!this.isGeoLocationFound) {
+      //this.presentAlertPrompt();
     }
-    else{
+    else {
     }
 
-          this.network.onConnect().subscribe(() => {
+    this.network.onConnect().subscribe(() => {
 
-            this.sendSaved();
+      this.sendSaved();
 
-          });
+    });
   }
 
   ngAfterViewInit() {
@@ -105,23 +102,23 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
     // console.log('AddMeasurement Being Viewed');
 
-             let id=this.route.snapshot.paramMap.get('id');
-            //  console.log(id);
+    let id = this.route.snapshot.paramMap.get('id');
+    //  console.log(id);
 
-    if(id != null) {
+    if (id != null) {
       // console.log("Changing ID from Route");
 
 
       // console.log(this.gauges);
 
-         this.nearestGauge = this.gauges.filter(m => m.id == id)
-         this.nearestGaugeID= this.nearestGauge[0].gauge_id;
+      this.nearestGauge = this.gauges.filter(m => m.id == id)
+      this.nearestGaugeID = this.nearestGauge[0].gauge_id;
 
 
-        //  console.log('New Gauge Value on Entering');
-        //  console.log(this.nearestGaugeID);
+      //  console.log('New Gauge Value on Entering');
+      //  console.log(this.nearestGaugeID);
 
-         this.setUnits(id);
+      this.setUnits(id);
 
 
     }
@@ -132,328 +129,322 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
   }
 
 
-  async presentAlert(){
+  async presentAlert() {
 
     const alert = await this.alertController.create({
 
-        header: 'Report a problem',
-        message: 'Please enter the Gauge ID and Problem',
-        inputs: [
-          {
-            name: 'gauge_id',
-            type: 'text',
-            placeholder: 'Gauge ID'
-          }, 
-          {
-            name: 'problem',
-            type: 'text',
-            placeholder: 'Problem'
+      header: 'Report a problem',
+      message: 'Please enter the Gauge ID and Problem',
+      inputs: [
+        {
+          name: 'gauge_id',
+          type: 'text',
+          placeholder: 'Gauge ID'
+        },
+        {
+          name: 'problem',
+          type: 'text',
+          placeholder: 'Problem'
+        }
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // console.log('Confirm Cancel');
           }
-         
-        ],        
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            cssClass: 'secondary',
-            handler: () => {
-              // console.log('Confirm Cancel');
+        }, {
+          text: 'SUBMIT',
+          handler: data => {
+
+            this.gauge_data = data.gauge_id;
+            this.problem_data = data.problem;
+            // console.log(this.gauge_data);
+            // console.log(this.problem_data);
+
+
+            let email = {
+
+              to: 'dipayan5175@gmail.com',
+              subject: 'LOCSS App Issue',
+              body: 'Gauge ID: ' + this.gauge_data + '  Problem: ' + this.problem_data,
+              isHTML: true
+
+
             }
-          }, {
-            text: 'SUBMIT',
-            handler: data => {
-
-                this.gauge_data = data.gauge_id;
-                this.problem_data = data.problem;
-                // console.log(this.gauge_data);
-                // console.log(this.problem_data);
+            // console.log(email);
+            // console.log('Successfully updated');
 
 
-                let email = {
+            this.emailcomposer.open(email);
+            // console.log('Successfully sent');
 
-                    to: 'dipayan5175@gmail.com',
-                    subject: 'LOCSS App Issue',
-                    body: 'Gauge ID: ' + this.gauge_data + '  Problem: ' + this.problem_data,
-                    isHTML: true
-              
-
-                }
-                // console.log(email);
-                // console.log('Successfully updated');
-
-
-                this.emailcomposer.open(email);
-                // console.log('Successfully sent');
-             
-            }
           }
-        ]
+        }
+      ]
 
     });
 
-      await alert.present();
+    await alert.present();
   }
 
 
-  getCurrentDateTime(){
-      let date = new Date();
-      this.date=moment().format('YYYY-MM-DD');
-      this.time=moment().format('HH:mm');
-      this.isBubbleLevelOkay="Yes";
-      // console.log(this.date);
-      // console.log(this.time);
+  getCurrentDateTime() {
+    let date = new Date();
+    this.date = moment().format('YYYY-MM-DD');
+    this.time = moment().format('HH:mm');
+    this.isBubbleLevelOkay = "Yes";
+    // console.log(this.date);
+    // console.log(this.time);
   }
- 
+
 
   // Get The  Geolocation
-  
-  getLocation(){
+
+  getLocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
-      this.isGeoLocationFound=true;
-      let coords = resp.coords.latitude+'/'+resp.coords.longitude;
-      if(this.router.url.split('/')[3] && this.router.url.split('/')[3] != 'closest') {
+      this.isGeoLocationFound = true;
+      let coords = resp.coords.latitude + '/' + resp.coords.longitude;
+      if (this.router.url.split('/')[3] && this.router.url.split('/')[3] != 'closest') {
         let gauge = this.gauges.find(g => g.id == parseInt(this.router.url.split('/')[3]));
         coords = gauge.latitude + '/' + gauge.longitude;
       } else if (this.router.url.split('/')[3] && this.router.url.split('/')[3] == 'closest') {
         this.router.navigateByUrl('/tabs/add-measurement');
       }
-      this.http.get('http://liquidearthlake.org/json/getnearestgauge/'+coords)
-      .subscribe((data : any) =>
-      {
-        this.nearestGauge=data;
-        this.nearestGaugeID=data.gauge_id;
-        this.nearestGaugeIncID=data.id;
-        this.setUnits(this.nearestGaugeIncID);
-        this.hiddenInput.nativeElement.focus();
-        this.heightInput.el.setFocus();
-      },
-      (error : any) =>
-      {
-        console.log(error);
-      });
+      this.http.get('http://liquidearthlake.org/json/getnearestgauge/' + coords)
+        .subscribe((data: any) => {
+          this.nearestGauge = data;
+          this.nearestGaugeID = data.gauge_id;
+          this.nearestGaugeIncID = data.id;
+          this.setUnits(this.nearestGaugeIncID);
+          this.hiddenInput.nativeElement.focus();
+          this.heightInput.el.setFocus();
+        },
+          (error: any) => {
+            console.log(error);
+          });
       // console.log(resp.coords.latitude);
       // console.log(resp.coords.longitude);
-     }).catch((error) => {
-       this.isGeoLocationFound=false;
-       //console.log('Error getting location', error);
-     });
-
-  }
-
-
-  getAllGauges(){
-    this.http.get('http://liquidearthlake.org/json/gauges')
-    .subscribe((data : any) =>
-    {
-      this.gauges=data;
-      this.getLocation();
-    },
-    (error : any) =>
-    {
-      console.log(error);
+    }).catch((error) => {
+      this.isGeoLocationFound = false;
+      //console.log('Error getting location', error);
     });
+
   }
 
-  
+
+  getAllGauges() {
+    this.http.get('http://liquidearthlake.org/json/gauges')
+      .subscribe((data: any) => {
+        this.gauges = data;
+        this.getLocation();
+      },
+        (error: any) => {
+          console.log(error);
+        });
+  }
 
 
 
-  async onSubmit(form:NgForm){
-  // Check Network Status before creating toast
-  //If Offline, Create Toast to indicate data will be sent when online again.
+
+
+  async onSubmit(form: NgForm) {
+    // Check Network Status before creating toast
+    //If Offline, Create Toast to indicate data will be sent when online again.
 
 
     let status = this.networkService.getCurrentNetworkStatus();
 
-    if(status === ConnectionStatus.Online)
-    {
+    if (status === ConnectionStatus.Online) {
 
-    // //console.log('Connected to Network. Submitting Information');
-
+      // //console.log('Connected to Network. Submitting Information');
 
 
 
-    let toast = await this.toastCtrl.create({
-      message: 'Data submitted successfuly',
-      duration: 2000,
-      position: "bottom"
-    });
 
-    toast.present();
+      let toast = await this.toastCtrl.create({
+        message: 'Data submitted successfuly',
+        duration: 2000,
+        position: "bottom"
+      });
 
-    this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
-    // //console.log(form);
+      toast.present();
 
-    //API CALL
+      this.nearestGauge = this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
+      // //console.log(form);
 
-    // //console.log('Check Console Here');
-    // //console.log(form.value);
-    // //console.log('Data JSON Form');
-    let result = form.value;
-    // //console.log(JSON.stringify({result}));
+      //API CALL
 
+      // //console.log('Check Console Here');
+      // //console.log(form.value);
+      // //console.log('Data JSON Form');
+      let result = form.value;
+      // //console.log(JSON.stringify({result}));
 
 
 
 
 
 
-//"http://liquidearthlake.org/json/reading/store", form.value
-//"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
-//"http://liquidearthlake.org/json/store/offline", result
-//"http://liquidearthlake.org/json/reading/store", JSON.stringify({result})
+
+      //"http://liquidearthlake.org/json/reading/store", form.value
+      //"http://liquidearthlake.org/json/store/offline", JSON.stringify({result}))
+      //"http://liquidearthlake.org/json/store/offline", result
+      //"http://liquidearthlake.org/json/reading/store", JSON.stringify({result})
 
 
 
 
 
-    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
-            headers: { 'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Access-Control-Allow-Methods': 'POST'
-                }
-             })
-    .subscribe(response => {
+      this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result }), {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Methods': 'POST'
+        }
+      })
+        .subscribe(response => {
 
-      //console.log('Response is Here');
-      //console.log(JSON.stringify(response));
-     }, error =>  {
+          //console.log('Response is Here');
+          //console.log(JSON.stringify(response));
+        }, error => {
           //console.log('Error Printed Here');
           console.log(error);
           //console.log(JSON.stringify(error));
-            });
+        });
 
-    //console.log(this.gauges);
+      //console.log(this.gauges);
 
-    //console.log(this.nearestGauge[0].gauge_id);
-    this.router.navigateByUrl('tabs/view-gauge/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
+      //console.log(this.nearestGauge[0].gauge_id);
+      this.router.navigateByUrl('tabs/view-gauge/' + form.value['gauge_inc_id'] + '/' + this.nearestGauge[0].gauge_id);
+    }
+    else {
+
+      //console.log('Not connected to Network. Saving submission.');
+
+
+
+      // Method to Store Data in Ionic Storage
+      // This data must be retrieved whenever the app goes online.
+
+      this.apiService.handleRequest(form.value, this.db);
+      this.db++;
+    }
+
   }
-  else
-  {
 
-    //console.log('Not connected to Network. Saving submission.');
-
-
-
-    // Method to Store Data in Ionic Storage
-    // This data must be retrieved whenever the app goes online.
-
-    this.apiService.handleRequest(form.value, this.db);
-    this.db++;
-  }
-
-}
-
-    async sendSaved() {
+  async sendSaved() {
 
     //console.log('Sending any saved requests.')
 
-    for(this.db; this.db >= 0; this.db--) {
+    for (this.db; this.db >= 0; this.db--) {
 
-     this.apiService.getRequest(this.db).then((result) => {
-
-
-               if(result != null) {
-               //API CALL
-
-                   //console.log('Sending non-null request');
-
-                   //console.log(result);
-                   //console.log('Data JSON Form');
-                   //console.log(JSON.stringify({result}));
+      this.apiService.getRequest(this.db).then((result) => {
 
 
-    this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
-            headers: { 'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Access-Control-Allow-Methods': 'POST'
-                }
-             })
-    .subscribe(response => {
+        if (result != null) {
+          //API CALL
+
+          //console.log('Sending non-null request');
+
+          //console.log(result);
+          //console.log('Data JSON Form');
+          //console.log(JSON.stringify({result}));
+
+
+          this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({ result }), {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Access-Control-Allow-Methods': 'POST'
+            }
+          })
+            .subscribe(response => {
 
               //console.log('Response is Here');
               //console.log(JSON.stringify(response));
-     }, error =>  {
-                 //console.log('Error Printed Here');
-                    console.log(error);
-                     //console.log(JSON.stringify(error));
+            }, error => {
+              //console.log('Error Printed Here');
+              console.log(error);
+              //console.log(JSON.stringify(error));
             });
 
-                   console .log(this.db);
-                   //console.log('Request Sent');
+          console.log(this.db);
+          //console.log('Request Sent');
 
-               }
-                });
-            let toast = await this.toastCtrl.create({
-                message: 'Offline Requests Successfully Sent',
-                duration: 2000,
-                position: "bottom"
-                                  });
+        }
+      });
+      let toast = await this.toastCtrl.create({
+        message: 'Offline Requests Successfully Sent',
+        duration: 2000,
+        position: "bottom"
+      });
 
-        this.apiService.clearStorage(this.db);
+      this.apiService.clearStorage(this.db);
     }
 
-    if(this.db < 0) {
-    this.db = 0;
+    if (this.db < 0) {
+      this.db = 0;
     }
-}
+  }
 
 
- OnChange(event) {
+  OnChange(event) {
 
     //console.log(this.gauges);
- this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
- this.nearestGaugeID= this.nearestGauge[0].gauge_id;
- //console.log('New Gauge Value');
- //console.log(this.nearestGaugeID);
+    this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
+    this.nearestGaugeID = this.nearestGauge[0].gauge_id;
+    //console.log('New Gauge Value');
+    //console.log(this.nearestGaugeID);
 
- this.setUnits(event.target.value);
-
-
-
- }
-
-    setUnits(id) {
-
-        //console.log("Setting Units");
-
-             this.http
-             .get('http://liquidearthlake.org/json/getgauge/'+id)
-               .subscribe((data : any) =>
-               {
-
-               this.height_data=data;
+    this.setUnits(event.target.value);
 
 
 
-                    if(this.height_data[0].unit == "FEET") {
+  }
 
-                        this.units = "Feet";
+  setUnits(id) {
 
-                    }
-                    else if(this.height_data[0].unit == "METER") {
+    //console.log("Setting Units");
 
-                        this.units = "Meters";
+    this.http
+      .get('http://liquidearthlake.org/json/getgauge/' + id)
+      .subscribe((data: any) => {
 
-                    }
-                    else if(this.height_data[0].unit == "CENTIMETER") {
-
-
-                                      this.units = "Centimeters";
-
-                      }
+        this.height_data = data;
 
 
-                        //console.log(this.units);
-                        this.hiddenInput.nativeElement.focus();
-                        this.heightInput.el.setFocus();
 
-               },
-               (error : any) =>
-               {
-                 console.log(error);
-               });
+        if (this.height_data[0].unit == "FEET") {
 
-    }
- 
+          this.units = "Feet";
+
+        }
+        else if (this.height_data[0].unit == "METER") {
+
+          this.units = "Meters";
+
+        }
+        else if (this.height_data[0].unit == "CENTIMETER") {
+
+
+          this.units = "Centimeters";
+
+        }
+
+
+        //console.log(this.units);
+        this.hiddenInput.nativeElement.focus();
+        this.heightInput.el.setFocus();
+
+      },
+        (error: any) => {
+          console.log(error);
+        });
+
+  }
+
 }

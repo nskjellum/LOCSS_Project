@@ -1,41 +1,31 @@
-ion-content.background{
-
+ion-content.background {
     --background: url(https://www.locss.org/uploads/assets/_full/east-loon.JPG) 0 0/100% 100% no-repeat;
 }
 
-.card{
-
-    background-color:#0074D9;
-
+.card {
+    background-color: #0074d9;
 }
-.card1{
-
+.card1 {
     //background-color:#003366;
     background-color: #001f3f;
-
-
 }
 
-.imgclass{
-
+.imgclass {
     width: 275px;
     height: 200px;
     padding-left: 50px;
 }
 
-.h1class{
-
+.h1class {
     font-size: 0.8rem;
-    font-family: 'Comic Sans MS';
+    font-family: "Comic Sans MS";
     font-weight: bold;
-    color: #f8f9fa!important;
-
+    color: #f8f9fa !important;
 }
 
-.para{
-
+.para {
     font-size: 0.9rem;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     color: black;
     padding-bottom: 0.4rem;
     padding-top: 0.6rem;

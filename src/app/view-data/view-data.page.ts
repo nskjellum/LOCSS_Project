@@ -15,10 +15,10 @@ import { map } from 'rxjs/operators';
 })
 export class ViewDataPage {
 
-  gauges:any;
-  lat:any;
-  long:any;
-  tmp:any;
+  gauges: any;
+  lat: any;
+  long: any;
+  tmp: any;
 
   //Determines direction of column sorting.
   // 0 Sorted by Increasing Distance
@@ -27,94 +27,79 @@ export class ViewDataPage {
   // 4 Descending Order - Descending Order
   // (Used for all repeat pushes of the button.)
 
-  sortStatus:number=0;
-  public films: Observable <any>;
+  sortStatus: number = 0;
+  public films: Observable<any>;
   filmsKey = 'my-films-group';
-  
-  constructor(private storage: Storage, private http: HttpClient, private splash:SplashScreen,private geolocation:Geolocation, private cache: CacheService){}
 
-  ngOnInit(){
-     // this.splash.show();
-      this.getLocation();
-      this.getAllGauges();
-      
+  constructor(private storage: Storage, private http: HttpClient, private splash: SplashScreen, private geolocation: Geolocation, private cache: CacheService) { }
+
+  ngOnInit() {
+    // this.splash.show();
+    this.getLocation();
+    this.getAllGauges();
+
   }
 
-  getAllGauges(){
-     //console.log(this.lat);
-   
+  getAllGauges() {
+    //console.log(this.lat);
+
   }
 
- 
+  getLocation() {
+    //console.log('Caching User Location');
+
+    let url = 'http://liquidearthlake.org/json/getalldistances/' + 35.9049 + '/' + -79.0469;
+    let cacheKey = url;
+    let request = this.http.get(url, { observe: 'response' });
 
 
 
-getLocation(){
-  //console.log('Caching User Location');
+    return this.cache.loadFromObservable(cacheKey, request)
+      .pipe(map(res => res.body))
+      .subscribe((res: any) => {
+        this.gauges = res;
+        //console.log(res);
+      })
 
+  }
 
+  sortGauges(col) {
+    //console.log("Sorting column by", col);
+    //If sortStatus is not 1, sorts by ascending, otherwise, descending.
+    if (col === 'gauge_id') {
 
-  let url = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
-  let cacheKey = url;
-  let request = this.http.get(url, { observe: 'response'});
-
-
-
-  return this.cache.loadFromObservable(cacheKey, request)
-  .pipe(map(res => res.body))
-  .subscribe((res : any) =>
-    {
-      this.gauges = res;
-      //console.log(res);
-    })
-
-}
-
-sortGauges(col) {
-//console.log("Sorting column by", col);
-
-
-//If sortStatus is not 1, sorts by ascending, otherwise, descending.
-if(col === 'gauge_id') {
-
-    if(this.sortStatus != 1) {
-        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+      if (this.sortStatus != 1) {
+        this.gauges.sort((a, b) => (b[col] < a[col]) ? 1 : -1);
         this.sortStatus = 1;
-        }
-    else {
-        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+      }
+      else {
+        this.gauges.sort((a, b) => (b[col] > a[col]) ? 1 : -1);
         this.sortStatus = 4;
-        }
-}
-//If sortStatus is not 2, sorts by ascending, otherwise, descending.
-else if(col === 'name'){
+      }
+    }
+    //If sortStatus is not 2, sorts by ascending, otherwise, descending.
+    else if (col === 'name') {
 
-    if(this.sortStatus != 2) {
-        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+      if (this.sortStatus != 2) {
+        this.gauges.sort((a, b) => (b[col] < a[col]) ? 1 : -1);
         this.sortStatus = 2;
-        }
-    else {
-        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+      }
+      else {
+        this.gauges.sort((a, b) => (b[col] > a[col]) ? 1 : -1);
         this.sortStatus = 4;
-        }
-}
-//If sortStatus is not 0, sorts by ascending, otherwise, descending.
-else if(col === 'distance'){
+      }
+    }
+    //If sortStatus is not 0, sorts by ascending, otherwise, descending.
+    else if (col === 'distance') {
 
-    if(this.sortStatus != 0) {
-        this.gauges.sort((a,b) => (b[col] < a[col])?1:-1);
+      if (this.sortStatus != 0) {
+        this.gauges.sort((a, b) => (b[col] < a[col]) ? 1 : -1);
         this.sortStatus = 0;
-        }
-    else {
-        this.gauges.sort((a,b) => (b[col] > a[col])?1:-1);
+      }
+      else {
+        this.gauges.sort((a, b) => (b[col] > a[col]) ? 1 : -1);
         this.sortStatus = 4;
-        }
-}
-
-
-
-}
-
-
-
+      }
+    }
+  }
 }
