@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Add Measurement
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Gauge ID</ion-label>
+        <ion-input placeholder="Enter Lake ID Here if Offline" type="text" [(ngModel)]="nearestGaugeID" name="gauge_id">
+        </ion-input>
+        <ion-select [(ngModel)]="nearestGaugeIncID" (ionChange)="OnChange($event)" name="gauge_inc_id">
+          <ion-select-option *ngFor="let gauge of gauges" value="{{gauge.id}}">
+            {{gauge.gauge_id + ' - ' + gauge.name + ' - ' + gauge.city}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Height in {{units}} </ion-label>
+        <ion-input #heightInput type="number" ngModel name="height" required></ion-input>
+        <input #hiddenInput type="hidden">
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date</ion-label>
+        <ion-input type="date" [(ngModel)]="date" name="date" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-input type="time" [(ngModel)]="time" name="time" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Is Bubble Level Okay?</ion-label>
+        <ion-select [(ngModel)]="isBubbleLevelOkay" name="is_bubble_level_okay" required>
+          <ion-select-option value="Yes" selected>Yes</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+          <ion-select-option value="I Do Not Know">I Don't Know</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Notes</ion-label>
+        <ion-input type="textarea" ngModel name="notes"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid">Add Measurement</ion-button>
+  </form>
+  <ion-button [href]="'/gauge-list-map'" expand="block">Map View</ion-button>
+  <ion-button (click)="presentAlert()" expand="block" color="danger">Report a problem</ion-button>
+</ion-content>

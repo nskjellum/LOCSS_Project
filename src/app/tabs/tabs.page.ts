@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-tabs',
@@ -8,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class TabsPage {
 
-  constructor(private router: Router) {}
+  public notifyAddMeasurement: Subject<any>;
+
+  constructor(private router: Router) { }
 
   onClickAddMeasurement() {
-    if(this.router.url.indexOf('tabs/tab3') > -1 || (this.router.url.indexOf('tabs/tab1') > -1 && this.router.url.split('/').length > 3)) {
-      this.router.navigateByUrl('/tabs/tab1/' + this.router.url.split('/')[3]);
+    if (this.router.url.indexOf('tabs/view-gauge') > -1 || (this.router.url.indexOf('tabs/add-measurement') > -1 && this.router.url.split('/').length > 3)) {
+      this.router.navigateByUrl('/tabs/add-measurement/' + this.router.url.split('/')[3]);
     } else {
-      this.router.navigateByUrl('/tabs/tab1/');
+      this.router.navigateByUrl('/tabs/add-measurement');
     }
   }
 }

@@ -8,63 +8,59 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'add-measurement',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../add-measurement/add-measurement.module#AddMeasurementPageModule'
           },
           {
             path: ':gaugeId',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../add-measurement/add-measurement.module#AddMeasurementPageModule'
           },
           
         ]
       },
       {
-      path: 'tab2',
+      path: 'view-data',
        children: [
           {
            path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../view-data/view-data.module#ViewDataPageModule'
           }
        ]
      },
       {
-        path: 'tab4',
+        path: 'home',
         children: [
           {
             path: '',
-            loadChildren: '../tab4/tab4.module#Tab4PageModule'
+            loadChildren: '../home/home.module#HomePageModule'
           }
         ]
       },
       {
-        path: 'tab3/:id/:name',
+        path: 'view-gauge/:id/:name',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../view-gauge/view-gauge.module#ViewGaugePageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/add-measurement',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab4',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
- /* {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }*/
+
 ];
 
 @NgModule({
