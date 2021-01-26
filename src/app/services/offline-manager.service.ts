@@ -40,7 +40,7 @@ export class OfflineManagerService {
     let obs = [];
  
     for (let op of operations) {
-      console.log('Make one request: ', op);
+      //console.log('Make one request: ', op);
       let oneObs = this.http.request(op.type, op.url, op.data);
       obs.push(oneObs);
     }

@@ -41,54 +41,16 @@ export class ViewDataPage {
   }
 
   getAllGauges(){
-     console.log(this.lat);
+     //console.log(this.lat);
    
   }
 
  
-/*
-  
-  getLocation(){
-
-    var cachedRespone = 
-    this.geolocation.getCurrentPosition().then((resp) => {
-        this.http.get('http://liquidearthlake.org/json/getalldistances/'+ resp.coords.latitude+'/'+ resp.coords.longitude)
-        .subscribe((data : any) =>
-        {
-         
-          console.log(data);
-          this.gauges=data;
-          
-        },
-        (error : any) =>
-        {
-          console.log(error);
-        });  
-     }).catch((error) => {
-       
-       console.log('Error getting location', error);
-       this.http.get('http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469)
-       .subscribe((data : any) =>
-       {
-         
-         console.log(data);
-         this.gauges=data;
-         
-       },
-       (error : any) =>
-       {
-         console.log(error);
-       });  
-     });
-     
- 
-  }
-*/
 
 
 
 getLocation(){
-  console.log('Caching User Location');
+  //console.log('Caching User Location');
 
 
 
@@ -103,13 +65,13 @@ getLocation(){
   .subscribe((res : any) =>
     {
       this.gauges = res;
-      console.log(res);
+      //console.log(res);
     })
 
 }
 
 sortGauges(col) {
-console.log("Sorting column by", col);
+//console.log("Sorting column by", col);
 
 
 //If sortStatus is not 1, sorts by ascending, otherwise, descending.
@@ -150,13 +112,6 @@ else if(col === 'distance'){
 }
 
 
-
-
-console.log(this.gauges);
-
-//let a = ["9", "1" , "3" , "7" , "5"];
-//a.sort((a,b) => (a > b)?1:-1);
-//console.log(a);
 
 }
 

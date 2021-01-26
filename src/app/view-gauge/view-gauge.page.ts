@@ -39,31 +39,11 @@ export class ViewGaugePage {
 
   ngOnInit() {
     this.loadAllData=false;
-    //this.splash.show();
     this.getHeight(); 
-   // this.getHeight();
     this.splash.hide();
-  //  this.handleButtonClick();
-    
-    //this.drawGraph();
-  }
-  //drawGraph(){
- 
-   
-   // console.log(this.data);
-    
 
- // }
- /*
- async handleButtonClick() {
-   console.log("Hello");
-  const alert =  await this.alertController.create({
-    
-    header: 'Data has been submitted successfully',
-    buttons: ['OK']
-  });
-   await alert.present();
-}*/
+  }
+
 
   goBack() {
     window.history.back();
@@ -73,8 +53,8 @@ export class ViewGaugePage {
   getReadingsForTable(range){
     let id=this.route.snapshot.paramMap.get('id');
 
-    console.log("Id for Readings");
-    console.log(id);
+    //console.log("Id for Readings");
+    //console.log(id);
 
     var source;
 
@@ -82,8 +62,8 @@ export class ViewGaugePage {
     //All Data
     let source = ('http://liquidearthlake.org/json/getjsondataall/'+id);
 
-            console.log("Source for table");
-            console.log(source);
+            //console.log("Source for table");
+            //console.log(source);
 
         this.http
         .get(source)
@@ -91,7 +71,7 @@ export class ViewGaugePage {
           {
 
             this.data=data;
-           console.log(data);
+           //console.log(data);
 
 
           },
@@ -106,8 +86,8 @@ export class ViewGaugePage {
     let source = ('http://liquidearthlake.org/json/getjsondataoney/'+id);
 
 
-            console.log("Source for table");
-            console.log(source);
+            //console.log("Source for table");
+            //console.log(source);
 
         this.http
         .get(source)
@@ -115,7 +95,7 @@ export class ViewGaugePage {
           {
 
             this.data=data;
-           console.log(data);
+           //console.log(data);
 
 
           },
@@ -130,8 +110,8 @@ export class ViewGaugePage {
     let source = ('http://liquidearthlake.org/json/getjsondatathreem/'+id);
 
 
-            console.log("Source for table");
-            console.log(source);
+            //console.log("Source for table");
+            //console.log(source);
 
         this.http
         .get(source)
@@ -139,7 +119,7 @@ export class ViewGaugePage {
           {
 
             this.data=data;
-           console.log(data);
+           //console.log(data);
 
 
           },
@@ -154,8 +134,8 @@ export class ViewGaugePage {
     let source = ('http://liquidearthlake.org/json/getjsondataonem/'+id);
 
 
-            console.log("Source for table");
-            console.log(source);
+            //console.log("Source for table");
+            //console.log(source);
 
         this.http
         .get(source)
@@ -163,7 +143,7 @@ export class ViewGaugePage {
           {
 
             this.data=data;
-           console.log(data);
+           //console.log(data);
 
 
           },
@@ -177,8 +157,8 @@ export class ViewGaugePage {
         //Default Six Months
        let source = ('http://liquidearthlake.org/json/getjsondatasixm/'+id);
 
-            console.log("Source for table");
-            console.log(source);
+            //console.log("Source for table");
+            //console.log(source);
 
            this.http
            .get(source)
@@ -186,7 +166,7 @@ export class ViewGaugePage {
              {
 
                this.data=data;
-              console.log(data);
+              //console.log(data);
 
 
              },
@@ -205,10 +185,10 @@ export class ViewGaugePage {
     
     let id=this.route.snapshot.paramMap.get('id');
     //let variable = this.route.snapshot.paramMap.get('unit');
-    //console.log('hi' + variable);
+    ////console.log('hi' + variable);
 
-   console.log("Id for height");
-    console.log(id);
+   //console.log("Id for height");
+    //console.log(id);
     
    
     this.http
@@ -217,7 +197,7 @@ export class ViewGaugePage {
       {
       
       this.height_data=data;
-       console.log(this.height_data[0].unit);
+       //console.log(this.height_data[0].unit);
       this.getReadings();   
       this.getReadingsForTable(6);
       },
@@ -231,7 +211,7 @@ export class ViewGaugePage {
   
   getReadings(){
     
-    console.log(this.height_data);
+    //console.log(this.height_data);
     
     var scale_size=15;
     var reading_date=[];
@@ -251,35 +231,35 @@ export class ViewGaugePage {
         {
             //this.data =data;
 
-            console.log('Original Data');
-            console.log(this.data);
-            console.log('Data Check');
-            console.log(JSON.stringify(this.data));
+            //console.log('Original Data');
+            //console.log(this.data);
+            //console.log('Data Check');
+            //console.log(JSON.stringify(this.data));
 
-            console.log(data.length);
+            //console.log(data.length);
 
             if (data.length != 0) {
 
             for (var i=0;i<data.length;++i)
             {
                 reading_date.push(this.formatedate(String(data[i].date)));
-                console.log(data[i].height);
+                //console.log(data[i].height);
                 reading_height.push(data[i].height);
 
             }
             var start_date= this.formatedate(String(data[0].date));
             var start_date1= moment(start_date);
 
-            console.log(start_date1);
+            //console.log(start_date1);
 
 
             var end_date = this.formatedate(String(data[data.length-1].date));
-            console.log(end_date);
+            //console.log(end_date);
 
             var end_date1 = moment(end_date);
             var modified_end_date;
             var diff_date_in_days=  end_date1.diff(start_date1, 'days');
-            console.log(diff_date_in_days);
+            //console.log(diff_date_in_days);
 
 
             if(diff_date_in_days%scale_size!=0){
@@ -289,10 +269,10 @@ export class ViewGaugePage {
               var num_steps_x_axis = diff_date_in_days / scale_size;
               modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
             }
-            console.log(modified_end_date);
+            //console.log(modified_end_date);
 
              if (this.barChart) {
-                    console.log('Destroying Chart');
+                    //console.log('Destroying Chart');
 
                     this.barChart.destroy();
                         }
@@ -367,7 +347,7 @@ export class ViewGaugePage {
 
         if (this.barChart) {
 
-        console.log('Destroying Other Chart');
+        //console.log('Destroying Other Chart');
        this.barChart.destroy();
        }
             this.presentAlert();
@@ -403,35 +383,35 @@ export class ViewGaugePage {
     {
         //this.data =data;
 
-        console.log('Original Data');
-        console.log(this.data);
-        console.log('Data Check');
-        console.log(JSON.stringify(this.data));
+        //console.log('Original Data');
+        //console.log(this.data);
+        //console.log('Data Check');
+        //console.log(JSON.stringify(this.data));
 
-        console.log(data.length);
+        //console.log(data.length);
 
         if (data.length != 0) {
 
         for (var i=0;i<data.length;++i)
         {
             reading_date.push(this.formatedate(String(data[i].date)));
-            console.log(data[i].height);
+            //console.log(data[i].height);
             reading_height.push(data[i].height);
     
         }
         var start_date= this.formatedate(String(data[0].date));
         var start_date1= moment(start_date);
 
-        console.log(start_date1);
+        //console.log(start_date1);
 
 
         var end_date = this.formatedate(String(data[data.length-1].date));
-        console.log(end_date);
+        //console.log(end_date);
 
         var end_date1 = moment(end_date);
         var modified_end_date;
         var diff_date_in_days=  end_date1.diff(start_date1, 'days');
-        console.log(diff_date_in_days);
+        //console.log(diff_date_in_days);
 
 
         if(diff_date_in_days%scale_size!=0){
@@ -441,10 +421,10 @@ export class ViewGaugePage {
           var num_steps_x_axis = diff_date_in_days / scale_size;
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
-        console.log(modified_end_date);
+        //console.log(modified_end_date);
 
              if (this.barChart) {
-                    console.log('Destroying Chart');
+                    //console.log('Destroying Chart');
 
                     this.barChart.destroy();
                         }
@@ -518,7 +498,7 @@ export class ViewGaugePage {
         else {
         if (this.barChart) {
 
-        console.log('Destroying Other Chart');
+        //console.log('Destroying Other Chart');
        this.barChart.destroy();
        }
         this.presentAlert();
@@ -550,7 +530,7 @@ export class ViewGaugePage {
     .subscribe((data : any) =>
     {
         //this.data =data;
-        console.log(this.data);
+        //console.log(this.data);
 
         if (data.length != 0) {
 
@@ -573,10 +553,10 @@ export class ViewGaugePage {
           var num_steps_x_axis = diff_date_in_days / scale_size;
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
-        console.log(modified_end_date);
+        //console.log(modified_end_date);
 
              if (this.barChart) {
-                    console.log('Destroying Chart');
+                    //console.log('Destroying Chart');
 
                     this.barChart.destroy();
                         }
@@ -647,7 +627,7 @@ export class ViewGaugePage {
 
         if (this.barChart) {
 
-        console.log('Destroying Other Chart');
+        //console.log('Destroying Other Chart');
        this.barChart.destroy();
        }
         this.presentAlert();
@@ -681,7 +661,7 @@ export class ViewGaugePage {
     .subscribe((data : any) =>
     {
         //this.data =data;
-        console.log(this.data);
+        //console.log(this.data);
 
         if (data.length != 0) {
 
@@ -704,10 +684,10 @@ export class ViewGaugePage {
           var num_steps_x_axis = diff_date_in_days / scale_size;
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
-        console.log(modified_end_date);
+        //console.log(modified_end_date);
 
              if (this.barChart) {
-                    console.log('Destroying Chart');
+                    //console.log('Destroying Chart');
 
                     this.barChart.destroy();
                         }
@@ -779,7 +759,7 @@ export class ViewGaugePage {
 
         if (this.barChart) {
 
-        console.log('Destroying Other Chart');
+        //console.log('Destroying Other Chart');
        this.barChart.destroy();
        }
         this.presentAlert();
@@ -801,7 +781,7 @@ export class ViewGaugePage {
 
 
   
-    console.log('Hello');
+    //console.log('Hello');
     var scale_size=100;
     var reading_date=[];
     var reading_height=[];
@@ -816,7 +796,7 @@ export class ViewGaugePage {
     .subscribe((data : any) =>
     {
         //this.data =data;
-        console.log(this.data);
+        //console.log(this.data);
 
         if (data.length != 0) {
 
@@ -833,20 +813,20 @@ export class ViewGaugePage {
         var modified_end_date;
         var diff_date_in_days=  end_date1.diff(start_date1, 'days');
 
-        console.log(diff_date_in_days);
+        //console.log(diff_date_in_days);
         if(diff_date_in_days % scale_size==0){
             modified_end_date=end_date1;
-            console.log(end_date1);
+            //console.log(end_date1);
         }
         else {
           var num_steps_x_axis = diff_date_in_days / scale_size;
           modified_end_date = start_date1.add((num_steps_x_axis + 1) * scale_size, 'days');
         }
-        console.log(modified_end_date);
+        //console.log(modified_end_date);
 
 
     if (this.barChart) {
-        console.log('Destroying Chart');
+        //console.log('Destroying Chart');
 
         this.barChart.destroy();
             }
@@ -920,7 +900,7 @@ export class ViewGaugePage {
 
         if (this.barChart) {
 
-        console.log('Destroying Other Chart');
+        //console.log('Destroying Other Chart');
        this.barChart.destroy();
        }
        this.presentAlert();
@@ -974,8 +954,8 @@ export class ViewGaugePage {
 
 
     let id=this.route.snapshot.paramMap.get('id');
-    console.log("ID for add measurement");
-    console.log(id);
+    //console.log("ID for add measurement");
+    //console.log(id);
     this.router.navigate(['tabs/add-measurement', {id: id}]);
 
 

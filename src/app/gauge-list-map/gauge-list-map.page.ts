@@ -39,7 +39,7 @@ constructor(public loadingcontrl: LoadingController, private splash: SplashScree
 }
 
 ngOnInit() {
-  console.log("Ionview");
+  //console.log("Ionview");
   //this.splash.show();
   
   this.addMarkerToMap();
@@ -57,13 +57,13 @@ locate(){
   this.geolocation.getCurrentPosition().then((resp) => {  
     
     this.isGeoLocationFound = true; 
-    console.log('Current Position: ', resp.coords.latitude, resp.coords.longitude);
+    //console.log('Current Position: ', resp.coords.latitude, resp.coords.longitude);
   //  let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
     
     this.location.lat = resp.coords.latitude;
     this.location.lng = resp.coords.longitude;
 
-    console.log(this.location);
+    //console.log(this.location);
     this.mapOptions = {
       
     
@@ -81,7 +81,7 @@ locate(){
   }).catch((error) => {
 
       this.isGeoLocationFound = false;
-      console.log('Error getting location', error);
+      //console.log('Error getting location', error);
   });
 }
 
@@ -94,11 +94,11 @@ locate(){
 
 
         
-      //console.log(resp.coords.latitude);  
+      ////console.log(resp.coords.latitude);  
      //let latLng = new google.maps.LatLng(this.resp.coords.latitude, this.resp.coords.longitude);
-     //console.log(latLng);
+     ////console.log(latLng);
      // let latLng = new google.maps.LatLng(36.183670857, -85.5016);
-      //console.log(latLng);
+      ////console.log(latLng);
       let mapOptions = {
         
        // center:latLng,
@@ -116,11 +116,11 @@ addMarkerToMap(){
       .subscribe((gauges : any) =>
       {
         
-        console.log(gauges);
+        //console.log(gauges);
         for(var i=0;i<gauges.length;i++){
           var label = gauges[i].gauge_id+":"+gauges[i].name;
           this.addMarker(Number(gauges[i].latitude),Number(gauges[i].longitude),label,gauges[i].id,gauges[i].name);
-          //console.log("success",label);
+          ////console.log("success",label);
         }
          
          
@@ -133,7 +133,7 @@ addMarkerToMap(){
 
 addMarker(lat,lng,label,id,name) {
   var coords = {lat: lat, lng: lng};
-  console.log(coords);
+  //console.log(coords);
 
   var marker = new google.maps.Marker(
       {
@@ -145,13 +145,8 @@ addMarker(lat,lng,label,id,name) {
   var infoWindow = new google.maps.InfoWindow({
       content: label
   });
-  /*marker.addListener("click",function () {
-      infoWindow.open(this.map,marker);
-  });
-  marker.addListener("mouseout",function () {
-      infoWindow.close();
-  });*/
-  console.log('tabs/view-gauge/'+id+'/'+name);
+
+  //console.log('tabs/view-gauge/'+id+'/'+name);
   marker.addListener('click', ()=> {
     this.router.navigateByUrl('tabs/view-gauge/'+id+'/'+name);
 

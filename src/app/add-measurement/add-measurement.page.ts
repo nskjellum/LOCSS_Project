@@ -12,13 +12,11 @@ import { BoundElementProperty } from '@angular/compiler';
 import { NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
-//
 
 import { Storage } from '@ionic/storage';
 import { ApiService } from '../services/api.service';
 import { NetworkService, ConnectionStatus } from 'src/app/services/network.service';
 import { Network } from '@ionic-native/network/ngx'
-//
 
 
 const URL = 'http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469;
@@ -105,23 +103,23 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
   ionViewWillEnter() {
 
-    console.log('AddMeasurement Being Viewed');
+    // console.log('AddMeasurement Being Viewed');
 
              let id=this.route.snapshot.paramMap.get('id');
-             console.log(id);
+            //  console.log(id);
 
     if(id != null) {
-         console.log("Changing ID from Route");
+      // console.log("Changing ID from Route");
 
 
-         console.log(this.gauges);
+      // console.log(this.gauges);
 
          this.nearestGauge = this.gauges.filter(m => m.id == id)
          this.nearestGaugeID= this.nearestGauge[0].gauge_id;
 
 
-         console.log('New Gauge Value on Entering');
-         console.log(this.nearestGaugeID);
+        //  console.log('New Gauge Value on Entering');
+        //  console.log(this.nearestGaugeID);
 
          this.setUnits(id);
 
@@ -159,7 +157,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
             role: 'cancel',
             cssClass: 'secondary',
             handler: () => {
-              console.log('Confirm Cancel');
+              // console.log('Confirm Cancel');
             }
           }, {
             text: 'SUBMIT',
@@ -167,8 +165,8 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
                 this.gauge_data = data.gauge_id;
                 this.problem_data = data.problem;
-                console.log(this.gauge_data);
-                console.log(this.problem_data);
+                // console.log(this.gauge_data);
+                // console.log(this.problem_data);
 
 
                 let email = {
@@ -180,11 +178,12 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
               
 
                 }
-                console.log(email);
-                console.log('Successfully updated');
+                // console.log(email);
+                // console.log('Successfully updated');
+
 
                 this.emailcomposer.open(email);
-                console.log('Successfully sent');
+                // console.log('Successfully sent');
              
             }
           }
@@ -201,8 +200,8 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
       this.date=moment().format('YYYY-MM-DD');
       this.time=moment().format('HH:mm');
       this.isBubbleLevelOkay="Yes";
-      console.log(this.date);
-      console.log(this.time);
+      // console.log(this.date);
+      // console.log(this.time);
   }
  
 
@@ -232,50 +231,16 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
       {
         console.log(error);
       });
-      console.log(resp.coords.latitude);
-      console.log(resp.coords.longitude);
-      // resp.coords.latitude
-      // resp.coords.longitude
+      // console.log(resp.coords.latitude);
+      // console.log(resp.coords.longitude);
      }).catch((error) => {
        this.isGeoLocationFound=false;
-       console.log('Error getting location', error);
+       //console.log('Error getting location', error);
      });
 
   }
 
-  // Present the Add Gauge prompt when geolocation is not found
-  /*async presentAlertPrompt() {
-    const alert = await this.alertController.create({
-      header: 'Please Enter the Gauge ID',
-      inputs: [
-        {
-          name: 'gauge_id',
-          type: 'text',
-          placeholder: 'Gauge ID'
-        }
-       
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'SUBMIT',
-          handler: data => {
-            this.nearestGaugeID=data.gauge_id;
-            console.log(this.nearestGaugeID);
-          }
-        }
-      ]
-    });
-  
-    await alert.present();
-  }
-*/
+
   getAllGauges(){
     this.http.get('http://liquidearthlake.org/json/gauges')
     .subscribe((data : any) =>
@@ -303,7 +268,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
     if(status === ConnectionStatus.Online)
     {
 
-    console.log('Connected to Network. Submitting Information');
+    // //console.log('Connected to Network. Submitting Information');
 
 
 
@@ -317,15 +282,15 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
     toast.present();
 
     this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
-    console.log(form);
+    // //console.log(form);
 
     //API CALL
 
-    console.log('Check Console Here');
-    console.log(form.value);
-    console.log('Data JSON Form');
+    // //console.log('Check Console Here');
+    // //console.log(form.value);
+    // //console.log('Data JSON Form');
     let result = form.value;
-    console.log(JSON.stringify({result}));
+    // //console.log(JSON.stringify({result}));
 
 
 
@@ -350,23 +315,23 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
              })
     .subscribe(response => {
 
-      console.log('Response is Here');
-      console.log(JSON.stringify(response));
+      //console.log('Response is Here');
+      //console.log(JSON.stringify(response));
      }, error =>  {
-          console.log('Error Printed Here');
+          //console.log('Error Printed Here');
           console.log(error);
-          console.log(JSON.stringify(error));
+          //console.log(JSON.stringify(error));
             });
 
-    console.log(this.gauges);
+    //console.log(this.gauges);
 
-    console.log(this.nearestGauge[0].gauge_id);
+    //console.log(this.nearestGauge[0].gauge_id);
     this.router.navigateByUrl('tabs/view-gauge/'+ form.value['gauge_inc_id']+'/'+ this.nearestGauge[0].gauge_id);
   }
   else
   {
 
-    console.log('Not connected to Network. Saving submission.');
+    //console.log('Not connected to Network. Saving submission.');
 
 
 
@@ -381,7 +346,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
     async sendSaved() {
 
-    console.log('Sending any saved requests.')
+    //console.log('Sending any saved requests.')
 
     for(this.db; this.db >= 0; this.db--) {
 
@@ -391,11 +356,11 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
                if(result != null) {
                //API CALL
 
-                   console.log('Sending non-null request');
+                   //console.log('Sending non-null request');
 
-                   console.log(result);
-                   console.log('Data JSON Form');
-                   console.log(JSON.stringify({result}));
+                   //console.log(result);
+                   //console.log('Data JSON Form');
+                   //console.log(JSON.stringify({result}));
 
 
     this.http.post("http://liquidearthlake.org/json/reading/store", JSON.stringify({result}), {
@@ -406,16 +371,16 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
              })
     .subscribe(response => {
 
-              console.log('Response is Here');
-              console.log(JSON.stringify(response));
+              //console.log('Response is Here');
+              //console.log(JSON.stringify(response));
      }, error =>  {
-                 console.log('Error Printed Here');
+                 //console.log('Error Printed Here');
                     console.log(error);
-                     console.log(JSON.stringify(error));
+                     //console.log(JSON.stringify(error));
             });
 
                    console .log(this.db);
-                   console.log('Request Sent');
+                   //console.log('Request Sent');
 
                }
                 });
@@ -436,11 +401,11 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
  OnChange(event) {
 
-    console.log(this.gauges);
+    //console.log(this.gauges);
  this.nearestGauge = this.gauges.filter(m => m.id == event.target.value)
  this.nearestGaugeID= this.nearestGauge[0].gauge_id;
- console.log('New Gauge Value');
- console.log(this.nearestGaugeID);
+ //console.log('New Gauge Value');
+ //console.log(this.nearestGaugeID);
 
  this.setUnits(event.target.value);
 
@@ -450,7 +415,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
 
     setUnits(id) {
 
-        console.log("Setting Units");
+        //console.log("Setting Units");
 
              this.http
              .get('http://liquidearthlake.org/json/getgauge/'+id)
@@ -479,7 +444,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit{
                       }
 
 
-                        console.log(this.units);
+                        //console.log(this.units);
                         this.hiddenInput.nativeElement.focus();
                         this.heightInput.el.setFocus();
 

@@ -6,7 +6,6 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content padding class = "background-image"> -->
 <ion-content>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
     <ion-list>
@@ -45,7 +44,6 @@
       </ion-item>
     </ion-list>
     <ion-button type="submit" color="primary" expand="block" [disabled] ="!f.valid">Add Measurement</ion-button>
-   <!-- <ion-button click= "presentAlert();" color="primary" expand="block" [disabled] ="!f.valid">Report a problem</ion-button>-->
   </form>
 
 

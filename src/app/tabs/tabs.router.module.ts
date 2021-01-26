@@ -60,11 +60,7 @@ const routes: Routes = [
     redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
- /* {
-    path: '',
-    redirectTo: '/tabs/add-measurement',
-    pathMatch: 'full'
-  }*/
+
 ];
 
 @NgModule({

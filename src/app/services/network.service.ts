@@ -26,7 +26,7 @@ export class NetworkService {
     }
 
 async presentAlert() {
-            console.log('The alert is being presented.');
+            //console.log('The alert is being presented.');
             const alert = await this.AlertController.create({
               cssClass: 'my-custom-class',
               header: 'Alert',
@@ -37,29 +37,29 @@ async presentAlert() {
 
         await alert.present();
         let result = await alert.onDidDismiss();
-            console.log(result);
+            //console.log(result);
   }
 
     public initializeNetworkEvents() {
 
-        console.log('Initializing Network events');
+        //console.log('Initializing Network events');
 
       this.network.onDisconnect().subscribe(() => {
         if (this.status.getValue() === ConnectionStatus.Online) {
-          console.log('WE ARE OFFLINE');
+          //console.log('WE ARE OFFLINE');
           this.updateNetworkStatus(ConnectionStatus.Offline);
         }
       });
 
       this.network.onConnect().subscribe(() => {
         if (this.status.getValue() === ConnectionStatus.Offline) {
-          console.log('WE ARE ONLINE');
+          //console.log('WE ARE ONLINE');
           this.updateNetworkStatus(ConnectionStatus.Online);
 
         }
       });
 
-      console.log('Events initialized');
+      //console.log('Events initialized');
     }
 
     private async updateNetworkStatus(status: ConnectionStatus) {

@@ -34,7 +34,6 @@
              >Last Year
     </ion-button>
 
-  <!-- <ion-button color ="success" (click)= "getReadings()" >Last Six Months</ion-button> -->
   <ion-button
               [color]="buttonVal == 2 ? 'success': ''"
               (click)= "getReadings()"
@@ -53,13 +52,6 @@
             >Last One Month
     </ion-button>
 
-  <!-- <ion-button
-
-            color="success"
-            (click)= "goToPage()"
-
-            >Add Measurement
-  </ion-button> -->
 
 
     <ion-card-content zooming="true" direction="xy"> 
@@ -85,11 +77,7 @@
         </ion-row>
         <ng-container *ngFor="let dat of data;let i = index;" >
           <ion-row  *ngIf="loadAllData || i<4">
-            <!-- <ion-col style="color: #92a8d1;border-style: solid;
-              border-width: 2px;">{{dat['date']}}</ion-col> -->
-             <!-- <ion-col style="color: green;border-style: solid;
-              border-width: 2px;">{{dat['height']}}</ion-col> -->
-              <ion-col>{{dat['date']}}</ion-col>
+               <ion-col>{{dat['date']}}</ion-col>
               <ion-col>{{dat['height']}}</ion-col>
 
 
