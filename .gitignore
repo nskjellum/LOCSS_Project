@@ -12,3 +12,13 @@ www
 
 # Ignore platforms folder
 platforms
+
+# Ignore plugins folder
+plugins
+
+# Ignore .vscode folder
+.vscode
+
+# Ignore .idea folder
+.idea
+
