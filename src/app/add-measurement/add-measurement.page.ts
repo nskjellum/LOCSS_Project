@@ -81,6 +81,7 @@ export class AddMeasurementPage implements OnInit, AfterViewInit {
     this.getCurrentDateTime()
     this.getAllGauges();
 
+
     if (!this.isGeoLocationFound) {
       //this.presentAlertPrompt();
     }
@@ -116,13 +117,19 @@ export class AddMeasurementPage implements OnInit, AfterViewInit {
       this.nearestGaugeID = this.nearestGauge[0].gauge_id;
 
 
+
       //  console.log('New Gauge Value on Entering');
       //  console.log(this.nearestGaugeID);
 
-      this.setUnits(id);
+
+  
 
 
     }
+
+
+    this.setUnits(id);
+
 
     this.hiddenInput.nativeElement.focus();
     this.heightInput.el.setFocus();
@@ -241,11 +248,27 @@ export class AddMeasurementPage implements OnInit, AfterViewInit {
     this.http.get('http://liquidearthlake.org/json/gauges')
       .subscribe((data: any) => {
         this.gauges = data;
+
+
+        //Behavior Concern - Gaugues are sorted from this console log before sort
+        //is performed sequentially below this line. 
+        //No impact on functionality, but investigate discrepancy. (2-20-21)
+        console.log("Downloaded Gauges");
+        console.log(this.gauges);
+    
+        this.gauges.sort((a, b) => (b['name'] < a['name']) ? 1 : -1);
+    
+        console.log("Sorted Gauges");
+        console.log(this.gauges);
+  
+
         this.getLocation();
       },
         (error: any) => {
           console.log(error);
         });
+
+
   }
 
 
